@@ -134,6 +134,10 @@
           "label": "Facebook",
           "info": "https://facebook.com/shopify"
         },
+        "social_linkedin_link": {
+          "label": "Linkedin",
+          "info": "https://www.linkedin.com/company/kourossofficial/"
+        },
         "social_pinterest_link": {
           "label": "Pinterest",
           "info": "https://pinterest.com/shopify"
@@ -159,6 +163,10 @@
           "info": "https://www.youtube.com/shopify"
         },
         "social_vimeo_link": {
+          "label": "Vimeo",
+          "info": "https://vimeo.com/shopify"
+        },
+        "social_linkiedn_link": {
           "label": "Vimeo",
           "info": "https://vimeo.com/shopify"
         }
@@ -212,6 +220,9 @@
           },
           "options__2": {
             "label": "1600px"
+          },
+          "options__3": {
+            "label": "3000px"
           }
         }
       }

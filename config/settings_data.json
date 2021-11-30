@@ -1,5 +1,112 @@
 {
-  "current": "Default",
+  "current": {
+    "colors_solid_button_labels": "#FFFFFF",
+    "colors_accent_1": "#000000",
+    "colors_accent_2": "#334FB4",
+    "colors_text": "#000000",
+    "colors_outline_button_labels": "#000000",
+    "colors_background_1": "#FFFFFF",
+    "colors_background_2": "#F3F3F3",
+    "type_header_font": "assistant_n4",
+    "heading_scale": 115,
+    "type_body_font": "assistant_n4",
+    "body_scale": 110,
+    "page_width": "3000",
+    "social_twitter_link": "",
+    "social_facebook_link": "https:\/\/www.facebook.com\/Kouross1\/",
+    "social_instagram_link": "https:\/\/www.instagram.com\/kourossofficial\/",
+    "social_linkedin_link": "https:\/\/www.linkedin.com\/company\/kourossofficial\/",
+    "predictive_search_enabled": false,
+    "favicon": "shopify:\/\/shop_images\/Groupk_kouross.png",
+    "currency_code_enabled": false,
+    "checkout_logo_image": "shopify:\/\/shop_images\/kouross_662cd030-b397-4e75-beba-d50fbe5d7e5e.png",
+    "checkout_logo_size": "small",
+    "sections": {
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "blocks": {
+          "announcement-bar-0": {
+            "type": "announcement",
+            "settings": {
+              "text": "Get a €50 voucher to spend for order over €200 with code LAUNCH50",
+              "color_scheme": "accent-1",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "announcement-bar-0"
+        ],
+        "settings": {
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "color_scheme": "background-1",
+          "logo": "shopify:\/\/shop_images\/kourossxyz.png",
+          "logo_width": 160,
+          "logo_position": "middle-left",
+          "menu": "main-menu",
+          "show_line_separator": true,
+          "enable_sticky_header": true
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "footer-0": {
+            "type": "link_list",
+            "settings": {
+              "heading": "Shop",
+              "menu": "footer"
+            }
+          },
+          "12c30d68-7608-47fd-b18e-b41c90b9562d": {
+            "type": "link_list",
+            "settings": {
+              "heading": "Info",
+              "menu": "info"
+            }
+          },
+          "footer-1": {
+            "type": "text",
+            "disabled": true,
+            "settings": {
+              "heading": "Heading",
+              "subtext": "<p>Share store details, promotions, or brand content with your customers.<\/p>"
+            }
+          },
+          "c67710a4-7a78-4a70-9d83-f5cd400bf549": {
+            "type": "image",
+            "disabled": true,
+            "settings": {
+              "image_width": 100,
+              "alignment": "center"
+            }
+          }
+        },
+        "block_order": [
+          "footer-0",
+          "12c30d68-7608-47fd-b18e-b41c90b9562d",
+          "footer-1",
+          "c67710a4-7a78-4a70-9d83-f5cd400bf549"
+        ],
+        "settings": {
+          "color_scheme": "background-1",
+          "newsletter_enable": false,
+          "newsletter_heading": "Newsletter",
+          "show_social": true,
+          "enable_country_selector": false,
+          "enable_language_selector": false,
+          "payment_enable": false
+        }
+      }
+    },
+    "content_for_index": [
+
+    ]
+  },
   "presets": {
     "Default": {
       "colors_solid_button_labels": "#FFFFFF",
@@ -24,7 +131,9 @@
           },
           "block_order": [
             "announcement-bar-0"
-          ]
+          ],
+          "settings": {
+          }
         }
       }
     },
@@ -41,21 +150,25 @@
       "sections": {
         "footer": {
           "type": "footer",
-          "settings": {
-            "color_scheme": "accent-1"
-          },
           "blocks": {
             "menu": {
-              "type": "link_list"
+              "type": "link_list",
+              "settings": {
+              }
             },
             "text": {
-              "type": "text"
+              "type": "text",
+              "settings": {
+              }
             }
           },
           "block_order": [
             "menu",
             "text"
-          ]
+          ],
+          "settings": {
+            "color_scheme": "accent-1"
+          }
         }
       }
     }

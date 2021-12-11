@@ -247,7 +247,7 @@
 
 .banner__box > * + .banner__buttons--multiple {
   display: flex;
-  max-width: 45rem;
+  max-width: 60rem;
   flex-wrap: wrap;
   align-items: baseline;
   justify-content: center;

@@ -1,0 +1,34 @@
+{
+  "name": "node-starter",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "light-server -c light-server.config.json",
+    "tailwind": "tailwindcss-cli build src/styles/app.css -o src/styles2.css  --minify",
+    "minify": "postcss src/styles/app.css -o src/styles.css",
+    "tailwind:prod": "NODE_ENV=production npm run tailwind",
+    "tailwind:prod:minify": "npm run tailwind:prod && npm run minify",
+    "css:dev": "TAILWIND_MODE=watch NODE_ENV=development postcss src/styles/app.css -o src/styles.css -w",
+    "sass": "sass src/styles/app.scss src/styles.css"
+  },
+  "dependencies": {
+    "@fullhuman/postcss-purgecss": "^4.1.3",
+    "cssnano": "^5.0.5",
+    "cssnano-webpack-plugin": "^1.0.3",
+    "light-server": "^2.9.1",
+    "postcss-cli": "^8.3.1",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-minify": "^1.1.0",
+    "postcss-mixins": "^9.0.1",
+    "postcss-preset-env": "^7.0.1",
+    "postcss-remove-unused-css": "^1.0.4",
+    "sass": "^1.44.0",
+    "tailwindcss-cli": "^0.1.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.4",
+    "postcss-import": "^14.0.2",
+    "tailwindcss": "^2.2.19"
+  }
+}

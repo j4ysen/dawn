@@ -1,0 +1,163 @@
+.collection--wrapper {
+  @apply flex py-8;
+  @apply inline-block md:flex flex-col md:flex-row md:min-h-screen w-full;
+}
+
+.filter {
+  input:checked + div {
+    /* @apply border-blue-500; */
+  }
+  input:checked + div svg {
+    @apply block;
+  }
+}
+
+.collection {
+  @apply overflow-hidden;
+  /* border-b */
+
+  &--grid {
+    @apply grid grid-cols-2 md:grid-cols-4 -m-px;
+  }
+
+  &--pagination {
+    @apply relative p-4 sm:py-8 bg-pageBG text-center;
+    /* border-t  */
+  }
+}
+
+.collection-count {
+  @apply hidden relative ml-2 leading-none;
+  vertical-align: super;
+  font-size: 0.5em;
+
+  /* Only show product counts for the mega-nav */
+  .mega-nav & {
+    @apply inline-block;
+  }
+}
+
+.product-card {
+  @apply flex flex-col relative;
+
+  .collection &,
+  .marquee--product & {
+    @apply px-4 py-8 md:py-6 md:px-8;
+    margin: -0.5px;
+  }
+
+  &.is-inline {
+    @apply my-4;
+  }
+
+  &--thumb {
+    @apply z-0;
+  }
+
+  &--photo {
+    @apply relative overflow-hidden;
+
+    .is-hover {
+      @apply absolute inset-0 z-10 opacity-0 invisible transition-all;
+
+      .product-card:hover & {
+        @apply opacity-100 visible;
+      }
+    }
+  }
+
+  &--gallery {
+    @apply relative;
+
+    .carousel {
+      &--hud {
+        @apply z-30;
+      }
+    }
+  }
+
+  &--details {
+    @apply text-center;
+
+    .product-card--visuals + & {
+      @apply mt-6;
+
+      .is-inline & {
+        @apply mt-4;
+      }
+    }
+  }
+
+  &--title {
+    /* @apply m-0 !important text-left text-xl; */
+
+    .is-featured & {
+      @apply text-base;
+    }
+
+    .is-inline & {
+      @apply text-2xl;
+    }
+
+    + .price {
+      @apply mt-2;
+    }
+  }
+
+  &--link {
+    @apply block no-underline text-current;
+
+    &::after {
+      @apply block absolute inset-0 z-20;
+      content: '';
+    }
+  }
+
+  .price {
+    @apply flex items-center justify-start;
+
+    &--current {
+      @apply sm:text-base sm:leading-normal font-normal pr-0.5;
+    }
+
+    &--strike {
+      @apply sm:text-base sm:leading-normal font-normal line-through pr-0.5;
+      color: #dc2626;
+    }
+
+    &--discount {
+      @apply ml-2 p-1 rounded-none bg-pageText text-pageBG text-xxs leading-tight tracking-widest font-semibold uppercase;
+    }
+  }
+
+  &--option {
+    @apply relative z-30 mt-4;
+
+    .option {
+      @apply m-0 p-0 border-0;
+
+      &--values {
+        @apply mx-0;
+        /* mx-auto  */
+      }
+    }
+  }
+}
+
+.product-featured {
+  @apply flex flex-col relative;
+
+  h2 {
+    @apply mt-4 text-base font-semibold text-center transition-opacity duration-200;
+
+    .product-featured:hover & {
+      @apply opacity-100 visible;
+    }
+  }
+
+  &:hover {
+    h2 {
+      @apply opacity-40;
+    }
+  }
+}

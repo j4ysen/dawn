@@ -73,6 +73,254 @@
   {%- endif -%}
 </div>
 
+<div class="marquee-section">
+  <div data-marqy="" data-direction="right" class="marquee">
+    <div data-marqy-inner="">
+      <div data-marqy-content="" style="animation-duration: 18.3154s">
+        <div data-marqy-item="">
+          <div class="marquee--item">
+            <span class="marquee--text">Featured Products</span>
+          </div>
+        </div>
+        <div aria-hidden="true" data-marqy-item="">
+          <div class="marquee--item">
+            <span class="marquee--text">Featured Products</span>
+          </div>
+        </div>
+        <div aria-hidden="true" data-marqy-item="">
+          <div class="marquee--item">
+            <span class="marquee--text">Featured Products</span>
+          </div>
+        </div>
+        <div aria-hidden="true" data-marqy-item="">
+          <div class="marquee--item">
+            <span class="marquee--text">Featured Products</span>
+          </div>
+        </div>
+        <div aria-hidden="true" data-marqy-item="">
+          <div class="marquee--item">
+            <span class="marquee--text">Featured Products</span>
+          </div>
+        </div>
+      </div>
+      <div data-marqy-content="" style="animation-duration: 18.3154s">
+        <div aria-hidden="true" data-marqy-item="">
+          <div class="marquee--item">
+            <span class="marquee--text">Featured Products</span>
+          </div>
+        </div>
+        <div aria-hidden="true" data-marqy-item="">
+          <div class="marquee--item">
+            <span class="marquee--text">Featured Products</span>
+          </div>
+        </div>
+        <div aria-hidden="true" data-marqy-item="">
+          <div class="marquee--item">
+            <span class="marquee--text">Featured Products</span>
+          </div>
+        </div>
+        <div aria-hidden="true" data-marqy-item="">
+          <div class="marquee--item">
+            <span class="marquee--text">Featured Products</span>
+          </div>
+        </div>
+        <div aria-hidden="true" data-marqy-item="">
+          <div class="marquee--item">
+            <span class="marquee--text">Featured Products</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="marquee-section">
+  <div data-marqy="" data-direction="right" class="marquee">
+    <div data-marqy-inner="">
+      <div data-marqy-content="" style="animation-duration: 21.6s">
+        <div aria-hidden="true" data-marqy-item="">
+          <div class="marquee--item">
+            <div class="marquee--product">
+              {% comment %} {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
+                <li class="grid__item{% if section.settings.collection.all_products_count > 2 and section.settings.swipe_on_mobile and section.settings.products_to_show > 2 %} slider__slide{% endif %}">
+                  {% render 'product-card',
+                    product_card_product: product,
+                    media_size: section.settings.image_ratio,
+                    show_secondary_image: section.settings.show_secondary_image,
+                    add_image_padding: section.settings.add_image_padding,
+                    show_vendor: section.settings.show_vendor,
+                    show_image_outline: section.settings.show_image_outline,
+                    show_rating: section.settings.show_rating
+                  %}
+                </li>
+              {%- else -%}
+                {%- for i in (1..4) -%}
+                  <li class="grid__item">
+                    {% render 'product-card-placeholder' %}
+                  </li>
+                {%- endfor -%}
+              {%- endfor -%} {% endcomment %}
+
+
+              <div class="product-card" style="opacity: 1">
+                <div class="product-card--visuals">
+                  <div class="product-card--thumb">
+                    <div
+                      class="product-card--photo"
+                      style="opacity: 1"
+                    >
+                      <figure class="is-default">
+                        <div class="ar" style="padding-top: 100%">
+                          <picture
+                            ><img
+                              width="1200"
+                              sizes="(min-width: 1200px) 33vw, (min-width: 768px) 50vw, 100vw"
+                              decoding="async"
+                              alt="brown canvas gucci logo wash bag travel pouch"
+                              class="object-cover is-loaded"
+                              src="https://cdn.sanity.io/images/4y2xd5ik/production/f73023694247da2164c6ba8a82205c1cef18b446-1100x1100.jpg?w=1200&amp;q=80&amp;fit=max&amp;auto=format"
+                              srcset="
+                                https://cdn.sanity.io/images/4y2xd5ik/production/f73023694247da2164c6ba8a82205c1cef18b446-1100x1100.jpg?w=400&amp;h=400&amp;q=80&amp;fit=max&amp;auto=format    400w,
+                                https://cdn.sanity.io/images/4y2xd5ik/production/f73023694247da2164c6ba8a82205c1cef18b446-1100x1100.jpg?w=800&amp;h=800&amp;q=80&amp;fit=max&amp;auto=format    800w,
+                                https://cdn.sanity.io/images/4y2xd5ik/production/f73023694247da2164c6ba8a82205c1cef18b446-1100x1100.jpg?w=1000&amp;h=1000&amp;q=80&amp;fit=max&amp;auto=format 1000w
+                              "
+                          /></picture>
+                          <div class="ar--placeholder is-loaded">
+                            <img
+                              src="data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGQABAQADAQAAAAAAAAAAAAAAAAYBAggF/8QAJhAAAQMDAgYDAQAAAAAAAAAAAQACAwQFEQYTBxIhIjEyUnGRkv/EABcBAAMBAAAAAAAAAAAAAAAAAAACAwT/xAAYEQEBAQEBAAAAAAAAAAAAAAABAAIDEf/aAAwDAQACEQMRAD8A6EvutLRZ5mwzTGWU+WxdxH2vMHEuzEelT/CitfaRpaG+7lvoZtuZnM9zeZ2XZ6qUprBVR1MrpoJ3RO9G8ju1R1vQ2jPPCe3Q1mvNHd6BlXSPJicSOowQQil+HlFNT6cYwwvYNxxAcMHHRFQVKOgGuXNDvIBWNtnxH4iJpbYAAYAwERERf//Z"
+                              alt=""
+                              role="presentation"
+                            />
+                          </div>
+                        </div>
+                      </figure>
+                      <figure class="is-hover">
+                        <div class="ar" style="padding-top: 100%">
+                          <picture
+                            ><img
+                              width="1200"
+                              sizes="(min-width: 1200px) 33vw, (min-width: 768px) 50vw, 100vw"
+                              decoding="async"
+                              alt="brown canvas gucci logo wash bag travel pouch"
+                              class="object-cover is-loaded"
+                              src="https://cdn.sanity.io/images/4y2xd5ik/production/2eeee57090580f3cb718c9389420f4bd40eec006-1100x1100.jpg?w=1200&amp;q=80&amp;fit=max&amp;auto=format"
+                              srcset="
+                                https://cdn.sanity.io/images/4y2xd5ik/production/2eeee57090580f3cb718c9389420f4bd40eec006-1100x1100.jpg?w=400&amp;h=400&amp;q=80&amp;fit=max&amp;auto=format    400w,
+                                https://cdn.sanity.io/images/4y2xd5ik/production/2eeee57090580f3cb718c9389420f4bd40eec006-1100x1100.jpg?w=800&amp;h=800&amp;q=80&amp;fit=max&amp;auto=format    800w,
+                                https://cdn.sanity.io/images/4y2xd5ik/production/2eeee57090580f3cb718c9389420f4bd40eec006-1100x1100.jpg?w=1000&amp;h=1000&amp;q=80&amp;fit=max&amp;auto=format 1000w
+                              "
+                          /></picture>
+                          <div class="ar--placeholder is-loaded">
+                            <img
+                              src="data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGgABAAIDAQAAAAAAAAAAAAAAAAUIAQMGB//EACIQAAEEAQUAAwEAAAAAAAAAAAEAAgMEBQYREiExBxRRF//EABgBAAIDAAAAAAAAAAAAAAAAAAADAQIE/8QAGREAAwEBAQAAAAAAAAAAAAAAAAECEQMh/9oADAMBAAIRAxEAPwCwmotZ4vBWvrWnufPx5FjOyAob+nYzkAKtkN/SAF5z8tYatDrtshM4MzWyD3iTv32oxmNEtuJ0MT3xDfk0MLiUmrrcNE84a0sLhMxWzGPZcrchG8kAO96RRGgqclbTVeN8RiO5IaRsQETVuCaST8OjsVK9nb7EMcm3nJoKzHWgiAEcMbQPxoCIpKm3xERAH//Z"
+                              alt=""
+                              role="presentation"
+                            />
+                          </div>
+                        </div>
+                      </figure>
+                    </div>
+                  </div>
+                </div>
+                <div class="product-card--details">
+                  <div class="product-card--header">
+                    <h2 class="product-card--title">
+                      <a
+                        class="product-card--link"
+                        href="/products/gucci-travel-pouch"
+                        >Gucci Travel Pouch</a
+                      >
+                    </h2>
+                    <div class="price">
+                      <span class="price--current">€<!-- -->790</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+              <div class="product-card" style="opacity: 1">
+                <div class="product-card--visuals">
+                  <div class="product-card--thumb">
+                    <div
+                      class="product-card--photo"
+                      style="opacity: 1"
+                    >
+                      <figure class="is-default">
+                        <div class="ar" style="padding-top: 100%">
+                          <picture
+                            ><img
+                              width="1200"
+                              sizes="(min-width: 1200px) 33vw, (min-width: 768px) 50vw, 100vw"
+                              decoding="async"
+                              alt="gucci scarf with classic red green line and monogram logo"
+                              class="object-cover is-loaded"
+                              src="https://cdn.sanity.io/images/4y2xd5ik/production/bbcdc13097be18c28b3778a683fa1fc28b22c20c-1100x1100.jpg?w=1200&amp;q=80&amp;fit=max&amp;auto=format"
+                              srcset="
+                                https://cdn.sanity.io/images/4y2xd5ik/production/bbcdc13097be18c28b3778a683fa1fc28b22c20c-1100x1100.jpg?w=400&amp;h=400&amp;q=80&amp;fit=max&amp;auto=format    400w,
+                                https://cdn.sanity.io/images/4y2xd5ik/production/bbcdc13097be18c28b3778a683fa1fc28b22c20c-1100x1100.jpg?w=800&amp;h=800&amp;q=80&amp;fit=max&amp;auto=format    800w,
+                                https://cdn.sanity.io/images/4y2xd5ik/production/bbcdc13097be18c28b3778a683fa1fc28b22c20c-1100x1100.jpg?w=1000&amp;h=1000&amp;q=80&amp;fit=max&amp;auto=format 1000w
+                              "
+                          /></picture>
+                          <div class="ar--placeholder is-loaded">
+                            <img
+                              src="data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAUHBgj/xAAkEAABAwMDBAMAAAAAAAAAAAABAAIDBAURBgchEhMUFUGB0f/EABcBAAMBAAAAAAAAAAAAAAAAAAABAgP/xAAYEQEBAQEBAAAAAAAAAAAAAAAAARECEv/aAAwDAQACEQMRAD8AnXRkDK26dTQSJH5IK5LSAgEVZmNxy75K9B1uyzqmoqZW32VnfcXEdscZU+17CeE2Rvv5nB/JxEApsutZ1PNiBt9JMyxyCmIbH5D+PoItP01ts2yW40rLi+UGQydTmDPOPxE8RrRERE0iIiA//9k="
+                              alt=""
+                              role="presentation"
+                            />
+                          </div>
+                        </div>
+                      </figure>
+                      <figure class="is-hover">
+                        <div class="ar" style="padding-top: 100%">
+                          <picture
+                            ><img
+                              width="1200"
+                              sizes="(min-width: 1200px) 33vw, (min-width: 768px) 50vw, 100vw"
+                              decoding="async"
+                              alt="gucci scarf with classic red green line and monogram logo"
+                              class="object-cover is-loaded"
+                              src="https://cdn.sanity.io/images/4y2xd5ik/production/3974959771e14839e375fe6da0f5641d5accdf82-1100x1100.jpg?w=1200&amp;q=80&amp;fit=max&amp;auto=format"
+                              srcset="
+                                https://cdn.sanity.io/images/4y2xd5ik/production/3974959771e14839e375fe6da0f5641d5accdf82-1100x1100.jpg?w=400&amp;h=400&amp;q=80&amp;fit=max&amp;auto=format    400w,
+                                https://cdn.sanity.io/images/4y2xd5ik/production/3974959771e14839e375fe6da0f5641d5accdf82-1100x1100.jpg?w=800&amp;h=800&amp;q=80&amp;fit=max&amp;auto=format    800w,
+                                https://cdn.sanity.io/images/4y2xd5ik/production/3974959771e14839e375fe6da0f5641d5accdf82-1100x1100.jpg?w=1000&amp;h=1000&amp;q=80&amp;fit=max&amp;auto=format 1000w
+                              "
+                          /></picture>
+                          <div class="ar--placeholder is-loaded">
+                            <img
+                              src="data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAYHA//EACUQAAEDAwMDBQAAAAAAAAAAAAEAAgQDBREGEkETFDEhMjNRYf/EABUBAQEAAAAAAAAAAAAAAAAAAAME/8QAHBEAAgEFAQAAAAAAAAAAAAAAAAMBAiEygbE0/9oADAMBAAIRAxEAPwDPtbNi0rfQLqYI6n2pKi+EZFAbDkuGFWa7rAxYw7fLd3jKloBa65Rh2wyXjlHVlBYqyGa6aB0YR91P1/EXVxAPwFEhIT+uziNGHG7Kmbe8i4xCPO4IiOcoK1edmumi16jmvGDwCiIkIz//2Q=="
+                              alt=""
+                              role="presentation"
+                            />
+                          </div>
+                        </div>
+                      </figure>
+                    </div>
+                  </div>
+                </div>
+                <div class="product-card--details">
+                  <div class="product-card--header">
+                    <h2 class="product-card--title">
+                      <a
+                        class="product-card--link"
+                        href="/products/gucci-monogram-scarf"
+                        >Gucci Monogram Scarf</a
+                      >
+                    </h2>
+                    <div class="price">
+                      <span class="price--current">€<!-- -->490</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 {% schema %}
 {
   "name": "t:sections.featured-collection.name",

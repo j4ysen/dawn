@@ -29,7 +29,7 @@
   }
 {%- endstyle -%}
 
-<div id="Banner-{{ section.id }}" class="banner banner--{{ section.settings.image_height }}{% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank %} banner--stacked{% endif %}{% if section.settings.adapt_height_first_image and section.settings.image != blank %} banner--adapt{% endif %}{% if section.settings.show_text_below %} banner--mobile-bottom{%- endif -%}{% if section.settings.show_text_box == false %} banner--desktop-transparent{% endif %}">
+{% comment %} <div id="Banner-{{ section.id }}" class="banner banner--{{ section.settings.image_height }}{% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank %} banner--stacked{% endif %}{% if section.settings.adapt_height_first_image and section.settings.image != blank %} banner--adapt{% endif %}{% if section.settings.show_text_below %} banner--mobile-bottom{%- endif -%}{% if section.settings.show_text_box == false %} banner--desktop-transparent{% endif %}">
   {%- if section.settings.image != blank -%}
     <div class="banner__media media{% if section.settings.image == blank and section.settings.image_2 == blank %} placeholder{% endif %}{% if section.settings.image_2 != blank %} banner__media-half{% endif %}">
       <img
@@ -78,32 +78,93 @@
       >
     </div>
   {%- endif -%}
-  <div class="banner__content banner__content--{{ section.settings.desktop_text_box_position }} page-width">
-    <div class="banner__box color-{{ section.settings.color_scheme }}">
-      {%- for block in section.blocks -%}
-        {%- case block.type -%}
-          {%- when 'heading' -%}
-            <h2 class="banner__heading {% if block.settings.heading_size == 'medium' %}h1{% else %}h0{% endif %}" {{ block.shopify_attributes }}>
-              <span>{{ block.settings.heading | escape }}</span>
-            </h2>
-          {%- when 'text' -%}
-            <div class="banner__text" {{ block.shopify_attributes }}>
-              <span>{{ block.settings.text | escape }}</span>
-            </div>
-          {%- when 'buttons' -%}
-            <div class="banner__buttons{% if block.settings.button_label_1 != blank and block.settings.button_label_2 != blank %} banner__buttons--multiple{% endif %}" {{ block.shopify_attributes }}>
-              {%- if block.settings.button_label_1 != blank -%}
-                <a{% if block.settings.button_link_1 == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.button_link_1 }}"{% endif %} class="button{% if block.settings.button_style_secondary_1 %} button--secondary{% else %} button--primary{% endif %}">{{ block.settings.button_label_1 | escape }}</a>
-              {%- endif -%}
-              {%- if block.settings.button_label_2 != blank -%}
-                <a{% if block.settings.button_link_2 == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.button_link_2 }}"{% endif %} class="button{% if block.settings.button_style_secondary_2 %} button--secondary{% else %} button--primary{% endif %}">{{ block.settings.button_label_2 | escape }}</a>
-              {%- endif -%}
-            </div>
-        {%- endcase -%}
-      {%- endfor -%}
+  </div>
+</div> {% endcomment %}
+
+
+<section class="hero">
+  <div class="hero--overlay">
+    <div class="hero--content">
+
+      <div class="rc">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'heading' -%}
+              <h1 {{ block.shopify_attributes }} >{{ block.settings.heading | escape }}</h1>
+            {%- when 'text' -%}
+              <p class="banner__text" {{ block.shopify_attributes }}>
+                <span>{{ block.settings.text | escape }}</span>
+              </p>
+            {%- when 'buttons' -%}
+              <p>
+                {%- if block.settings.button_label_1 != blank -%}
+                  <a {% if block.settings.button_link_1 == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.button_link_1 }}"{% endif %} class="btn is-white is-large" >{{ block.settings.button_label_1 | escape }}</a>
+                {%- endif -%}
+                {%- if block.settings.button_label_2 != blank -%}
+                  <a {% if block.settings.button_link_2 == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.button_link_2 }}"{% endif %} class="btn is-white is-large" >{{ block.settings.button_label_2 | escape }}</a>
+                  {% comment %} <a{% if block.settings.button_link_2 == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.button_link_2 }}"{% endif %} class="button{% if block.settings.button_style_secondary_2 %} button--secondary{% else %} button--primary{% endif %}">{{ block.settings.button_label_2 | escape }}</a> {% endcomment %}
+                {%- endif -%}
+
+              </p>
+      {%- endcase -%}
+    {%- endfor -%}
+      </div>
     </div>
   </div>
-</div>
+  <figure class="hero--bg is-desktop">
+    <div class="ar has-fill">
+      <picture
+        >
+          <img
+          width="1600"
+          sizes="100vw"
+          decoding="async"
+          class="object-cover is-loaded"
+          src="https://cdn.sanity.io/images/4y2xd5ik/production/0aa8b52402d534a7cb7df4ada8c92fb68ae62cbb-1920x1080.jpg?w=1600&amp;q=80&amp;fit=max&amp;auto=format"
+          srcset="
+            https://cdn.sanity.io/images/4y2xd5ik/production/0aa8b52402d534a7cb7df4ada8c92fb68ae62cbb-1920x1080.jpg?w=800&amp;h=450&amp;q=80&amp;fit=max&amp;auto=format                          800w,
+            https://cdn.sanity.io/images/4y2xd5ik/production/0aa8b52402d534a7cb7df4ada8c92fb68ae62cbb-1920x1080.jpg?rect=1,0,1918,1080&amp;w=1000&amp;h=563&amp;q=80&amp;fit=max&amp;auto=format 1000w,
+            https://cdn.sanity.io/images/4y2xd5ik/production/0aa8b52402d534a7cb7df4ada8c92fb68ae62cbb-1920x1080.jpg?w=1200&amp;h=675&amp;q=80&amp;fit=max&amp;auto=format                        1200w,
+            https://cdn.sanity.io/images/4y2xd5ik/production/0aa8b52402d534a7cb7df4ada8c92fb68ae62cbb-1920x1080.jpg?w=1600&amp;h=900&amp;q=80&amp;fit=max&amp;auto=format                        1600w
+          "
+      />
+
+    </picture>
+      <div class="ar--placeholder is-loaded">
+        <img
+          src="data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAALABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAUGAQf/xAAjEAABAwQBBAMAAAAAAAAAAAABAgMRAAQFBkESEyJhITFR/8QAFAEBAAAAAAAAAAAAAAAAAAAABf/EABwRAAIDAAMBAAAAAAAAAAAAAAEDAAIRBRUxMv/aAAwDAQACEQMRAD8AtrfEWFvjWDaJIuOiVK+5+KQbTYJz2vpVbBZ7bonxiCOKudXPVjmyqCfYrd1hrW3e0AiTPiI4oSnBoD6uP0I12zswRrhslYtYq0bL6QpDSUkfhAorjuuuuHD25K1EwefdFNhZz2GWI0z/2Q=="
+          alt=""
+          role="presentation"
+        />
+      </div>
+    </div>
+  </figure>
+  <figure class="hero--bg is-mobile">
+    <div class="ar has-fill">
+      <picture
+        ><img
+          width="800"
+          sizes="100vw"
+          decoding="async"
+          class="object-cover  is-loaded"
+          src="https://cdn.sanity.io/images/4y2xd5ik/production/0aa8b52402d534a7cb7df4ada8c92fb68ae62cbb-1920x1080.jpg?w=1600&amp;q=80&amp;fit=max&amp;auto=format"
+          srcset="
+            https://cdn.sanity.io/images/4y2xd5ik/production/0aa8b52402d534a7cb7df4ada8c92fb68ae62cbb-1920x1080.jpg?w=800&amp;h=450&amp;q=80&amp;fit=max&amp;auto=format                          800w,
+            https://cdn.sanity.io/images/4y2xd5ik/production/0aa8b52402d534a7cb7df4ada8c92fb68ae62cbb-1920x1080.jpg?rect=1,0,1918,1080&amp;w=1000&amp;h=563&amp;q=80&amp;fit=max&amp;auto=format 1000w,
+            https://cdn.sanity.io/images/4y2xd5ik/production/0aa8b52402d534a7cb7df4ada8c92fb68ae62cbb-1920x1080.jpg?w=1200&amp;h=675&amp;q=80&amp;fit=max&amp;auto=format                        1200w,
+            https://cdn.sanity.io/images/4y2xd5ik/production/0aa8b52402d534a7cb7df4ada8c92fb68ae62cbb-1920x1080.jpg?w=1600&amp;h=900&amp;q=80&amp;fit=max&amp;auto=format                        1600w
+          "
+      /></picture>
+      <div class="ar--placeholder">
+        <img
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAACXBIWXMAABcSAAAXEgFnn9JSAAAEZUlEQVQ4jWXPa0xTBxwF8H9xH0hcFlmyaOZWRtBF5xABlcU4TYzRmc25ZcPo0IEOYRB1k7FMHAbGQ5A+eLXQB20ppUApFKi15VEKjQQ3Hh3l0vb2cR+9LbQsM9lUGCDpXdrolmzJ+frLOQf+KIfHVfCUBU85sFwDy/WwzIOVRviTD+h3L3fujy/dtrvgtfhvt+7knk4b7+xELVPorMVpnXUhVljnwLNa2GiADT5sCGCjGTak8KwF/pIAUfiK9tAuzht7S17fXbT9HfFn6Zb+ftJhI10Oyu2kPC4INQDNA1oAtBhoKdByoBUQUsJaK1C3twweTeDHpdx9M+EOc6/ybKbtvt7vcfpx9wLuWSTxiGwEWgi0JCJbI7gdVhVAFccYj+0TxB9gMxNZzMSuc5fteoPf41zA/oNFkdqIpNsg1AGrSqBKYkzHk4U7DrKZiZzYpJ7zWXa93udG/Zjbj3sWCOx/uA1oJYQ6YU0JvheYxUzkxiZpzl9x6A0+F+r3uJ7jEB9CTS8Ot4blP5gqiRk5nhRp3suJYNQw4Pe4wrMJLDx7rZ6xymdsiBi0LLJZCXR7GK8qwffTq6MnUkQ7U9nMxNrYJO0X2c6BweeHCSzgxSHI2bTAfWm5KYpuicgOBt3JCKmiVjs2kxVxpk8Pyw6+z317H++t5MELuZ4h42JELpJYgCKAqonGudGPBZtCcgatZIRxR1RIvXml59057qmerDNd6adEh/YL41JMF68SI6YAiYfjxYMUCY9aEgKyPY8kW59Io9fbomnVllD3ttC9xJWhLyfF15WFlwaK0rs+PiLdsd988ZrXNBok8QCBBUg86CPhkbHIq79lEZ6cqmb+Jt2+rk1dHfzkyejXv48UzcjytVXZI1XZPWknFbtSxzOuU6PmJYoIesNZ8pEQfKhAjPJu9hVZfsov3D32jtOW3m8s94qnNYXDwmxl+aWO4lxVdobmgzRz3g/okNHnRimnzYva/JgL/A9aLAapvDzrbs5hYcF7rMKPqivyNKr6ByaFvpfXxCrkl97U1rHGKis1t0sMKqXVrLfolFP3VfMPzUCNNU/rxK0VWWXZJwovn8o8e/pabo5Wo8ZcDmR2SiUXN1aXaySNpmaeuurHPjl7Qs0b498aFpRO6LrAO9GNjHbrJHeaK27UFecXF+SzyyoeDBsXCIJ0ombDfXWLrFeh0IqaVGUFGtZNXVNlX21xH+/OUFc7eJFpfG7a/rPZMjY0NTI4MTwwOTbqRqwBHCMd9vHhkb52tbpVJa1vLL+SU/L5Oc7NW5J6vpwvUohaAZufx+02L+qgIvE5HQtuZwBzLxE4YbeZdIY2YYuUL+GUs/LOnMs8cOz7r67Wsxubapp5HBHYpmfQ2V89yBwxj5B2m9dh96FhH8Q9+Dxi7NfJeGJRraC6pCrnw7QLyUduZORyqxp4bGFdtQCQyUn7zAxqmXFaZjzWWQyZIxDE67Avul0eq3WoVyttEAv/xUfDuLKBxxLWVQv/BhEH13z3Lu76AAAAAElFTkSuQmCC"
+          alt=""
+          role="presentation"
+        />
+      </div>
+    </div>
+  </figure>
+</section>
 
 {% schema %}
 {

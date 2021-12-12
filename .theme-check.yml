@@ -1,2 +1,4 @@
 MatchingTranslations:
   enabled: false
+ignore:
+  - dev/*

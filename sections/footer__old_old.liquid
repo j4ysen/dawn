@@ -16,11 +16,23 @@
 
 <footer class="footer" role="contentinfo">
   {%- if section.blocks.size > 0 or section.settings.newsletter_enable or section.settings.show_social -%}
-    <div class="footer--grid">
+    <div class="footer-grid">
+      {%- if section.blocks.size > 0 -%}
+        {%- liquid
+          if section.blocks.size == 9
+            assign footer_grid_class = 'grid--3-col-tablet'
+          elsif section.blocks.size > 6
+            assign footer_grid_class = 'grid--4-col-desktop'
+          elsif section.blocks.size > 4
+            assign footer_grid_class = 'grid--3-col-tablet'
+          endif
+        -%}
+
+
           {%- for block in section.blocks -%}
-            <div class="footer--block " {{ block.shopify_attributes }}>
+            <div class="footer-block grid__item{% if block.type == 'link_list' and block.settings.heading != blank %} footer-block--menu{% endif %} footer--block " {{ block.shopify_attributes }}>
               {%- if block.settings.heading != blank -%}
-                <p class="is-h3">{{- block.settings.heading | escape -}}</p>
+                <h2 class="footer-block__heading">{{- block.settings.heading | escape -}}</h2>
               {%- endif -%}
 
               {%- case block.type -%}
@@ -60,11 +72,11 @@
                 {%- endcase -%}
             </div>
           {%- endfor -%}
-          <div class="footer--block">
+          <div class="footer-block grid__item footer--block">
             <div class="footer-block__details-content rte">
-              <div class="">
+              <div class="footer-block__newsletter">
                 {%- if section.settings.newsletter_heading != blank -%}
-                  <p class="is-h3">{{ section.settings.newsletter_heading | escape }}</p>
+                  <h2 class="footer-block__heading">{{ section.settings.newsletter_heading | escape }}</h2>
                 {%- endif -%}
                 {%- form 'customer', id: 'ContactFooter', class: 'footer__newsletter newsletter-form' -%}
                   <input type="hidden" name="contact[tags]" value="newsletter">
@@ -115,9 +127,9 @@
 
           <div class="footer--block">
             <div class="footer-block__details-content rte">
-              <div >
+              <div class="footer-block__newsletter">
                 {%- if section.settings.newsletter_heading != blank -%}
-                  <p class="is-h3">Get Social</p>
+                  <h2 class="footer-block__heading">Get Social</h2>
                 {%- endif -%}
 
                 {%- if section.settings.show_social -%}
@@ -212,11 +224,11 @@
 
       {%- endif -%}
 
-      <div>
+      <div class="footer-block--newsletter">
         {%- if section.settings.newsletter_enable -%}
-          <div>
+          <div class="footer-block__newsletter">
             {%- if section.settings.newsletter_heading != blank -%}
-              <p class="is-h3">{{ section.settings.newsletter_heading | escape }}</p>
+              <h2 class="footer-block__heading">{{ section.settings.newsletter_heading | escape }}</h2>
             {%- endif -%}
             {%- form 'customer', id: 'ContactFooter', class: 'footer__newsletter newsletter-form' -%}
               <input type="hidden" name="contact[tags]" value="newsletter">
@@ -261,6 +273,7 @@
         {%- endif -%}
       </div>
     </div>
+  {%- endif -%}
   
 </footer>
 
@@ -325,7 +338,6 @@
                 <p>I agree to the <a href="/terms">terms</a></p>
               </div></label
             >
-              
           </div>
         </div>
       </form>

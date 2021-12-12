@@ -22,6 +22,85 @@
   endif
 -%}
 
+
+<div class="filterWrapper">
+  <div class="filters collapse">
+     <header class="card-header">
+        <div class="mobile-modal-section">
+           <button class="modal-open">
+              <h6 class="reset-title">Filter </h6>
+           </button>
+        </div>
+        <div id="modal-overlay" class="closed"></div>
+        <div id="modal" class="modal closed">
+
+          {%- if results.terms -%}
+            <input type="hidden" name="q" value="{{ results.terms | escape }}">
+            <input name="options[prefix]" type="hidden" value="last">
+          {%- endif -%}
+
+           <button class="" id="close-button"></button>
+           <div class="option-container-mob">
+              <div class="option-container">
+                 <div class="option-content"><span class="">Sort By</span></div>
+                 <div class="item"><input id="radio99" type="radio" name="radio2" class="hidden"><label for="radio99" class="check-helper"><span class="radio"></span>Low to high</label></div>
+                 <div class="item"><input id="radio100" type="radio" name="radio2" class="hidden"><label for="radio100" class="check-helper"><span class="radio"></span>High to low</label></div>
+                 <div class="item"><input id="radio101" type="radio" name="radio2" class="hidden"><label for="radio101" class="check-helper"><span class="radio"></span>New Arrivals</label></div>
+              </div>
+              <div class="option-container">
+                 <div class="option-content"><span class="">Color</span></div>
+                 <div class="item"><input id="checkbox1" type="checkbox" name="checkbox" class="hidden"><label for="checkbox1" class="check-helper"><span class=""></span>White</label></div>
+                 <div class="item"><input id="checkbox2" type="checkbox" name="checkbox" class="hidden"><label for="checkbox2" class="check-helper"><span class=""></span>Black</label></div>
+                 <div class="item"><input id="checkbox3" type="checkbox" name="checkbox" class="hidden"><label for="checkbox3" class="check-helper"><span class=""></span>Blue</label></div>
+              </div>
+              <div class="option-container">
+                 <div class="option-content"><span class="">Brand</span></div>
+                 <div class="item"><input id="checkbox11" type="checkbox" name="checkbox" class="hidden"><label for="checkbox11" class="check-helper"><span class=""></span>Aeronautica</label></div>
+                 <div class="item"><input id="checkbox12" type="checkbox" name="checkbox" class="hidden"><label for="checkbox12" class="check-helper"><span class=""></span>Carmine Ferarro</label></div>
+                 <div class="item"><input id="checkbox13" type="checkbox" name="checkbox" class="hidden"><label for="checkbox13" class="check-helper"><span class=""></span>Hackett</label></div>
+                 <div class="item"><input id="checkbox14" type="checkbox" name="checkbox" class="hidden"><label for="checkbox14" class="check-helper"><span class=""></span>Patricks</label></div>
+                 <div class="item"><input id="checkbox15" type="checkbox" name="checkbox" class="hidden"><label for="checkbox15" class="check-helper"><span class=""></span>Paul Smith</label></div>
+                 <div class="item"><input id="checkbox16" type="checkbox" name="checkbox" class="hidden"><label for="checkbox16" class="check-helper"><span class=""></span>Stora Skuggan</label></div>
+                 <div class="item"><input id="checkbox17" type="checkbox" name="checkbox" class="hidden"><label for="checkbox17" class="check-helper"><span class=""></span>The Kyron Soul</label></div>
+              </div>
+           </div>
+        </div>
+     </header>
+     <div class="sidebar">
+        <h6 class="reset-title">Filter </h6>
+
+        {%- if results.terms -%}
+          <input type="hidden" name="q" value="{{ results.terms | escape }}">
+          <input name="options[prefix]" type="hidden" value="last">
+        {%- endif -%}
+        
+        <div class="option-container">
+           <div class="option-content"><span class="">Sort By</span></div>
+           <div class="item"><input id="radio1" type="radio" name="radio" class="hidden"><label for="radio1" class="check-helper"><span class="radio"></span>Low to high</label></div>
+           <div class="item"><input id="radio2" type="radio" name="radio" class="hidden"><label for="radio2" class="check-helper"><span class="radio"></span>High to low</label></div>
+           <div class="item"><input id="radio3" type="radio" name="radio" class="hidden"><label for="radio3" class="check-helper"><span class="radio"></span>New Arrivals</label></div>
+        </div>
+        <div class="option-container">
+           <div class="option-content"><span class="">Color</span></div>
+           <div class="item"><input id="checkbox1" type="checkbox" name="checkbox" class="hidden"><label for="checkbox1" class="check-helper"><span class=""></span>White</label></div>
+           <div class="item"><input id="checkbox2" type="checkbox" name="checkbox" class="hidden"><label for="checkbox2" class="check-helper"><span class=""></span>Black</label></div>
+           <div class="item"><input id="checkbox3" type="checkbox" name="checkbox" class="hidden"><label for="checkbox3" class="check-helper"><span class=""></span>Blue</label></div>
+        </div>
+        <div class="option-container">
+           <div class="option-content"><span class="">Brand</span></div>
+           <div class="item"><input id="checkbox11" type="checkbox" name="checkbox" class="hidden"><label for="checkbox11" class="check-helper"><span class=""></span>Aeronautica</label></div>
+           <div class="item"><input id="checkbox12" type="checkbox" name="checkbox" class="hidden"><label for="checkbox12" class="check-helper"><span class=""></span>Carmine Ferarro</label></div>
+           <div class="item"><input id="checkbox13" type="checkbox" name="checkbox" class="hidden"><label for="checkbox13" class="check-helper"><span class=""></span>Hackett</label></div>
+           <div class="item"><input id="checkbox14" type="checkbox" name="checkbox" class="hidden"><label for="checkbox14" class="check-helper"><span class=""></span>Patricks</label></div>
+           <div class="item"><input id="checkbox15" type="checkbox" name="checkbox" class="hidden"><label for="checkbox15" class="check-helper"><span class=""></span>Paul Smith</label></div>
+           <div class="item"><input id="checkbox16" type="checkbox" name="checkbox" class="hidden"><label for="checkbox16" class="check-helper"><span class=""></span>Stora Skuggan</label></div>
+           <div class="item"><input id="checkbox17" type="checkbox" name="checkbox" class="hidden"><label for="checkbox17" class="check-helper"><span class=""></span>The Kyron Soul</label></div>
+        </div>
+     </div>
+     <div></div>
+  </div>
+</div>
+
 <div class="facets-container">
   {%- unless collapse_on_larger_devices -%}
     <facet-filters-form class="facets small-hide">

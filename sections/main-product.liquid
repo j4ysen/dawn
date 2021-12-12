@@ -18,6 +18,170 @@
   <link id="ModelViewerOverride" rel="stylesheet" href="{{ 'component-model-viewer-ui.css' | asset_url }}" media="print" onload="this.media='all'">
 {%- endif -%}
 
+<main id="content">
+  <section class="product">
+     <div class="product--content">
+        <div class="product--gallery">
+           <div style="opacity: 1;">
+              <div class="carousel has-drag">
+                 <div class="carousel--slides">
+                    <div class="carousel--slide" style="min-width: calc(100% + 0px); max-width: calc(100% + 0px); transform: translate3d(0px, 0px, 0px);">
+                       <figure class="carousel--photo">
+                          <div class="ar" style="padding-top: 100%;">
+                             <picture><img sizes="(min-width: 940px) 50vw, 100vw" decoding="async" class="object-cover is-loaded" src="https://cdn.sanity.io/images/4y2xd5ik/production/1a8cd2ffb553be3fae676b2d062e212705ad2d15-1100x1100.png?q=80&amp;fit=max&amp;auto=format" srcset="https://cdn.sanity.io/images/4y2xd5ik/production/1a8cd2ffb553be3fae676b2d062e212705ad2d15-1100x1100.png?w=400&amp;h=400&amp;q=80&amp;fit=max&amp;auto=format 400w,https://cdn.sanity.io/images/4y2xd5ik/production/1a8cd2ffb553be3fae676b2d062e212705ad2d15-1100x1100.png?w=800&amp;h=800&amp;q=80&amp;fit=max&amp;auto=format 800w,https://cdn.sanity.io/images/4y2xd5ik/production/1a8cd2ffb553be3fae676b2d062e212705ad2d15-1100x1100.png?w=1000&amp;h=1000&amp;q=80&amp;fit=max&amp;auto=format 1000w"></picture>
+                             <div class="ar--placeholder is-loaded"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAACXBIWXMAABcSAAAXEgFnn9JSAAAC+ElEQVQ4jY3S60tTcRgH8P6aXgWRNXc5Z2fnvq1Eu2IZSResjCAIIsmCIipUqjddqDcRXV5YlEnqlpUyUWvzsjbvVptlbs5017Od3znn95yYUEya2e/18+H7/Hi+6/RiDwCkdHpkeKCz9cWw90M6lQIA0HVYObZuNZz4GRt439H24HZve8tibD6PYS2cnwBdU9V4bC7k7R53NX/uf5deXPivZAyAMY4vxUd8HwLul19dzd96O5PROU3T1sAAgAG0nDw7OORubGipO+25cOZTw5WIp0dJp5ez/4kBIW1qOnH33uS+/X1bnQNOx7cdu5PXGtXBQchk8l8qjkEHjCESwY+faIeOSKIjSnMxks7aOGXnHqWxSRkbw4pS6AsxgCxjn1etq1O3lcmiPcUJEs0hhpcZPl19MNHaqiSTsCpeWtSeN2erD0h2O3JulQVRYXmVF2WGS5VtT9y6rczOrpaMYSas3ryRKa9IiaLsdCJeUPNYQDY2ywjo3Hk8Oqpr2h//Gy8fF4KB7Nm6CMNHWS4j2mWWVxgOsVzcaouZrLmaWr2vT0eoCAZFAZ83dvKk12ydpGwZQUAcrzIcYtiQhfRuKo1WVcPbd3o2WwwjGff3zdQed5mJIGXLiKLMC4hmZZqZJKydmwzhyipwu/WCgxXgXA73eEI1NS6jJUjRCYc9zvFx0pa00lMk1bm59EtlldbRAZl0MZyVcHdX+PARt8EctNI/HY4ww4bM1gWSmiKpthLD6O69qK19FSxJWnfXzNFjLiPht1BzvPCJpAIG8xxBTZO21yaz/0B17s2bwp6tWFsZ9H2/fNFTVj5sokIE7Su1DG82/jCRYZrp3bV9/OolyT8EsvwX1nVQVRSZjb56Fqw9Pmamw1uIQIlposQ4byQjNDd96kTU3YoWFwBrRUqSP1ZOWgr6xy9d/khy3o2lXgMRsNgmjMQIxU7W18eDfk1BxeuJMdZUNROLDT16ekfY1rB+wxNGaK/Y9dBgvE9Qnqbr8ZkwYFxYz1/00L3kUsqzzQAAAABJRU5ErkJggg==" alt="" role="presentation"></div>
+                          </div>
+                       </figure>
+                    </div>
+                    <div class="carousel--slide" style="min-width: calc(100% + 0px); max-width: calc(100% + 0px); transform: translate3d(0px, 0px, 0px);">
+                       <figure class="carousel--photo">
+                          <div class="ar" style="padding-top: 100%;">
+                             <picture><img sizes="(min-width: 940px) 50vw, 100vw" decoding="async" class="object-cover"></picture>
+                             <div class="ar--placeholder"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAACXBIWXMAAAsTAAALEwEAmpwYAAACCUlEQVQ4jY3T72tSURgHcP+rCIqZV2uM9aIWZS1GtLlaUG4squVYxRgNdNCfsCSCtkVFGYaruU3nsmiKJuGcio7S6a43749zz88bund6oXPePXA+fOHh+1gMs8cY+ys1kvHYj0hYPPjDGGNm3yymGGNcKZe+hT6k1j5KlX1GqSm3dGa2Y0GjkVsNRZ5500t+qVSghBg82GCMEQJ3d6s+368rl3OeB9L2FtU0bgwA3YpCt1sWHA3nJc2/yKpVbiw3aTBIrg/DHhs424+883Rvz6CUDzebJBCAV4e0E1bQe0Z/OEWSCQPj7nAzrCgk+EkfugZOWhXBXr81JofXiKpyYappJBzGI6OoRzi02tKDg/mVZSCKjNIOb4aBjqNR6B5HvX3VU0LM6Uy9fKHUanxY1+V4vDztqQycL9hPfx27mf+yChW5uyddJWGMIvQ7mXjv8fgdjleCI/x0/iCXM+2JpWOmrY6QbCYzd3/q3LHjo339waVlWZJa9WYcGCG8s5OYnLwn2OyuYVckEoEQ/r/brI01DWxsbN65PX5h4OLM9Ew6lSaEcGDGKKWyrIRCnycm7rpGbvi8C9lsltDWWXFhRVXX1zdnZ+eePHrsX3xeLBa58JGHEGZ+Zt6svA68e/t9O1av1wjvPbe3LYpiMV/YL5cO63VFVRHGXMlHHmOs6xAAACFCCGNCTPE/R/ZE7SyhLf4AAAAASUVORK5CYII=" alt="" role="presentation"></div>
+                          </div>
+                       </figure>
+                    </div>
+                    <div class="carousel--slide" style="min-width: calc(100% + 0px); max-width: calc(100% + 0px); transform: translate3d(0px, 0px, 0px);">
+                       <figure class="carousel--photo">
+                          <div class="ar" style="padding-top: 100%;">
+                             <picture><img sizes="(min-width: 940px) 50vw, 100vw" decoding="async" class="object-cover"></picture>
+                             <div class="ar--placeholder"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAACXBIWXMAABcSAAAXEgFnn9JSAAAC5UlEQVQ4jY3T2U8TURQHYP4lEKsCpdOZTlva6Y5LZFMSlicRokZ9cY1GqJoYRYHIFiAuuBDEIKaYKKgVRWij0QChsnehm8Vp5957rjZESXQinOf75eb8zjkZVK4AIBaJvHe/GRro/+zxrCUSQCn88yxDVmKMfTPT7bduXDx57HFP58riAoF00f9jgDSWJMk78bHhzKnTNdVPe9pCS1vAQCkhQDBJRiKewWfXa2ouV5a72pqD32YxQpthAEIIFkVpcnK5vt69e69LMLlr6xZdLike3wJOScQ3izs6kgcOxjX6sIoLmW3xS07k9dJkcjMcCpH+fnSoZk1r/L5LncxRY5YnRSXQ0kLn5ykh8jgtEcZfvhJnA9q3N6HTJxhe4rREwxOtDurqqNtNU8l0pPJYFNHIKDp6BO+xI4cFW0xEMGCOR/lqUlJK+/poNCqH17OKxlL9A2JlFS60QqEFbCYQDEkVm9iRJ1mstLmJLi+tD1MGo2Ao2nNntawsaTNTm4majKDXx5SML2unn+OlC+fp1FS67b/w+scJv/9rZ6e3uChqFcAigKEAeG1QqRrO3O7KyQvU1cL4BypJ8jgaCIx1d4+UlgSsAjELoNMDp1nNZ/qyFY0KxafKCjLyCkRRHsdWw+MPekfLDwQtAhGMwOuA1fxQqV8odjqzsl4WF4vPhyCRkMdr8fjU4KCnuipiFsBgoBotZTWYYSdz8q5kbeu120O990kkDL/b3sBAiCSK4Xdj/hPHRYsZ9AWU01KGA4b1cZrbnKbd4ZhrayV+vwxObzVCqemZlNNJ7HbK66iap/ksKJmw0TRcUfmw9rCvu4v4V+QwJhhhNL9AGm9C4W7gtKBkIZeBXJVosvrOnvP2dAXevsax6J8L2cAYY4RQankl0to6Y3NMK5klFb+Qp57dkTtvcQSbmiOeiR/+ZZJKyQS2jtfC4fG7964VGK9uU/SZbHdYvjEz+9G+/XNPBqTwKpE25C/8Ez+4zNR+wcNFAAAAAElFTkSuQmCC" alt="" role="presentation"></div>
+                          </div>
+                       </figure>
+                    </div>
+                    <div class="carousel--slide" style="min-width: calc(100% + 0px); max-width: calc(100% + 0px); transform: translate3d(0px, 0px, 0px);">
+                       <figure class="carousel--photo">
+                          <div class="ar" style="padding-top: 100%;">
+                             <picture><img sizes="(min-width: 940px) 50vw, 100vw" decoding="async" class="object-cover"></picture>
+                             <div class="ar--placeholder"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAACXBIWXMAABcSAAAXEgFnn9JSAAACrUlEQVQ4jY3T/UsTYRwAcP+foKgfenXb3e5uWxOlcuJEojAFNUkrCAwS0VArshcRJY0EsWKVGunKt1Kb1JaI5Sa+bGxqq8TNc3q7Z3fPy8VmoW7pen5+PnzfU5SERwgRRdE5Odn5tL2v6+WCZ16SIoQQkvAz5Z+YDwZG+6wdDXcGOlp8zomIKCTHJCZlGfq/L9kHrY7udt/IG947A4GYHGNCMMZrgeBI/8Cz5od2S+vSx17eOwsB+C+MAAhMTFgrq5rN5p7LRbameveXzxEhmnZigVuYEBKNvLICXlgWz553aVinMc1RVOjr7pIDAYJxMowQdrvx/XqcaYI0t0Gz/vQM/mY1/jqpSJKSEHwnBgA77KT8GjGmYZqVGDak4zYu5MHX3YTnk+FwmAx/UEouIlYnqbUyw4kGLpyTDZ+0Kr9+KgTHBrILJoJAhgaVwkJIsyCVkmgG6DnRdBo+uKf4fArGccH/YqJE2yUIZLAf5ReIKlo4pgZqGnCsmJ4mV1YQl0tBaDccG3E4TIaG5PyCUKomdEQlqSiJYzeM+nDZJTQ2pgCwJwYA22ywuFjQaIXjaklDyywb0HNL+Xnrvb04FNoFb3JZxuPj6MpVKVYzoBjAsAuM1paV5W5rk5aXo6uyzf/BZHO9IERT31D5dcToZbVWopgIzc5Q1HOD4X1t3ZrHE7cqKduzRhBilxPfqMB6I6JYRLFAw0ypNW0GfU9lxcq0i+zs2U6MIJx2guoqIccMMk0yd3JdRU+oqc7cbMfjpvUF7x6YIATFaddiXc1cWdFqaXEk49Rqqsauod+VlniHB2Aofsm2MMIYQhSan/90+9arc7njuWaPTj919MRbTm+trfHPzWII425rG44mDXn/j57Gxhus7u6hw48OHGzYt7/ljGnUYuGDwcSr/A1Mb/PP8dzWowAAAABJRU5ErkJggg==" alt="" role="presentation"></div>
+                          </div>
+                       </figure>
+                    </div>
+                 </div>
+                 <div class="carousel--hud">
+                    <div class="carousel--nav">
+                       <button class="carousel--prev" aria-label="Previous slide">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-labelledby="arrow-prev-1a8cd2ffb553be3fae676b2d062e212705ad2d15c24d9b732586aa9395fddcd0715105c4480825eec9640a949778a939992d80d60e024ce6058f8fdf79e4a64382d2000c511c110dcb3f40f4ca65991a" class="icon">
+                             <title id="arrow-prev-1a8cd2ffb553be3fae676b2d062e212705ad2d15c24d9b732586aa9395fddcd0715105c4480825eec9640a949778a939992d80d60e024ce6058f8fdf79e4a64382d2000c511c110dcb3f40f4ca65991a">Arrow</title>
+                             <polygon points="51.829 7.172 46.172 12.828 79.343 46 4 46 4 54 79.343 54 46.172 87.172 51.829 92.828 94.658 50 51.829 7.172"></polygon>
+                          </svg>
+                       </button>
+                       <div class="carousel--status">
+                          <div class="carousel--counter">
+                             <div class="carousel--counter-item is-current">
+                                <div class="counter-flipper"><span>1</span></div>
+                             </div>
+                             <div class="carousel--counter-item is-total"><span>4</span></div>
+                          </div>
+                       </div>
+                       <button class="carousel--next" aria-label="Next slide">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-labelledby="arrow-next-1a8cd2ffb553be3fae676b2d062e212705ad2d15c24d9b732586aa9395fddcd0715105c4480825eec9640a949778a939992d80d60e024ce6058f8fdf79e4a64382d2000c511c110dcb3f40f4ca65991a" class="icon">
+                             <title id="arrow-next-1a8cd2ffb553be3fae676b2d062e212705ad2d15c24d9b732586aa9395fddcd0715105c4480825eec9640a949778a939992d80d60e024ce6058f8fdf79e4a64382d2000c511c110dcb3f40f4ca65991a">Arrow</title>
+                             <polygon points="51.829 7.172 46.172 12.828 79.343 46 4 46 4 54 79.343 54 46.172 87.172 51.829 92.828 94.658 50 51.829 7.172"></polygon>
+                          </svg>
+                       </button>
+                    </div>
+                 </div>
+              </div>
+
+{% comment %} 
+              <slider-component class="slider-mobile-gutter">
+                <a class="skip-to-content-link button visually-hidden" href="#ProductInfo-{{ section.id }}">
+                  {{ "accessibility.skip_to_product_info" | t }}
+                </a>
+                <ul class="product__media-list grid grid--peek list-unstyled slider slider--mobile" role="list">
+                  {%- assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' -%}
+                  {%- if product.selected_or_first_available_variant.featured_media != null -%}
+                    {%- assign media = product.selected_or_first_available_variant.featured_media -%}
+                    <li class="product__media-item grid__item slider__slide{% if media.media_type != 'image' %} product__media-item--full{% endif %}{% if section.settings.hide_variants and variant_images contains media.src %} product__media-item--variant{% endif %}" data-media-id="{{ section.id }}-{{ media.id }}">
+                      {% render 'product-thumbnail', media: media, position: 'featured', loop: section.settings.enable_video_looping, modal_id: section.id, xr_button: true %}
+                    </li>
+                  {%- endif -%}
+                  {%- for media in product.media -%}
+                    {%- unless media.id == product.selected_or_first_available_variant.featured_media.id -%}
+                      <li class="product__media-item grid__item slider__slide{% if media.media_type != 'image' %} product__media-item--full{% endif %}{% if section.settings.hide_variants and variant_images contains media.src %} product__media-item--variant{% endif %}" data-media-id="{{ section.id }}-{{ media.id }}">
+                        {% render 'product-thumbnail', media: media, position: forloop.index, loop: section.settings.enable_video_looping, modal_id: section.id, xr_button: true %}
+                      </li>
+                    {%- endunless -%}
+                  {%- endfor -%}
+                </ul>
+                {%- assign filtered_media_size = product.media.size | minus: variant_images.size | plus: 1 -%}
+                <div class="slider-buttons no-js-hidden{% if product.media.size < 2 or section.settings.hide_variants and filtered_media_size < 2 %} small-hide{% endif %}">
+                  <button type="button" class="slider-button slider-button--prev" name="previous" aria-label="{{ 'accessibility.previous_slide' | t }}">{% render 'icon-caret' %}</button>
+                  <div class="slider-counter caption">
+                    <span class="slider-counter--current">1</span>
+                    <span aria-hidden="true"> / </span>
+                    <span class="visually-hidden">{{ 'accessibility.of' | t }}</span>
+                    <span class="slider-counter--total">{% if section.settings.hide_variants %}{{ filtered_media_size }}{% else %}{{ product.media.size }}{% endif %}</span>
+                  </div>
+                  <button type="button" class="slider-button slider-button--next" name="next" aria-label="{{ 'accessibility.next_slide' | t }}">{% render 'icon-caret' %}</button>
+                </div>
+              </slider-component> {% endcomment %}
+
+
+
+           </div>
+        </div>
+        <div class="product--details">
+           <div class="product--info">
+              <div class="product--header">
+                 <div class="product--title">
+                    <div class="product--variant">50 / RED<span class="label is-secondary">Low Stock</span></div>
+                    <h1 class="product--name">Aeronautica Parka Jacket</h1>
+                 </div>
+                 <div class="price"><span class="price--current">€495</span></div>
+              </div>
+              <div class="product--desc">
+                 <div class="rc">
+                    <p>This parka jacket by Aeronautica Militare is a must-have piece for the cold days of winter. It will keep you warm and stylish the same time.</p>
+                    <p>Comes in black or red and with original embroidered batches.</p>
+                 </div>
+              </div>
+              <div class="product--options">
+                 <div class="option is-size">
+                    <div class="option--title">Size</div>
+                    <div role="radiogroup" class="option--values"><button role="radio" tabindex="0" aria-checked="true" class="btn is-active">50</button><button role="radio" tabindex="-1" aria-checked="false" class="btn is-soldout">52</button><button role="radio" tabindex="-1" aria-checked="false" class="btn is-soldout">54</button><button role="radio" tabindex="-1" aria-checked="false" class="btn is-soldout">48</button></div>
+                 </div>
+                 <div class="option is-colour">
+                    <div class="option--title">Colour</div>
+                    <div role="radiogroup" class="option--values">
+                       <button role="radio" tabindex="0" aria-checked="true" class="option--swatch is-active">
+                          <div class="swatch" aria-label="Select &quot;RED&quot; Colour option" style="--swatchColor: #e34724; --swatchBorder: #FFFFFF;"></div>
+                       </button>
+                       <button role="radio" tabindex="-1" aria-checked="false" class="option--swatch">
+                          <div class="swatch" aria-label="Select &quot;BLACK&quot; Colour option" style="--swatchColor: #09090a; --swatchBorder: #FFFFFF;"></div>
+                       </button>
+                    </div>
+                 </div>
+              </div>
+           </div>
+           <div class="product--actions">
+              <div class="counter">
+                 <button aria-label="Decrease quantity by one" class="counter--down">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-labelledby="minus-41085814472869" class="icon">
+                       <title id="minus-41085814472869">Minus</title>
+                       <rect x="20" y="46" width="60" height="8"></rect>
+                    </svg>
+                 </button>
+                 <div class="counter--amount">
+                    <div class="counter--input" style="transform: translateY(0%) translateZ(0px);"><input aria-label="Manually enter quantity" type="number" inputmode="numeric" min="1" value="1"></div>
+                 </div>
+                 <button aria-label="Increase quantity by one" class="counter--up">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-labelledby="plus-41085814472869" class="icon">
+                       <title id="plus-41085814472869">Plus</title>
+                       <polygon points="80 46 54 46 54 20 46 20 46 46 20 46 20 54 46 54 46 80 54 80 54 54 80 54 80 46"></polygon>
+                    </svg>
+                 </button>
+              </div>
+              <button class="btn is-primary is-large is-block">Add To Cart</button>
+
+              
+           </div>
+        </div>
+     </div>
+  </section>
+</main>
+
 <section class="page-width no-sides border">
   <div class="product grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
     <div class="grid__item product__media-wrapper">

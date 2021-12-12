@@ -1,7 +1,29 @@
+
+
 {%- for block in section.blocks -%}
   {%- case block.type -%}
     {%- when 'announcement' -%}
-      <div class="announcement-bar color-{{ block.settings.color_scheme }} gradient" role="region" aria-label="{{ 'sections.header.announcement' | t }}" {{ block.shopify_attributes }}>
+
+      <div class="promo-bar " role="region" aria-label="{{ 'sections.header.announcement' | t }}" {{ block.shopify_attributes }}>
+        <div class="promo-bar--content">
+        {%- if block.settings.text != blank -%}
+          {%- if block.settings.link != blank -%}
+            <a href="{{ block.settings.link }}" class=" promo-bar--link">
+          {%- endif -%}
+              <p class="">
+                {{ block.settings.text | escape }}
+                {%- if block.settings.link != blank -%}
+                  {% render 'icon-arrow' %}
+                {%- endif -%}
+              </p>
+          {%- if block.settings.link != blank -%}
+            </a>
+          {%- endif -%}
+        {%- endif -%}
+        </div>
+      </div>
+
+      {% comment %} <div class="announcement-bar color-{{ block.settings.color_scheme }} gradient" role="region" aria-label="{{ 'sections.header.announcement' | t }}" {{ block.shopify_attributes }}>
         {%- if block.settings.text != blank -%}
           {%- if block.settings.link != blank -%}
             <a href="{{ block.settings.link }}" class="announcement-bar__link link link--text focus-inset animate-arrow">
@@ -16,7 +38,8 @@
             </a>
           {%- endif -%}
         {%- endif -%}
-      </div>
+      </div> {% endcomment %}
+      
   {%- endcase -%}
 {%- endfor -%}
 

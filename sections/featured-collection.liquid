@@ -137,12 +137,14 @@
     </div>
   </div>
 </div>
+
 <div class='marquee-section'>
   <div class='marquee'>
-    <div class="slideshow js-slideshow">
-
+    <div class="slideshow js-slideshow ">
+      {% comment %} marquee--item {% endcomment %}
       {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
         <div class="slide">
+          <div class="marquee--product">
         {% render 'product-card',
           product_card_product: product,
           media_size: section.settings.image_ratio,
@@ -152,6 +154,7 @@
           show_image_outline: section.settings.show_image_outline,
           show_rating: section.settings.show_rating
         %}
+        </div>
       </div>
       
     {%- else -%}

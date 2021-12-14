@@ -25,8 +25,8 @@
            <div style="opacity: 1;">
             
               <div class=" main-gallery js-flickity">
-                <div class="gallery-cell"><img sizes="(min-width: 940px) 50vw, 100vw" decoding="async" class="object-cover is-loaded" src="https://cdn.sanity.io/images/4y2xd5ik/production/1a8cd2ffb553be3fae676b2d062e212705ad2d15-1100x1100.png?q=80&amp;fit=max&amp;auto=format" srcset="https://cdn.sanity.io/images/4y2xd5ik/production/1a8cd2ffb553be3fae676b2d062e212705ad2d15-1100x1100.png?w=400&amp;h=400&amp;q=80&amp;fit=max&amp;auto=format 400w,https://cdn.sanity.io/images/4y2xd5ik/production/1a8cd2ffb553be3fae676b2d062e212705ad2d15-1100x1100.png?w=800&amp;h=800&amp;q=80&amp;fit=max&amp;auto=format 800w,https://cdn.sanity.io/images/4y2xd5ik/production/1a8cd2ffb553be3fae676b2d062e212705ad2d15-1100x1100.png?w=1000&amp;h=1000&amp;q=80&amp;fit=max&amp;auto=format 1000w"></picture></div>
                 {%- assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' -%}
+
                 {%- if product.selected_or_first_available_variant.featured_media != null -%}
                   {%- assign media = product.selected_or_first_available_variant.featured_media -%}
                   <div class=" gallery-cell product__media-item grid__item slider__slide{% if media.media_type != 'image' %} product__media-item--full{% endif %}{% if section.settings.hide_variants and variant_images contains media.src %} product__media-item--variant{% endif %}" data-media-id="{{ section.id }}-{{ media.id }}">
@@ -34,6 +34,7 @@
                     {% comment %} <p> {{ media }}</p> {% endcomment %}
                   </div>
                 {%- endif -%}
+
                 {%- for media in product.media -%}
                   {%- unless media.id == product.selected_or_first_available_variant.featured_media.id -%}
                     <div class=" gallery-cell product__media-item grid__item slider__slide{% if media.media_type != 'image' %} product__media-item--full{% endif %}{% if section.settings.hide_variants and variant_images contains media.src %} product__media-item--variant{% endif %}" data-media-id="{{ section.id }}-{{ media.id }}">
@@ -43,7 +44,8 @@
                   {%- endunless -%}
                 {%- endfor -%}
               </div>
-              
+                
+              <!--[if !IE]--><script> $(document).ready(function() { var tapArea, startX ; tapArea = document.querySelectorAll('.carousel'); startX = 0; for (var item of tapArea) { item.ontouchstart = function(e) { startX = e.touches[0].clientX; }; item.ontouchmove = function(e) { if (Math.abs(e.touches[0].clientX - startX) > 5 && e.cancelable ) { e.preventDefault(); } }; } }); </script><!--<![endif]-->
             
             
 
@@ -148,37 +150,12 @@
         </div>
         <div class="product--details">
            <div class="product--info">
-              <div class="product--header">
-                 <div class="product--title">
-                    <div class="product--variant">50 / RED<span class="label is-secondary">Low Stock</span></div>
-                    <h1 class="product--name">Aeronautica Parka Jacket</h1>
-                 </div>
-                 <div class="price"><span class="price--current">€495</span></div>
-              </div>
-              <div class="product--desc">
-                 <div class="rc">
-                    <p>This parka jacket by Aeronautica Militare is a must-have piece for the cold days of winter. It will keep you warm and stylish the same time.</p>
-                    <p>Comes in black or red and with original embroidered batches.</p>
-                 </div>
-              </div>
-              <div class="product--options">
-                 <div class="option is-size">
-                    <div class="option--title">Size</div>
-                    <div role="radiogroup" class="option--values"><button role="radio" tabindex="0" aria-checked="true" class="btn is-active">50</button><button role="radio" tabindex="-1" aria-checked="false" class="btn is-soldout">52</button><button role="radio" tabindex="-1" aria-checked="false" class="btn is-soldout">54</button><button role="radio" tabindex="-1" aria-checked="false" class="btn is-soldout">48</button></div>
-                 </div>
-                 <div class="option is-colour">
-                    <div class="option--title">Colour</div>
-                    <div role="radiogroup" class="option--values">
-                       <button role="radio" tabindex="0" aria-checked="true" class="option--swatch is-active">
-                          <div class="swatch" aria-label="Select &quot;RED&quot; Colour option" style="--swatchColor: #e34724; --swatchBorder: #FFFFFF;"></div>
-                       </button>
-                       <button role="radio" tabindex="-1" aria-checked="false" class="option--swatch">
-                          <div class="swatch" aria-label="Select &quot;BLACK&quot; Colour option" style="--swatchColor: #09090a; --swatchBorder: #FFFFFF;"></div>
-                       </button>
-                    </div>
-                 </div>
-              </div>
 
+
+              <div>
+            {% comment %} class="product__info-wrapper grid__item" {% endcomment %}
+            <div id="ProductInfo-{{ section.id }}">
+              {% comment %} class="product__info-container{% if section.settings.enable_sticky_info %} product__info-container--sticky{% endif %}" {% endcomment %}
               
               {%- assign product_form_id = 'product-form-' | append: section.id -%}
 
@@ -250,6 +227,51 @@
                       {{ 'products.product.quantity.label' | t }}
                     </label>
       
+                    <div class="counter">
+                      <button aria-label="Decrease quantity by one" class="counter--down">
+                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-labelledby="minus-41085814472869" class="icon">
+                            <title id="minus-41085814472869">Minus</title>
+                            <rect x="20" y="46" width="60" height="8"></rect>
+                         </svg>
+                      </button>
+                      <div class="counter--amount">
+                         <div class="counter--input" style="transform: translateY(0%) translateZ(0px);"><input aria-label="Manually enter quantity" type="number" inputmode="numeric" min="1" value="1"></div>
+                      </div>
+                      <button aria-label="Increase quantity by one" class="counter--up">
+                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-labelledby="plus-41085814472869" class="icon">
+                            <title id="plus-41085814472869">Plus</title>
+                            <polygon points="80 46 54 46 54 20 46 20 46 46 20 46 20 54 46 54 46 80 54 80 54 54 80 54 80 46"></polygon>
+                         </svg>
+                      </button>
+                   </div>
+                   
+                    {% comment %} <quantity-input class="counter">
+                      <button class="quantity__button no-js-hidden counter--down" name="minus" type="button">
+                        <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: product.title | escape }}</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-labelledby="minus-41085814472869" class="icon">
+                          <title id="minus-41085814472869">Minus</title>
+                          <rect x="20" y="46" width="60" height="8"></rect>
+                       </svg>
+                      </button>
+                      <div class="counter--input" style="transform: translateY(0%) translateZ(0px);">
+                        <input class="quantity__input"
+                            type="number"
+                            name="quantity"
+                            id="Quantity-{{ section.id }}"
+                            min="1"
+                            value="1"
+                            form="{{ product_form_id }}"
+                          >
+                        </div>
+                      <button class="quantity__button no-js-hidden counter--up" name="plus" type="button">
+                        <span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: product.title | escape }}</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-labelledby="plus-41085814472869" class="icon">
+                          <title id="plus-41085814472869">Plus</title>
+                          <polygon points="80 46 54 46 54 20 46 20 46 46 20 46 20 54 46 54 46 80 54 80 54 54 80 54 80 46"></polygon>
+                       </svg>
+                      </button>
+                    </quantity-input> {% endcomment %}
+
                     <quantity-input class="quantity">
                       <button class="quantity__button no-js-hidden" name="minus" type="button">
                         <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: product.title | escape }}</span>
@@ -325,24 +347,29 @@
                             <fieldset class="js product-form__input">
                               <legend class="form__label">{{ option.name }}</legend>
                               {%- for value in option.values -%}
-                                {% comment %} <input type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
-                                      name="{{ option.name }}"
-                                      value="{{ value | escape }}"
-                                      form="{{ product_form_id }}"
-                                      {% if option.selected_value == value %}checked{% endif %}
+                                <input type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+                                  name="{{ option.name }}"
+                                  value="{{ value | escape }}"
+                                  form="{{ product_form_id }}"
+                                  {% comment %} style="display: none;" {% endcomment %}
+                                  {% if option.selected_value == value %}checked{% endif %}
                                 >
-                                <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
-                                  {{ value }}
-                                </label> {% endcomment %}
 
-                                <button 
+                                <label 
+                                  for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+                                  class= "btn {% if option.selected_value == value %}is-active{% endif %}"
+                                >
+                                  {{ value }}
+                                </label>
+
+                                {% comment %} <button 
                                   type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
                                   name="{{ option.name }}"
                                   value="{{ value | escape }}"
                                   form="{{ product_form_id }}"
                                   tabindex="0"
                                   aria-checked="true"
-                                  class="btn {% if option.selected_value == value %}is-active{% endif %}">{{ value }}</button>
+                                  class="btn {% if option.selected_value == value %}is-active{% endif %}">{{ value }}</button> {% endcomment %}
                               {%- endfor -%}
                             </fieldset>
                         {%- endfor -%}
@@ -491,6 +518,8 @@
                   {%- endif -%}
                 {%- endcase -%}
               {%- endfor -%}
+            </div>
+          </div>
 
 
 
@@ -523,6 +552,8 @@
   </section>
 </main>
 
+
+{% comment %}
 <section class="page-width no-sides border">
   <div class="product grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
     <div class="grid__item product__media-wrapper">
@@ -913,6 +944,8 @@
     </modal-dialog>
   {%- endfor -%}
 </section>
+
+{% endcomment%}
 
 {% javascript %}
   class ProductModal extends ModalDialog {

@@ -68,7 +68,7 @@
   color: rgb(var(--color-foreground));
   text-decoration: none;
   display: block;
-  font-family: 'Nimbus Sans L' !important;
+  /* font-family: 'Nimbus Sans L' !important; */
 }
 
 .cart-item__name:hover {

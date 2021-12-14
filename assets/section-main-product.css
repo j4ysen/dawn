@@ -178,7 +178,7 @@ fieldset.product-form__input .form__label {
   margin-bottom: 0.2rem;
 }
 
-.product-form__input input[type='radio'] {
+/* .product-form__input input[type='radio'] {
   clip: rect(0, 0, 0, 0);
   overflow: hidden;
   position: absolute;
@@ -228,7 +228,7 @@ fieldset.product-form__input .form__label {
 .product-form__input input[type='radio']:focus-visible + label {
   box-shadow: 0 0 0 0.3rem rgb(var(--color-background)),
     0 0 0 0.5rem rgba(var(--color-foreground), 0.55);
-}
+} */
 
 /* Fallback */
 .product-form__input input[type='radio'].focused + label,

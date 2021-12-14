@@ -440,6 +440,12 @@
  {% endcomment %}
 
 
+{% comment %} </{% if section.settings.enable_sticky_header %}sticky-header{% else %}div{% endif %}> {% endcomment %}
+
+{% comment %} {%- render 'cart-notification', color_scheme: section.settings.color_scheme -%} {% endcomment %}
+
+
+{%- render 'cart-notification', color_scheme: section.settings.color_scheme -%}
 <header class="header has-bg">
   <div class="header--outer">
     <div class="header--inner">
@@ -602,10 +608,26 @@
               <ul>
                 <li><a href="/search">search</a></li>
               </ul>
-              <button class="cart-toggle">
+              {% comment %} <button class="cart-toggle">
                 <div class="cart-text">Cart</div>
-                <span class="cart-toggle--count">0</span>
-              </button>
+                <span class="cart-toggle--count"  style="    text-align: center;" >0</span>
+              </button> {% endcomment %}
+              <a href="{{ routes.cart_url }}" class="cart-toggle" id="cart-icon-bubble">
+
+                {% if cart == empty %}
+                  <div class="cart-text">Cart</div>
+                  <span class="cart-toggle--count"  style="    text-align: center;">0</span>
+                {% else %}
+                <div class="cart-text">Cart</div>
+                <span class="cart-toggle--count is-active" style="    text-align: center;">
+                  {%- if cart.item_count < 100 -%}
+                    <span aria-hidden="true">{{ cart.item_count }}</span>
+                  {% else %}
+                    {{ 'sections.header.cart_count' | t: count: cart.item_count }}
+                  {% endif %}
+                </span>
+                {% endif %}
+              </a>
             </div>
           </div>
         </nav>
@@ -1000,6 +1022,11 @@
       "type": "image_picker",
       "id": "logo",
       "label": "t:sections.header.settings.logo.label"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Featured Product 1"
     },
     {
       "type": "range",

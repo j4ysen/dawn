@@ -192,6 +192,7 @@ var flkty = new Flickity( '.main-carousel', {
     {% section 'cart' %}
 
 
+
     <ul hidden>
       <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
     </ul>
@@ -236,7 +237,8 @@ var carousel = document.querySelector('.main-gallery');
 var flkty = new Flickity( carousel, {
   prevNextButtons: true,
   pageDots: false,
-  wrapAround: true
+  wrapAround: true,
+  adaptiveHeight: true
 });
 
 // previous
@@ -253,7 +255,18 @@ nextButton.addEventListener( 'click', function() {
 });
 
 
-</script>
+$(window).bind('beforeunload', function(){
+  alert('Are you sure you want to leave?');
+});
 
+
+</script>
+<style>
+.cart{
+  opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+}
+</style>
 
 </html>

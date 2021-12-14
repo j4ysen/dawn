@@ -124,10 +124,25 @@ $(".dropdown--toggle").click(function(){
 
 $(".cart-toggle").click(function(){
   console.log("Cart Click!")
-  
+  // anime({
+  //   targets: '.cart',
+  //   translateX: '0%',
+  //   duration: 400,
+  //   easing: 'easeInOutSine'
+  // });
   
 });
 
+$(".cart-close").click(function(){
+  console.log("Cart Click close!")
+  anime({
+    targets: '.cart',
+    translateX: '100%',
+    duration: 400,
+    easing: 'easeInOutSine'
+  });
+  
+});
 
 
 $("div.main-navigation--mobile div button.menu-toggle").click(function(){

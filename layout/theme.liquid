@@ -33,7 +33,7 @@
 
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
     {{ content_for_header }}
-
+    <script src="{{ 'nav.js' | asset_url }}" defer="defer"></script>
     {%- liquid
       assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
       assign body_font_italic = settings.type_body_font | font_modify: 'style', 'italic'
@@ -110,10 +110,45 @@
       }
     {% endstyle %} {% endcomment %}
 
-    {{ 'base.css' | asset_url | stylesheet_tag }}
+    {% comment %} {{ 'base.css' | asset_url | stylesheet_tag }} {% endcomment %}
     {{ 'style.css' | asset_url | stylesheet_tag }}
 
+    <!-- CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+  <!-- JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+
+  
+  {% comment %} <script>
+    $('.main-gallery').flickity({
+      contain: true,
+      freeScroll: true,
+      imagesLoaded: true,
+      wrapAround: true,
+    });
+
+  </script> {% endcomment %}
+
     
+{% comment %} <script>
+
+  var elem = document.querySelector('.main-carousel');
+var flkty = new Flickity( elem, {
+  // options
+  cellAlign: 'left',
+  contain: true
+});
+
+// element argument can be a selector string
+//   for an individual element
+var flkty = new Flickity( '.main-carousel', {
+  // options
+});
+
+</script> {% endcomment %}
 
     {%- unless settings.type_body_font.system? -%}
       <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
@@ -154,6 +189,9 @@
 
     {% section 'footer' %}
 
+    {% section 'cart' %}
+
+
     <ul hidden>
       <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
     </ul>
@@ -187,4 +225,35 @@
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
   </body>
+
+  <script>
+
+    // external js: flickity.pkgd.js
+
+var utils = window.fizzyUIUtils;
+
+var carousel = document.querySelector('.main-gallery');
+var flkty = new Flickity( carousel, {
+  prevNextButtons: true,
+  pageDots: false,
+  wrapAround: true
+});
+
+// previous
+var previousButton = document.querySelector('.carousel--prev');
+previousButton.addEventListener( 'click', function() {
+  console.log('Click');
+  flkty.previous();
+});
+// next
+var nextButton = document.querySelector('.carousel--next');
+nextButton.addEventListener( 'click', function() {
+  console.log('Click');
+  flkty.next();
+});
+
+
+</script>
+
+
 </html>

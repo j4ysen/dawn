@@ -16,7 +16,11 @@
     assign more_in_collection = true
   endif
 -%}
-<div class="collection page-width{% if section.settings.swipe_on_mobile == true and section.settings.collection.all_products_count > 2 and section.settings.products_to_show > 2 %} page-width-desktop{% endif %}">
+
+
+
+
+{% comment %} <div class="collection page-width{% if section.settings.swipe_on_mobile == true and section.settings.collection.all_products_count > 2 and section.settings.products_to_show > 2 %} page-width-desktop{% endif %}">
   <div class="title-wrapper-with-link{% if section.settings.title == blank %} title-wrapper-with-link--no-heading{% endif %}{% if section.settings.collection.all_products_count > 2 and section.settings.swipe_on_mobile and section.settings.products_to_show > 2 %} title-wrapper--self-padded-tablet-down{% endif %}">
     <h2 class="title{% if section.settings.title == blank %} title--no-heading{% endif %}">{{ section.settings.title | escape }}</h2>
 
@@ -71,7 +75,7 @@
       </a>
     </div>
   {%- endif -%}
-</div>
+</div> {% endcomment %}
 
 <div class="marquee-section">
   <div data-marqy="" data-direction="right" class="marquee">
@@ -133,34 +137,71 @@
     </div>
   </div>
 </div>
+<div class='marquee-section'>
+  <div class='marquee'>
+    <div class="slideshow js-slideshow">
+
+      {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
+        <div class="slide">
+        {% render 'product-card',
+          product_card_product: product,
+          media_size: section.settings.image_ratio,
+          show_secondary_image: section.settings.show_secondary_image,
+          add_image_padding: section.settings.add_image_padding,
+          show_vendor: section.settings.show_vendor,
+          show_image_outline: section.settings.show_image_outline,
+          show_rating: section.settings.show_rating
+        %}
+      </div>
+      
+    {%- else -%}
+      {%- for i in (1..4) -%}
+        <div class="slide">
+        <div class="grid__item">
+          {% render 'product-card-placeholder' %}
+        </div>
+      </div>
+      {%- endfor -%}
+    {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% comment %}
 <div class="marquee-section">
   <div data-marqy="" data-direction="right" class="marquee">
     <div data-marqy-inner="">
       <div data-marqy-content="" style="animation-duration: 21.6s">
         <div aria-hidden="true" data-marqy-item="">
           <div class="marquee--item">
+
+            {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
+              <div class="marquee--product">
+              {% render 'product-card',
+                product_card_product: product,
+                media_size: section.settings.image_ratio,
+                show_secondary_image: section.settings.show_secondary_image,
+                add_image_padding: section.settings.add_image_padding,
+                show_vendor: section.settings.show_vendor,
+                show_image_outline: section.settings.show_image_outline,
+                show_rating: section.settings.show_rating
+              %}
+            </div>
+            
+          {%- else -%}
+            {%- for i in (1..4) -%}
+              <div class="marquee--product">
+              <div class="grid__item">
+                {% render 'product-card-placeholder' %}
+              </div>
+            </div>
+            {%- endfor -%}
+          {%- endfor -%}
+
+
+
+
             <div class="marquee--product">
-              {% comment %} {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
-                <li class="grid__item{% if section.settings.collection.all_products_count > 2 and section.settings.swipe_on_mobile and section.settings.products_to_show > 2 %} slider__slide{% endif %}">
-                  {% render 'product-card',
-                    product_card_product: product,
-                    media_size: section.settings.image_ratio,
-                    show_secondary_image: section.settings.show_secondary_image,
-                    add_image_padding: section.settings.add_image_padding,
-                    show_vendor: section.settings.show_vendor,
-                    show_image_outline: section.settings.show_image_outline,
-                    show_rating: section.settings.show_rating
-                  %}
-                </li>
-              {%- else -%}
-                {%- for i in (1..4) -%}
-                  <li class="grid__item">
-                    {% render 'product-card-placeholder' %}
-                  </li>
-                {%- endfor -%}
-              {%- endfor -%} {% endcomment %}
-
-
               <div class="product-card" style="opacity: 1">
                 <div class="product-card--visuals">
                   <div class="product-card--thumb">
@@ -319,7 +360,92 @@
     </div>
   </div>
 </div>
+{% endcomment %}
 
+
+<script>
+
+  //
+  //   Variables
+  //
+  //////////////////////////////////////////////////////////////////////
+  
+  // Play with this value to change the speed
+  let tickerSpeed = 2;
+  
+  let flickity = null;
+  let isPaused = false;
+  const slideshowEl = document.querySelector('.js-slideshow');
+  
+  
+  //
+  //   Functions
+  //
+  //////////////////////////////////////////////////////////////////////
+  
+  const update = () => {
+    if (isPaused) return;
+    if (flickity.slides) {
+      flickity.x = (flickity.x - tickerSpeed) % flickity.slideableWidth;
+      flickity.selectedIndex = flickity.dragEndRestingSelect();
+      flickity.updateSelectedSlide();
+      flickity.settle(flickity.x);
+    }
+    window.requestAnimationFrame(update);
+  };
+  
+  const pause = () => {
+    isPaused = true;
+  };
+  
+  const play = () => {
+    if (isPaused) {
+      isPaused = false;
+      window.requestAnimationFrame(update);
+    }
+  };
+  
+  
+  //
+  //   Create Flickity
+  //
+  //////////////////////////////////////////////////////////////////////
+  
+  flickity = new Flickity(slideshowEl, {
+    autoPlay: false,
+    prevNextButtons: false,
+    pageDots: false,
+    draggable: true,
+    wrapAround: true,
+    selectedAttraction: 0.015,
+    friction: 0.25 });
+  
+  flickity.x = 0;
+  
+  
+  //
+  //   Add Event Listeners
+  //
+  //////////////////////////////////////////////////////////////////////
+  
+  slideshowEl.addEventListener('mouseenter', pause, false);
+  slideshowEl.addEventListener('focusin', pause, false);
+  slideshowEl.addEventListener('mouseleave', play, false);
+  slideshowEl.addEventListener('focusout', play, false);
+  
+  flickity.on('dragStart', () => {
+    isPaused = true;
+  });
+  
+  
+  //
+  //   Start Ticker
+  //
+  //////////////////////////////////////////////////////////////////////
+  
+  update();
+  
+  </script>
 
 {% schema %}
 {

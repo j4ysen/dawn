@@ -220,12 +220,12 @@ cart-remove-button .icon-remove {
     margin-bottom: 4rem;
   }
 
-  .cart-item {
+  /* .cart-item {
     display: grid;
     grid-template: repeat(2, auto) / repeat(4, 1fr);
     gap: 1.5rem;
     margin-bottom: 3.5rem;
-  }
+  } */
 
   .cart-item:last-child {
     margin-bottom: 0;

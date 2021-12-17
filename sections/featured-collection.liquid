@@ -144,7 +144,7 @@
     }
 
     if (featured.slides) {
-      featured.x = (featured.x - tickerSpeed) % featured.slideableWidth;
+      featured.x = (featured.x + tickerSpeed) % featured.slideableWidth;
       featured.selectedIndex = featured.dragEndRestingSelect();
       featured.updateSelectedSlide();
       featured.settle(featured.x);
@@ -175,9 +175,15 @@
     pageDots: false,
     draggable: true,
     wrapAround: true,
-    selecedAttraction: 0,
-    friction: 0.15 });
+    selectedAttraction: 0,
+    friction: 0.05 });
 
+    flickity.on('settle', function (index) {
+      if (flkty.resizeQueued) {
+        flkty.resizeQueued = false;
+        flkty.onresize();
+      }
+    }); 
 
   featured = new Flickity(featuredEl, {
     autoPlay: false,
@@ -185,7 +191,7 @@
     pageDots: false,
     draggable: false,
     wrapAround: true,
-    selecedAttraction: 0,
+    selectedAttraction: 0,
     friction: 0.15 });
   
   featured.x = 0;

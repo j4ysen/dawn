@@ -19,7 +19,7 @@ if (!customElements.get('product-form')) {
 
       submitButton.setAttribute('aria-disabled', true);
       submitButton.classList.add('loading');
-      existingText = submitButton.value;
+      // existingText = submitButton.value;
       submitButton.value = "Adding...";
       this.querySelector('.loading-overlay__spinner').classList.remove('hidden');
 
@@ -48,7 +48,7 @@ if (!customElements.get('product-form')) {
         })
         .finally(() => {
           submitButton.classList.remove('loading');
-          submitButton.value = existingText;
+          // submitButton.value = existingText;
           submitButton.removeAttribute('aria-disabled');
           this.querySelector('.loading-overlay__spinner').classList.add('hidden');
         });

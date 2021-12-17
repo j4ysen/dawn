@@ -10,9 +10,8 @@
       "blocks": {
         "16380375493ecd77a9-0": {
           "type": "heading",
-          "disabled": true,
           "settings": {
-            "heading": "Image banner",
+            "heading": "",
             "heading_size": "medium"
           }
         },
@@ -43,6 +42,7 @@
       ],
       "settings": {
         "image": "shopify:\/\/shop_images\/20074e0537ebd271b1dc02b7a13761c690eb0c51-2391x1345.jpg",
+        "image_2": "shopify:\/\/shop_images\/20074e0537ebd271b1dc02b7a13761c690eb0c51-2391x1345.jpg",
         "image_height": "medium",
         "adapt_height_first_image": false,
         "desktop_text_box_position": "center",

@@ -188,7 +188,8 @@ var flkty = new Flickity( '.main-carousel', {
     </script>
   </head>
 
-  <body class="gradient">
+  <body class="gradient" >
+    <div class="opacity-wrapper" style="opacity:0;">
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ "accessibility.skip_to_text" | t }}
     </a>
@@ -236,10 +237,17 @@ var flkty = new Flickity( '.main-carousel', {
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
+    </div>
   </body>
 
   <script>
-
+    console.log("Ready");
+    anime({
+      targets: '.opacity-wrapper',
+      opacity: 1,
+      duration: 1000,
+      easing: 'easeInOutSine'
+    });
     // external js: flickity.pkgd.js
 
 var utils = window.fizzyUIUtils;
@@ -274,8 +282,16 @@ nextButton.addEventListener( 'click', function() {
 });
 
 
+
+
 $(window).bind('beforeunload', function(){
   alert('Are you sure you want to leave?');
+  anime({
+    targets: '.opacity-wrapper',
+    opacity: 0,
+    duration: 1000,
+    easing: 'easeInOutSine'
+  });
 });
 
 
@@ -292,7 +308,42 @@ $(window).bind('beforeunload', function(){
     border-top: 0;
   }
 }
+.rc{
+  margin: 1rem 0rem;
+}
 
+.ul-accordion{
+  padding-top: 0 !important;
+}
+
+.cart-item--photo .ar img{
+  width: calc(100% + 1px);
+  height: calc(100% + 1px);
+  display: block;
+  opacity: 1;
+  position: relative;
+  transform: none;
+  left: 0;
+
+}
+
+.cart-items{
+  padding: 1rem;
+}
+.cart--content{
+  padding: 0!important;
+}
+
+#MainContent .hero--bg.is-desktop{
+  padding-top: calc((7 / 16) * 100%);
+}
+
+.cart--content{
+  min-height: 60vh;
+}
+.searchContent .inner {
+  align-items: center;
+}
 </style>
 
 </html>

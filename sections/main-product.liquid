@@ -86,32 +86,34 @@
 
               <!--[if !IE]--><script> $(document).ready(function() { var tapArea, startX ; tapArea = document.querySelectorAll('.carousel'); startX = 0; for (var item of tapArea) { item.ontouchstart = function(e) { startX = e.touches[0].clientX; }; item.ontouchmove = function(e) { if (Math.abs(e.touches[0].clientX - startX) > 5 && e.cancelable ) { e.preventDefault(); } }; } }); </script><!--<![endif]-->
                 {%- assign filtered_media_size = product.media.size | minus: variant_images.size | plus: 1 -%}
-                <div class="carousel has-drag">
-                 <div class="carousel--hud">
-                    <div class="carousel--nav">
-                       <button class="carousel--prev slider-button slider-button--prev" name="previous" aria-label="{{ 'accessibility.previous_slide' | t }}" aria-label="Previous slide">
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-labelledby="arrow-prev-1a8cd2ffb553be3fae676b2d062e212705ad2d15c24d9b732586aa9395fddcd0715105c4480825eec9640a949778a939992d80d60e024ce6058f8fdf79e4a64382d2000c511c110dcb3f40f4ca65991a" class="icon">
-                             <title id="arrow-prev-1a8cd2ffb553be3fae676b2d062e212705ad2d15c24d9b732586aa9395fddcd0715105c4480825eec9640a949778a939992d80d60e024ce6058f8fdf79e4a64382d2000c511c110dcb3f40f4ca65991a">Arrow</title>
-                             <polygon points="51.829 7.172 46.172 12.828 79.343 46 4 46 4 54 79.343 54 46.172 87.172 51.829 92.828 94.658 50 51.829 7.172"></polygon>
-                          </svg>
-                       </button>
-                       <div class="carousel--status">
-                          <div class="carousel--counter">
-                             <div class="carousel--counter-item is-current">
-                                <div class="counter-flipper slider-counter--current"><span>1</span></div>
-                             </div>
-                             <div class="carousel--counter-item is-total"><span>{% if section.settings.hide_variants %}{{ filtered_media_size }}{% else %}{{ product.media.size }}{% endif %}</span></div>
-                          </div>
-                       </div>
-                       <button class="slider-button slider-button--next carousel--next" aria-label="{{ 'accessibility.next_slide' | t }}">
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-labelledby="arrow-next-1a8cd2ffb553be3fae676b2d062e212705ad2d15c24d9b732586aa9395fddcd0715105c4480825eec9640a949778a939992d80d60e024ce6058f8fdf79e4a64382d2000c511c110dcb3f40f4ca65991a" class="icon">
-                             <title id="arrow-next-1a8cd2ffb553be3fae676b2d062e212705ad2d15c24d9b732586aa9395fddcd0715105c4480825eec9640a949778a939992d80d60e024ce6058f8fdf79e4a64382d2000c511c110dcb3f40f4ca65991a">Arrow</title>
-                             <polygon points="51.829 7.172 46.172 12.828 79.343 46 4 46 4 54 79.343 54 46.172 87.172 51.829 92.828 94.658 50 51.829 7.172"></polygon>
-                          </svg>
-                       </button>
-                    </div>
-                 </div>
-              </div>
+                {% if product.media.size > 1 %}
+                  <div class="carousel has-drag">
+                  <div class="carousel--hud">
+                      <div class="carousel--nav">
+                        <button class="carousel--prev slider-button slider-button--prev" name="previous" aria-label="{{ 'accessibility.previous_slide' | t }}" aria-label="Previous slide">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-labelledby="arrow-prev-1a8cd2ffb553be3fae676b2d062e212705ad2d15c24d9b732586aa9395fddcd0715105c4480825eec9640a949778a939992d80d60e024ce6058f8fdf79e4a64382d2000c511c110dcb3f40f4ca65991a" class="icon">
+                              <title id="arrow-prev-1a8cd2ffb553be3fae676b2d062e212705ad2d15c24d9b732586aa9395fddcd0715105c4480825eec9640a949778a939992d80d60e024ce6058f8fdf79e4a64382d2000c511c110dcb3f40f4ca65991a">Arrow</title>
+                              <polygon points="51.829 7.172 46.172 12.828 79.343 46 4 46 4 54 79.343 54 46.172 87.172 51.829 92.828 94.658 50 51.829 7.172"></polygon>
+                            </svg>
+                        </button>
+                        <div class="carousel--status">
+                            <div class="carousel--counter">
+                              <div class="carousel--counter-item is-current">
+                                  <div class="counter-flipper slider-counter--current"><span>1</span></div>
+                              </div>
+                              <div class="carousel--counter-item is-total"><span>{% if section.settings.hide_variants %}{{ filtered_media_size }}{% else %}{{ product.media.size }}{% endif %}</span></div>
+                            </div>
+                        </div>
+                        <button class="slider-button slider-button--next carousel--next" aria-label="{{ 'accessibility.next_slide' | t }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-labelledby="arrow-next-1a8cd2ffb553be3fae676b2d062e212705ad2d15c24d9b732586aa9395fddcd0715105c4480825eec9640a949778a939992d80d60e024ce6058f8fdf79e4a64382d2000c511c110dcb3f40f4ca65991a" class="icon">
+                              <title id="arrow-next-1a8cd2ffb553be3fae676b2d062e212705ad2d15c24d9b732586aa9395fddcd0715105c4480825eec9640a949778a939992d80d60e024ce6058f8fdf79e4a64382d2000c511c110dcb3f40f4ca65991a">Arrow</title>
+                              <polygon points="51.829 7.172 46.172 12.828 79.343 46 4 46 4 54 79.343 54 46.172 87.172 51.829 92.828 94.658 50 51.829 7.172"></polygon>
+                            </svg>
+                        </button>
+                      </div>
+                  </div>
+                  </div>
+                {% endif %}
 
 
            </div>

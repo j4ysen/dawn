@@ -154,7 +154,7 @@
 }
 
 .facets__form {
-  display: grid;
+  /* display: grid; */
   gap: 0 3.5rem;
   grid-template-columns: 1fr max-content max-content;
   /* margin-bottom: 0.5rem;s */
@@ -190,7 +190,7 @@
 .facets__summary {
   /* color: rgba(var(--color-foreground), 0.75); */
   color: black;
-  font-size: 1.2rem;
+  /* font-size: 1.2rem; */
     margin-bottom: 1rem;
     padding: 0 1.75rem 0 0;
     text-transform: uppercase;
@@ -385,14 +385,14 @@ span.active-facets__button-inner {
 }
 
 .active-facets__button-wrapper {
-  align-items: center;
+  /* align-items: center;
   display: flex;
   justify-content: center;
-  padding-top: 1.5rem;
+  padding-top: 1.5rem; */
 }
 
 .active-facets__button-wrapper * {
-  font-size: 1rem;
+  /* font-size: 1rem; */
 }
 
 @media screen and (min-width: 990px) {
@@ -402,7 +402,7 @@ span.active-facets__button-inner {
 
   .active-facets__button-wrapper *,
   span.active-facets__button-inner {
-    font-size: 1.2rem;
+    /* font-size: 1.2rem; */
   }
 }
 
@@ -524,8 +524,9 @@ a.active-facets__button.focused .active-facets__button-inner,
 }
 
 .mobile-facets__inner {
-  background-color: rgb(var(--color-background));
-  width: calc(100% - 5rem);
+  background-color: white;
+  /* width: calc(100% - 5rem); */
+  width:100%;
   margin-left: auto;
   height: 100%;
   overflow-y: auto;
@@ -803,8 +804,8 @@ input.mobile-facets__checkbox {
 }
 
 .mobile-facets__footer {
-  background-color: rgb(var(--color-background));
-  border-top: 0.1rem solid rgba(var(--color-foreground), 0.08);
+  background-color: white
+  border-top: 0.1rem solid black;
   padding: 2rem;
   bottom: 0;
   position: sticky;

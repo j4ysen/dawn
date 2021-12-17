@@ -1,7 +1,0 @@
-{
-  "serve": "src",
-  "watchexps": [
-    "src/*.html # # reload",
-    "src/styles/app.css # npm run tailwind # reloadcss"
-  ]
-}

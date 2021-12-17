@@ -235,7 +235,7 @@
 
 @media screen and (max-width: 749px) {
   .footer__list-social.list-social {
-    justify-content: left;
+    justify-content: center;
   }
 }
 
@@ -435,7 +435,7 @@ noscript .localization-selector.link {
 }
 
 .footer-block__details-content {
-  margin-bottom: 4rem;
+  /* margin-bottom: 4rem; */
 }
 
 @media screen and (min-width: 750px) {
@@ -453,7 +453,7 @@ noscript .localization-selector.link {
   }
 
   .footer-block__details-content > li:not(:last-child) {
-    margin-right: 1.5rem;
+    /* margin-right: 1.5rem; */
   }
 }
 

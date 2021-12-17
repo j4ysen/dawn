@@ -150,8 +150,8 @@ class QuantityInput extends HTMLElement {
   onButtonClick(event) {
     event.preventDefault();
     const previousValue = this.input.value;
-
     event.target.name === 'plus' ? this.input.stepUp() : this.input.stepDown();
+    console.log("Clicked",  previousValue, this.input.value, event.target.name,  event.target.getAttribute('name'))
     if (previousValue !== this.input.value) this.input.dispatchEvent(this.changeEvent);
   }
 }
@@ -596,27 +596,27 @@ class VariantSelects extends HTMLElement {
   }
 
   updateMedia() {
-    if (!this.currentVariant) return;
-    if (!this.currentVariant.featured_media) return;
-    const newMedia = document.querySelector(
-      `[data-media-id="${this.dataset.section}-${this.currentVariant.featured_media.id}"]`
-    );
+    // if (!this.currentVariant) return;
+    // if (!this.currentVariant.featured_media) return;
+    // const newMedia = document.querySelector(
+    //   `[data-media-id="${this.dataset.section}-${this.currentVariant.featured_media.id}"]`
+    // );
 
-    if (!newMedia) return;
-    const modalContent = document.querySelector(`#ProductModal-${this.dataset.section} .product-media-modal__content`);
-    const newMediaModal = modalContent.querySelector( `[data-media-id="${this.currentVariant.featured_media.id}"]`);
-    const parent = newMedia.parentElement;
-    if (parent.firstChild == newMedia) return;
-    modalContent.prepend(newMediaModal);
-    parent.prepend(newMedia);
-    this.stickyHeader = this.stickyHeader || document.querySelector('sticky-header');
-    if(this.stickyHeader) {
-      this.stickyHeader.dispatchEvent(new Event('preventHeaderReveal'));
-    }
-    window.setTimeout(() => {
-      parent.scrollLeft = 0;
-      parent.querySelector('li.product__media-item').scrollIntoView({behavior: 'smooth'});
-    });
+    // if (!newMedia) return;
+    // const modalContent = document.querySelector(`#ProductModal-${this.dataset.section} .product-media-modal__content`);
+    // const newMediaModal = modalContent.querySelector( `[data-media-id="${this.currentVariant.featured_media.id}"]`);
+    // const parent = newMedia.parentElement;
+    // if (parent.firstChild == newMedia) return;
+    // modalContent.prepend(newMediaModal);
+    // parent.prepend(newMedia);
+    // this.stickyHeader = this.stickyHeader || document.querySelector('sticky-header');
+    // if(this.stickyHeader) {
+    //   this.stickyHeader.dispatchEvent(new Event('preventHeaderReveal'));
+    // }
+    // window.setTimeout(() => {
+    //   parent.scrollLeft = 0;
+    //   parent.querySelector('li.product__media-item').scrollIntoView({behavior: 'smooth'});
+    // });
   }
 
   updateURL() {

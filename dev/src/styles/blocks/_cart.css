@@ -49,7 +49,7 @@
   }
 
   &--content {
-    @apply flex-1 flex flex-col overflow-y-scroll p-4 sm:p-8;
+    @apply flex-1 flex flex-col overflow-y-scroll sm:p-8;
   }
 
   &--footer {

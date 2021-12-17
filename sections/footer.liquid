@@ -30,10 +30,11 @@
                   </div>
                 {%- when 'link_list' -%}
                   {%- if block.settings.menu != blank and block.settings.heading != blank -%}
-                    <ul class="footer-block__details-content list-unstyled">
+                    <ul class="footer-block__details-content list-unstyled menu-footer">
                       {%- for link in block.settings.menu.links -%}
                         <li>
-                          <a href="{{ link.url }}" class="link link--text list-menu__item list-menu__item--link{% if link.active %} list-menu__item--active{% endif %}">
+                          {% comment %} <a href="{{ link.url }}" class="link link--text list-menu__item list-menu__item--link{% if link.active %} list-menu__item--active{% endif %}"> {% endcomment %}
+                          <a href="{{ link.url }}">
                             {{ link.title }}
                           </a>
                         </li>
@@ -219,7 +220,8 @@
             {%- if section.settings.newsletter_heading != blank -%}
               <p class="is-h3">{{ section.settings.newsletter_heading | escape }}</p>
             {%- endif -%}
-            {%- form 'customer', id: 'ContactFooter', class: 'footer__newsletter newsletter-form' -%}
+            
+            {% comment %} {%- form 'customer', id: 'ContactFooter', class: 'footer__newsletter newsletter-form' -%}
               <input type="hidden" name="contact[tags]" value="newsletter">
               <div class="newsletter-form__field-wrapper">
                 <div class="field">
@@ -259,13 +261,13 @@
               {%- endif -%}
             {%- endform -%}
           </div>
-        {%- endif -%}
+        {%- endif -%} {% endcomment %}
       </div>
     </div>
-  
+  {% endif %}
 </footer>
 
-<footer class="footer" role="contentinfo">
+{% comment %} <footer class="footer" role="contentinfo">
   <div class="footer--grid">
     <div class="footer--block">
       <p class="is-h3">Newsletter</p>
@@ -743,7 +745,7 @@
       </div>
     </div>
   </div>
-</footer>
+</footer> {% endcomment %}
 
 
 {% javascript %}

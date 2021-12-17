@@ -88,7 +88,7 @@ slider-component {
   margin: 0 1.2rem;
 }
 
-.slider-buttons {
+/* .slider-buttons {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -103,10 +103,10 @@ slider-component {
 @media screen and (min-width: 750px) {
   .slider--mobile + .slider-buttons {
     display: none;
-  }
+  } */
 }
 
-.slider-button {
+/* .slider-button {
   color: rgba(var(--color-foreground), 0.75);
   background: transparent;
   border: none;
@@ -125,9 +125,9 @@ slider-component {
 
 .slider-button[disabled] .icon {
   color: rgba(var(--color-foreground), 0.3);
-}
+} */
 
-.slider-button--next .icon {
+/* .slider-button--next .icon {
   margin-right: -0.2rem;
   transform: rotate(-90deg) translateX(0.15rem);
 }
@@ -143,4 +143,4 @@ slider-component {
 
 .slider-button--prev:not([disabled]):hover .icon {
   transform: rotate(90deg) translateX(-0.15rem) scale(1.07);
-}
+} */

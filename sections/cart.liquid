@@ -1,3 +1,4 @@
+<script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
 <div
    class="cart is-inverted"
    style="
@@ -6,7 +7,14 @@
    visibility: visible;
    pointer-events: all;"
    >
-   <div class="cart--inner">
+
+
+
+
+
+
+    
+   <div class="cart--inner" id="main-cart-footer" data-id="{{ section.id }}">
       <div class="cart--header">
          <div class="cart--title">
             Your Cart <span class="cart--count">({{ cart.item_count }})</span>
@@ -26,499 +34,234 @@
          </p>
          {%- endif -%}   
          <div class="cart--items">
-            <div class="cart-item">
-               <figure class="cart-item--photo">
-                  <div class="ar" style="padding-top: 100%;">
-                     <picture><img sizes="(min-width: 768px) 400px, 35vw'" decoding="async" alt="bucket hat by paul smith in navy colour" class="object-cover is-loaded" src="https://cdn.sanity.io/images/4y2xd5ik/production/c21a40d8f835a122320d2cdb8d433289e4588e1f-1100x1100.png?q=80&amp;fit=max&amp;auto=format" srcset="https://cdn.sanity.io/images/4y2xd5ik/production/c21a40d8f835a122320d2cdb8d433289e4588e1f-1100x1100.png?w=400&amp;h=400&amp;q=80&amp;fit=max&amp;auto=format 400w,https://cdn.sanity.io/images/4y2xd5ik/production/c21a40d8f835a122320d2cdb8d433289e4588e1f-1100x1100.png?w=800&amp;h=800&amp;q=80&amp;fit=max&amp;auto=format 800w,https://cdn.sanity.io/images/4y2xd5ik/production/c21a40d8f835a122320d2cdb8d433289e4588e1f-1100x1100.png?w=1000&amp;h=1000&amp;q=80&amp;fit=max&amp;auto=format 1000w"></picture>
-                     <div class="ar--placeholder is-loaded"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAACXBIWXMAAC4jAAAuIwF4pT92AAADUElEQVQ4jWP4TwFgQOP/+/f/H27wH4/mf//+/f377+/fv3/+/P3z588fEANCQ8E/VP0Izf/+/fv958+3bz/evf/4/OWbR0+e373/6PrNO5ev3bp6487tuw+fv3z948dP7Jq/fP128/aDfQdPrFizdcbcFT0T59S39BdXNOUW1xeWt1Q19M6ct/zS1Zvff/yE2w/S/O/fvz9//ty4ebdnwpyoxAKvgAR7tzBTWx89U2dNfRt1PRstQwdtIwdHj9AJU+c+fvoc7nqo5m/fvu/acyQ0OltD30FFy1JR3VROxUhOxVBexVBW2VBaUVdUWl1W2SA5s/j8pWt/QLpB2hn+gTV//Ph59brtbr6xihqWShpm8qpGssoGciogJCmvJSKpzC8iLyqtHhyZdvTEud+//0A1Q2z+8PHTqrVb3XxjlDStlDUs5FQMpRR0JeW1xaTVBMUU+EVkeYVkhCRU/cOSDh09/evXbzTNn1ev3+HhH6+qYwPWbCSjZCAhryMsqcIvLMsnLMsnIicsqeYdFL9n/1F4mDH8+/fv1+8/j5++nL1gtatPrLqenbKGuayygbSivri8rrCkqoCIPL+IvKCYooi0urVz4Mz5Kx49eQ6xnOHnz18PH79Yv/lATnGLjVOotqGjiqaFrJK+hKyWuIyGqJSaqKSKqLSquIyGlKKuppFjVHLR4hWb7j148vPnL4ZnL94sXbUtObve0SPG1MpXz9hFXcdaUc0EFGDKBgqqhopqRopqxorqJkqa5io6NrrmnuEJBSvWbnvz9j3DvQdPJk5bHByVY+sSZmrlq2vkoqZjo6RhrqBmqqRhrqZjpaZrrQ5CNhr6djrGToaWXkHRWYtXbHz95h3Dx4+fT525NHv+ypqGnozsivDoTJ/AOFevcEe3ICf3EDevcA+/KJ/A2KCw5OiEnMy8yrqmnqUrN9y4dffHz5+gAPv2/ceLl69v3rp3+szFffuPbN6ya9WaTUuWrVm8ZPXS5WtXrd64YdP2HbsOHD568sLFq3fuPnjz9t3PX78QUQXOT39///79/fuPz5+/fvjw8d2792/fvnv77v37Dx8/ffr89du3nz9/QTIYPHui5CqIERAAzpV/EbkRoQuRKzELA+LLAgzNJAEAtOpBE5LuL0gAAAAASUVORK5CYII=" alt="" role="presentation"></div>
-                  </div>
-               </figure>
-               <div class="cart-item--details">
-                  <div class="cart-item--header">
-                     <div class="cart-item--title">
-                        <div class="cart-item--variant">L / 47_NAVY</div>
-                        <h2 class="cart-item--name"><a class="cart-item--link" href="/products/m2a-751f-fh638?variant=40279333470373">Paul Smith Navy Bucket Hat</a></h2>
-                     </div>
-                     <div class="price"><span class="price--current">€78</span></div>
-                  </div>
-                  <div class="cart-item--tools">
-                     <div class="cart-item--quantity">
-                        <div class="counter is-small is-inverted">
-                           <button aria-label="Decrease quantity by one" class="counter--down">
-                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-labelledby="minus-40279333470373" class="icon">
-                                 <title id="minus-40279333470373">Minus</title>
-                                 <rect x="20" y="46" width="60" height="8"></rect>
-                              </svg>
-                           </button>
-                           <div class="counter--amount">
-                              <div class="counter--input" style="transform: translateY(0%) translateZ(0px);"><input aria-label="Manually enter quantity" type="number" inputmode="numeric" min="1" value="1"></div>
-                           </div>
-                           <button aria-label="Increase quantity by one" class="counter--up">
-                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-labelledby="plus-40279333470373" class="icon">
-                                 <title id="plus-40279333470373">Plus</title>
-                                 <polygon points="80 46 54 46 54 20 46 20 46 46 20 46 20 54 46 54 46 80 54 80 54 54 80 54 80 46"></polygon>
-                              </svg>
-                           </button>
-                        </div>
-                     </div>
-                     <button class="btn is-text">Remove</button>
-                  </div>
+
+
+            
+            
+            <cart-items class="{% if cart == empty %} is-empty{% endif %}">
+               {% comment %} <div class="title-wrapper-with-link">
+                 <h1 class="title title--primary">{{ 'sections.cart.title' | t }}</h1>
                </div>
+             
+               <div class="cart__warnings">
+                {% if cart == empty %} is-empty
+                <h1 class="cart__empty-text">{{ 'sections.cart.empty' | t }}</h1>
+             
+                {%- if shop.customer_accounts_enabled -%}
+                  <h2 class="cart__login-title">{{ 'sections.cart.login.title' | t }}</h2>
+                  <p class="cart__login-paragraph">
+                    {{ 'sections.cart.login.paragraph_html' | t: link: routes.account_login_url }}
+                  </p>
+                {%- endif -%}    
+                {% endif %}
+
+               </div> {% endcomment %}
+             
+               <form action="{{ routes.cart_url }}" class="cart__contents critical-hidden" method="post" id="cart">
+                 <div class="cart__items" id="main-cart-items" data-id="{{ section.id }}">
+                   <div class="js-contents">
+                     {%- if cart != empty -%}
+                           {%- for item in cart.items -%}
+
+
+                              <div class="cart-item" id="CartItem-{{ item.index | plus: 1 }}">
+                                 <figure class="cart-item--photo">
+                                  {% if item.image %}
+                                    <img class="cart-item__image"
+                                       src="{{ item.image | img_url: '300x' }}"
+                                       alt="{{ item.image.alt | escape }}"
+                                       loading="lazy"
+                                       width="150"
+                                       height="{{ 150 | divided_by: item.image.aspect_ratio | ceil }}"
+                                     >
+                                 {% endif %}
+                                 </figure>
+                                 <div class="cart-item--details">
+                                    <div class="cart-item--header">
+                                       <div class="cart-item--title">
+
+                                          {%- if item.product.has_only_default_variant == false or item.properties.size != 0 or item.selling_plan_allocation != nil -%}
+                                             <dl>
+                                               {%- if item.product.has_only_default_variant == false -%}
+                                                 {%- for option in item.options_with_values -%}
+                                                   <div class="cart-item--variant">
+                                                     {{ option.name }} / {{ option.value }}
+                                                   </div>
+                                                 {%- endfor -%}
+                                               {%- endif -%}
+                       
+                                               {%- for property in item.properties -%}
+                                                 {%- assign property_first_char = property.first | slice: 0 -%}
+                                                 {%- if property.last != blank and property_first_char != '_' -%}
+                                                   <div class="product-option">
+                                                     <dt>{{ property.first }}: </dt>
+                                                     <dd>
+                                                       {%- if property.last contains '/uploads/' -%}
+                                                         <a href="{{ property.last }}" class="link" target="_blank">
+                                                           {{ property.last | split: '/' | last }}
+                                                         </a>
+                                                       {%- else -%}
+                                                         {{ property.last }}
+                                                       {%- endif -%}
+                                                     </dd>
+                                                   </div>
+                                                 {%- endif -%}
+                                               {%- endfor -%}
+                                             </dl>
+                       
+                                             <p class="product-option">{{ item.selling_plan_allocation.selling_plan.name }}</p>
+                                           {%- endif -%}
+
+                                          {% comment %} <div class="cart-item--variant">XL / 79</div> {% endcomment %}
+                                          <h2 class="cart-item--name"><a class="cart-item--link" href="{{ item.url }}">{{ item.product.title | escape }}</a></h2>
+                                       </div>
+
+                                       <div class="price"><span class="price--current">
+                                          {%- if item.original_price != item.final_price -%}
+                                             <div class="cart-item__discounted-prices">
+                                             <span class="visually-hidden">
+                                                {{ 'products.product.price.regular_price' | t }}
+                                             </span>
+                                             <s class="cart-item__old-price product-option">
+                                                {{- item.original_price | money -}}
+                                             </s>
+                                             <span class="visually-hidden">
+                                                {{ 'products.product.price.sale_price' | t }}
+                                             </span>
+                                             <strong class="cart-item__final-price product-option">
+                                                {{ item.final_price | money }}
+                                             </strong>
+                                             </div>
+                                          {%- else -%}
+                                             <div class="product-option">
+                                             {{ item.original_price | money }}
+                                             </div>
+                                          {%- endif -%}
+                                       </span></div>
+                                       <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
+                                          {%- for discount in item.discounts -%}
+                                            <li class="discounts__discount">
+                                              {%- render 'icon-discount' -%}
+                                              {{ discount.title }}
+                                            </li>
+                                          {%- endfor -%}
+                                        </ul>
+                                    </div>
+                                    <div class="cart-item--tools">
+                                       <div class="cart-item--quantity">
+                                          {% comment %} <div class="counter is-small is-inverted">
+                                             <button aria-label="Decrease quantity by one" class="counter--down">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-labelledby="minus-40811840700581" class="icon">
+                                                   <title id="minus-40811840700581">Minus</title>
+                                                   <rect x="20" y="46" width="60" height="8"></rect>
+                                                </svg>
+                                             </button>
+                                             <div class="counter--amount">
+                                                <div class="counter--input" style="transform: translateY(0%) translateZ(0px);"><input aria-label="Manually enter quantity" type="number" inputmode="numeric" min="1" value="1"></div>
+                                             </div>
+                                             <button aria-label="Increase quantity by one" class="counter--up">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-labelledby="plus-40811840700581" class="icon">
+                                                   <title id="plus-40811840700581">Plus</title>
+                                                   <polygon points="80 46 54 46 54 20 46 20 46 46 20 46 20 54 46 54 46 80 54 80 54 54 80 54 80 46"></polygon>
+                                                </svg>
+                                             </button>
+                                          </div>
+                                       </div> {% endcomment %}
+                                       <quantity-input class="quantity cart-item--quantity">
+                                          <button class="quantity__button no-js-hidden" name="minus" type="button">
+                                            <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: item.product.title | escape }}</span>
+                                            {% render 'icon-minus' %}
+                                          </button>
+                                          <input class="quantity__input"
+                                            type="number"
+                                            name="updates[]"
+                                            value="{{ item.quantity }}"
+                                            min="0"
+                                            aria-label="{{ 'products.product.quantity.input_label' | t: product: item.product.title | escape }}"
+                                            id="Quantity-{{ item.index | plus: 1 }}"
+                                            data-index="{{ item.index | plus: 1 }}"
+                                          >
+                                          <button class="quantity__button no-js-hidden" name="plus" type="button">
+                                            <span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: item.product.title | escape }}</span>
+                                            {% render 'icon-plus' %}
+                                          </button>
+                                        </quantity-input>
+                                       <cart-remove-button id="Remove-{{ item.index | plus: 1 }}" data-index="{{ item.index | plus: 1 }}">
+                                          <a href="{{ item.url_to_remove }}" class="btn is-text " aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}">
+                                            Remove
+                                          </a>
+                                        </cart-remove-button>
+                                    </div>
+                                 </div>
+                              </div>
+                            </div>
+
+                             
+                           {%- endfor -%}
+                     {%- endif -%}
+                   </div>
+                 </div>
+             
+                 <p class="visually-hidden" id="cart-live-region-text" aria-live="polite" role="status"></p>
+                 <p class="visually-hidden" id="shopping-cart-line-item-status" aria-live="polite" aria-hidden="true" role="status">{{ 'accessibility.loading' | t }}</p>
+               </form>
+             </cart-items>
+             <div id="cart-errors"></div>
+
+
             </div>
-            <div class="cart-item">
-               <figure class="cart-item--photo">
-                  <div class="ar" style="padding-top: 100%;">
-                     <picture><img sizes="(min-width: 768px) 400px, 35vw'" decoding="async" alt="mini cooper with paul smith stripes car model" class="object-cover is-loaded" src="https://cdn.sanity.io/images/4y2xd5ik/production/b411e515c9afdafa9b9d51f1fad07cac11aa0079-1100x1100.png?q=80&amp;fit=max&amp;auto=format" srcset="https://cdn.sanity.io/images/4y2xd5ik/production/b411e515c9afdafa9b9d51f1fad07cac11aa0079-1100x1100.png?w=400&amp;h=400&amp;q=80&amp;fit=max&amp;auto=format 400w,https://cdn.sanity.io/images/4y2xd5ik/production/b411e515c9afdafa9b9d51f1fad07cac11aa0079-1100x1100.png?w=800&amp;h=800&amp;q=80&amp;fit=max&amp;auto=format 800w,https://cdn.sanity.io/images/4y2xd5ik/production/b411e515c9afdafa9b9d51f1fad07cac11aa0079-1100x1100.png?w=1000&amp;h=1000&amp;q=80&amp;fit=max&amp;auto=format 1000w"></picture>
-                     <div class="ar--placeholder is-loaded"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAACXBIWXMAAC4jAAAuIwF4pT92AAAChUlEQVQ4jdXT708ScRzAcf4vFUEFDkRTM5OtZVs0zZSTO6fy4+yKhtoySkuTH1JqmjodD9yqZQ+zQ+6IA1JLNtO5pW7UuMMA7+57dWrR1tZ0Peqz94Pvk9eD776fr0z8h5H91xiccsRfGACR5/lc7iCTyabT+yyTZqRYlmGZ1HGpFJNKMSybzmSyHMcdeQlns7nNza1gkCQIigzFpZbjZChGhWLkcjQUpJcJmiAiBBFZeku9WQrGV9YYhpUwACCZ/DI3FzDBHXasb9QfmJ5enJl5PTO9+Gzy+Zg/4PPMer2zo/7Ak/EF1z2/CbH1DzxKbGwBIMoEQdjZ2Xs45FZpqi5cbBkYnJqYfDU2/sLjmb9/d9SJ38GtDry7p7dvaHBoytbt0lUaWlF7dOWjAEQZLwi7u3vDw141VH3e0Nh72zfimR9+8NTldDktGNZqsrY0Y50IfhO71dcPozikrze1Y7HV37B7xK/VnS3X1zc2dbWZcUubxQG39sCNjmbj9WtGvONqp+VKE3z5nOFSqboG6boRX13PY4/7sVZXW1CoUZRWKksrylX6Op2uoarCWFttrKtpMFRX1ajLtMoihUqu1HdYHe/XEtKdOV7Y3dnzeccqKusLCjVFcm1hEVQsh5QKqKxEq1GVQ2q9SqVTKDVyhVpeDJWUnbFgzpUPCQCAjOP4ZPLrwsJLq81hgrvMiBVBbAhqR1E72n4UhqB2M2Izoza4zWJG7W7fxKetbQnzPMhmc9vbnyOROEnSFEVTYZoKR8PhaPjdYYdnSoomyQhJ0euJjfT+t6N3FgUgcrxwcMCdMJ7njzcMAGk9AQCC8NdAvvxu/8Qn6/AjHNPTYTHfKfEf8gf+Dmtc2UzIR4B7AAAAAElFTkSuQmCC" alt="" role="presentation"></div>
-                  </div>
-               </figure>
-               <div class="cart-item--details">
-                  <div class="cart-item--header">
-                     <div class="cart-item--title">
-                        <div class="cart-item--variant">Default Title</div>
-                        <h2 class="cart-item--name"><a class="cart-item--link" href="/products/paul-smith-mini-cooper-figure?variant=40313456328869">Paul Smith Mini Cooper Car Model</a></h2>
-                     </div>
-                     <div class="price"><span class="price--current">€52</span></div>
-                  </div>
-                  <div class="cart-item--tools">
-                     <div class="cart-item--quantity">
-                        <div class="counter is-small is-inverted">
-                           <button aria-label="Decrease quantity by one" class="counter--down">
-                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-labelledby="minus-40313456328869" class="icon">
-                                 <title id="minus-40313456328869">Minus</title>
-                                 <rect x="20" y="46" width="60" height="8"></rect>
-                              </svg>
-                           </button>
-                           <div class="counter--amount">
-                              <div class="counter--input" style="transform: translateY(0%) translateZ(0px);"><input aria-label="Manually enter quantity" type="number" inputmode="numeric" min="1" value="1"></div>
-                           </div>
-                           <button aria-label="Increase quantity by one" class="counter--up">
-                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-labelledby="plus-40313456328869" class="icon">
-                                 <title id="plus-40313456328869">Plus</title>
-                                 <polygon points="80 46 54 46 54 20 46 20 46 46 20 46 20 54 46 54 46 80 54 80 54 54 80 54 80 46"></polygon>
-                              </svg>
-                           </button>
-                        </div>
-                     </div>
-                     <button class="btn is-text">Remove</button>
-                  </div>
-               </div>
-               <div class="cart-item">
-                  <figure class="cart-item--photo">
-                     <div class="ar" style="padding-top: 100%;">
-                        <picture><img sizes="(min-width: 768px) 400px, 35vw'" decoding="async" alt="mini cooper with paul smith stripes car model" class="object-cover is-loaded" src="https://cdn.sanity.io/images/4y2xd5ik/production/b411e515c9afdafa9b9d51f1fad07cac11aa0079-1100x1100.png?q=80&amp;fit=max&amp;auto=format" srcset="https://cdn.sanity.io/images/4y2xd5ik/production/b411e515c9afdafa9b9d51f1fad07cac11aa0079-1100x1100.png?w=400&amp;h=400&amp;q=80&amp;fit=max&amp;auto=format 400w,https://cdn.sanity.io/images/4y2xd5ik/production/b411e515c9afdafa9b9d51f1fad07cac11aa0079-1100x1100.png?w=800&amp;h=800&amp;q=80&amp;fit=max&amp;auto=format 800w,https://cdn.sanity.io/images/4y2xd5ik/production/b411e515c9afdafa9b9d51f1fad07cac11aa0079-1100x1100.png?w=1000&amp;h=1000&amp;q=80&amp;fit=max&amp;auto=format 1000w"></picture>
-                        <div class="ar--placeholder is-loaded"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAACXBIWXMAAC4jAAAuIwF4pT92AAAChUlEQVQ4jdXT708ScRzAcf4vFUEFDkRTM5OtZVs0zZSTO6fy4+yKhtoySkuTH1JqmjodD9yqZQ+zQ+6IA1JLNtO5pW7UuMMA7+57dWrR1tZ0Peqz94Pvk9eD776fr0z8h5H91xiccsRfGACR5/lc7iCTyabT+yyTZqRYlmGZ1HGpFJNKMSybzmSyHMcdeQlns7nNza1gkCQIigzFpZbjZChGhWLkcjQUpJcJmiAiBBFZeku9WQrGV9YYhpUwACCZ/DI3FzDBHXasb9QfmJ5enJl5PTO9+Gzy+Zg/4PPMer2zo/7Ak/EF1z2/CbH1DzxKbGwBIMoEQdjZ2Xs45FZpqi5cbBkYnJqYfDU2/sLjmb9/d9SJ38GtDry7p7dvaHBoytbt0lUaWlF7dOWjAEQZLwi7u3vDw141VH3e0Nh72zfimR9+8NTldDktGNZqsrY0Y50IfhO71dcPozikrze1Y7HV37B7xK/VnS3X1zc2dbWZcUubxQG39sCNjmbj9WtGvONqp+VKE3z5nOFSqboG6boRX13PY4/7sVZXW1CoUZRWKksrylX6Op2uoarCWFttrKtpMFRX1ajLtMoihUqu1HdYHe/XEtKdOV7Y3dnzeccqKusLCjVFcm1hEVQsh5QKqKxEq1GVQ2q9SqVTKDVyhVpeDJWUnbFgzpUPCQCAjOP4ZPLrwsJLq81hgrvMiBVBbAhqR1E72n4UhqB2M2Izoza4zWJG7W7fxKetbQnzPMhmc9vbnyOROEnSFEVTYZoKR8PhaPjdYYdnSoomyQhJ0euJjfT+t6N3FgUgcrxwcMCdMJ7njzcMAGk9AQCC8NdAvvxu/8Qn6/AjHNPTYTHfKfEf8gf+Dmtc2UzIR4B7AAAAAElFTkSuQmCC" alt="" role="presentation"></div>
-                     </div>
-                  </figure>
-                  <div class="cart-item--details">
-                     <div class="cart-item--header">
-                        <div class="cart-item--title">
-                           <div class="cart-item--variant">Default Title</div>
-                           <h2 class="cart-item--name"><a class="cart-item--link" href="/products/paul-smith-mini-cooper-figure?variant=40313456328869">Paul Smith Mini Cooper Car Model</a></h2>
-                        </div>
-                        <div class="price"><span class="price--current">€52</span></div>
-                     </div>
-                     <div class="cart-item--tools">
-                        <div class="cart-item--quantity">
-                           <div class="counter is-small is-inverted">
-                              <button aria-label="Decrease quantity by one" class="counter--down">
-                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-labelledby="minus-40313456328869" class="icon">
-                                    <title id="minus-40313456328869">Minus</title>
-                                    <rect x="20" y="46" width="60" height="8"></rect>
-                                 </svg>
-                              </button>
-                              <div class="counter--amount">
-                                 <div class="counter--input" style="transform: translateY(0%) translateZ(0px);"><input aria-label="Manually enter quantity" type="number" inputmode="numeric" min="1" value="1"></div>
-                              </div>
-                              <button aria-label="Increase quantity by one" class="counter--up">
-                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-labelledby="plus-40313456328869" class="icon">
-                                    <title id="plus-40313456328869">Plus</title>
-                                    <polygon points="80 46 54 46 54 20 46 20 46 46 20 46 20 54 46 54 46 80 54 80 54 54 80 54 80 46"></polygon>
-                                 </svg>
-                              </button>
-                           </div>
-                        </div>
-                        <button class="btn is-text">Remove</button>
-                     </div>
-                  </div>
-                  <div class="cart-item">
-                     <figure class="cart-item--photo">
-                        <div class="ar" style="padding-top: 100%;">
-                           <picture><img sizes="(min-width: 768px) 400px, 35vw'" decoding="async" alt="mini cooper with paul smith stripes car model" class="object-cover is-loaded" src="https://cdn.sanity.io/images/4y2xd5ik/production/b411e515c9afdafa9b9d51f1fad07cac11aa0079-1100x1100.png?q=80&amp;fit=max&amp;auto=format" srcset="https://cdn.sanity.io/images/4y2xd5ik/production/b411e515c9afdafa9b9d51f1fad07cac11aa0079-1100x1100.png?w=400&amp;h=400&amp;q=80&amp;fit=max&amp;auto=format 400w,https://cdn.sanity.io/images/4y2xd5ik/production/b411e515c9afdafa9b9d51f1fad07cac11aa0079-1100x1100.png?w=800&amp;h=800&amp;q=80&amp;fit=max&amp;auto=format 800w,https://cdn.sanity.io/images/4y2xd5ik/production/b411e515c9afdafa9b9d51f1fad07cac11aa0079-1100x1100.png?w=1000&amp;h=1000&amp;q=80&amp;fit=max&amp;auto=format 1000w"></picture>
-                           <div class="ar--placeholder is-loaded"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAACXBIWXMAAC4jAAAuIwF4pT92AAAChUlEQVQ4jdXT708ScRzAcf4vFUEFDkRTM5OtZVs0zZSTO6fy4+yKhtoySkuTH1JqmjodD9yqZQ+zQ+6IA1JLNtO5pW7UuMMA7+57dWrR1tZ0Peqz94Pvk9eD776fr0z8h5H91xiccsRfGACR5/lc7iCTyabT+yyTZqRYlmGZ1HGpFJNKMSybzmSyHMcdeQlns7nNza1gkCQIigzFpZbjZChGhWLkcjQUpJcJmiAiBBFZeku9WQrGV9YYhpUwACCZ/DI3FzDBHXasb9QfmJ5enJl5PTO9+Gzy+Zg/4PPMer2zo/7Ak/EF1z2/CbH1DzxKbGwBIMoEQdjZ2Xs45FZpqi5cbBkYnJqYfDU2/sLjmb9/d9SJ38GtDry7p7dvaHBoytbt0lUaWlF7dOWjAEQZLwi7u3vDw141VH3e0Nh72zfimR9+8NTldDktGNZqsrY0Y50IfhO71dcPozikrze1Y7HV37B7xK/VnS3X1zc2dbWZcUubxQG39sCNjmbj9WtGvONqp+VKE3z5nOFSqboG6boRX13PY4/7sVZXW1CoUZRWKksrylX6Op2uoarCWFttrKtpMFRX1ajLtMoihUqu1HdYHe/XEtKdOV7Y3dnzeccqKusLCjVFcm1hEVQsh5QKqKxEq1GVQ2q9SqVTKDVyhVpeDJWUnbFgzpUPCQCAjOP4ZPLrwsJLq81hgrvMiBVBbAhqR1E72n4UhqB2M2Izoza4zWJG7W7fxKetbQnzPMhmc9vbnyOROEnSFEVTYZoKR8PhaPjdYYdnSoomyQhJ0euJjfT+t6N3FgUgcrxwcMCdMJ7njzcMAGk9AQCC8NdAvvxu/8Qn6/AjHNPTYTHfKfEf8gf+Dmtc2UzIR4B7AAAAAElFTkSuQmCC" alt="" role="presentation"></div>
-                        </div>
-                     </figure>
-                     <div class="cart-item--details">
-                        <div class="cart-item--header">
-                           <div class="cart-item--title">
-                              <div class="cart-item--variant">Default Title</div>
-                              <h2 class="cart-item--name"><a class="cart-item--link" href="/products/paul-smith-mini-cooper-figure?variant=40313456328869">Paul Smith Mini Cooper Car Model</a></h2>
-                           </div>
-                           <div class="price"><span class="price--current">€52</span></div>
-                        </div>
-                        <div class="cart-item--tools">
-                           <div class="cart-item--quantity">
-                              <div class="counter is-small is-inverted">
-                                 <button aria-label="Decrease quantity by one" class="counter--down">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-labelledby="minus-40313456328869" class="icon">
-                                       <title id="minus-40313456328869">Minus</title>
-                                       <rect x="20" y="46" width="60" height="8"></rect>
-                                    </svg>
-                                 </button>
-                                 <div class="counter--amount">
-                                    <div class="counter--input" style="transform: translateY(0%) translateZ(0px);"><input aria-label="Manually enter quantity" type="number" inputmode="numeric" min="1" value="1"></div>
-                                 </div>
-                                 <button aria-label="Increase quantity by one" class="counter--up">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-labelledby="plus-40313456328869" class="icon">
-                                       <title id="plus-40313456328869">Plus</title>
-                                       <polygon points="80 46 54 46 54 20 46 20 46 46 20 46 20 54 46 54 46 80 54 80 54 54 80 54 80 46"></polygon>
-                                    </svg>
-                                 </button>
-                              </div>
-                           </div>
-                           <button class="btn is-text">Remove</button>
-                        </div>
-                     </div>
-                     <div class="cart-item">
-                        <figure class="cart-item--photo">
-                           <div class="ar" style="padding-top: 100%;">
-                              <picture><img sizes="(min-width: 768px) 400px, 35vw'" decoding="async" alt="mini cooper with paul smith stripes car model" class="object-cover is-loaded" src="https://cdn.sanity.io/images/4y2xd5ik/production/b411e515c9afdafa9b9d51f1fad07cac11aa0079-1100x1100.png?q=80&amp;fit=max&amp;auto=format" srcset="https://cdn.sanity.io/images/4y2xd5ik/production/b411e515c9afdafa9b9d51f1fad07cac11aa0079-1100x1100.png?w=400&amp;h=400&amp;q=80&amp;fit=max&amp;auto=format 400w,https://cdn.sanity.io/images/4y2xd5ik/production/b411e515c9afdafa9b9d51f1fad07cac11aa0079-1100x1100.png?w=800&amp;h=800&amp;q=80&amp;fit=max&amp;auto=format 800w,https://cdn.sanity.io/images/4y2xd5ik/production/b411e515c9afdafa9b9d51f1fad07cac11aa0079-1100x1100.png?w=1000&amp;h=1000&amp;q=80&amp;fit=max&amp;auto=format 1000w"></picture>
-                              <div class="ar--placeholder is-loaded"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAACXBIWXMAAC4jAAAuIwF4pT92AAAChUlEQVQ4jdXT708ScRzAcf4vFUEFDkRTM5OtZVs0zZSTO6fy4+yKhtoySkuTH1JqmjodD9yqZQ+zQ+6IA1JLNtO5pW7UuMMA7+57dWrR1tZ0Peqz94Pvk9eD776fr0z8h5H91xiccsRfGACR5/lc7iCTyabT+yyTZqRYlmGZ1HGpFJNKMSybzmSyHMcdeQlns7nNza1gkCQIigzFpZbjZChGhWLkcjQUpJcJmiAiBBFZeku9WQrGV9YYhpUwACCZ/DI3FzDBHXasb9QfmJ5enJl5PTO9+Gzy+Zg/4PPMer2zo/7Ak/EF1z2/CbH1DzxKbGwBIMoEQdjZ2Xs45FZpqi5cbBkYnJqYfDU2/sLjmb9/d9SJ38GtDry7p7dvaHBoytbt0lUaWlF7dOWjAEQZLwi7u3vDw141VH3e0Nh72zfimR9+8NTldDktGNZqsrY0Y50IfhO71dcPozikrze1Y7HV37B7xK/VnS3X1zc2dbWZcUubxQG39sCNjmbj9WtGvONqp+VKE3z5nOFSqboG6boRX13PY4/7sVZXW1CoUZRWKksrylX6Op2uoarCWFttrKtpMFRX1ajLtMoihUqu1HdYHe/XEtKdOV7Y3dnzeccqKusLCjVFcm1hEVQsh5QKqKxEq1GVQ2q9SqVTKDVyhVpeDJWUnbFgzpUPCQCAjOP4ZPLrwsJLq81hgrvMiBVBbAhqR1E72n4UhqB2M2Izoza4zWJG7W7fxKetbQnzPMhmc9vbnyOROEnSFEVTYZoKR8PhaPjdYYdnSoomyQhJ0euJjfT+t6N3FgUgcrxwcMCdMJ7njzcMAGk9AQCC8NdAvvxu/8Qn6/AjHNPTYTHfKfEf8gf+Dmtc2UzIR4B7AAAAAElFTkSuQmCC" alt="" role="presentation"></div>
-                           </div>
-                        </figure>
-                        <div class="cart-item--details">
-                           <div class="cart-item--header">
-                              <div class="cart-item--title">
-                                 <div class="cart-item--variant">Default Title</div>
-                                 <h2 class="cart-item--name"><a class="cart-item--link" href="/products/paul-smith-mini-cooper-figure?variant=40313456328869">Paul Smith Mini Cooper Car Model</a></h2>
-                              </div>
-                              <div class="price"><span class="price--current">€52</span></div>
-                           </div>
-                           <div class="cart-item--tools">
-                              <div class="cart-item--quantity">
-                                 <div class="counter is-small is-inverted">
-                                    <button aria-label="Decrease quantity by one" class="counter--down">
-                                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-labelledby="minus-40313456328869" class="icon">
-                                          <title id="minus-40313456328869">Minus</title>
-                                          <rect x="20" y="46" width="60" height="8"></rect>
-                                       </svg>
-                                    </button>
-                                    <div class="counter--amount">
-                                       <div class="counter--input" style="transform: translateY(0%) translateZ(0px);"><input aria-label="Manually enter quantity" type="number" inputmode="numeric" min="1" value="1"></div>
-                                    </div>
-                                    <button aria-label="Increase quantity by one" class="counter--up">
-                                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-labelledby="plus-40313456328869" class="icon">
-                                          <title id="plus-40313456328869">Plus</title>
-                                          <polygon points="80 46 54 46 54 20 46 20 46 46 20 46 20 54 46 54 46 80 54 80 54 54 80 54 80 46"></polygon>
-                                       </svg>
-                                    </button>
-                                 </div>
-                              </div>
-                              <button class="btn is-text">Remove</button>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="cart--items">
-                     {%- for item in cart.items -%}
-                     <tr class="cart-item" id="CartItem-{{ item.index | plus: 1 }}">
-                        <td class="cart-item__media">
-                           {% if item.image %}
-                           {% comment %} Leave empty space due to a:empty CSS display: none rule {% endcomment %}
-                           <a href="{{ item.url }}" class="cart-item__link" aria-hidden="true" tabindex="-1"> </a>
-                           <img class="cart-item__image"
-                              src="{{ item.image | img_url: '300x' }}"
-                              alt="{{ item.image.alt | escape }}"
-                              loading="lazy"
-                              width="150"
-                              height="{{ 150 | divided_by: item.image.aspect_ratio | ceil }}"
-                              >
-                           {% endif %}
-                        </td>
-                        <td class="cart-item__details">
-                           {%- if section.settings.show_vendor -%}
-                           <p class="caption-with-letter-spacing light">{{ item.product.vendor }}</p>
-                           {%- endif -%}
-                           <a href="{{ item.url }}" class="cart-item__name h4 break">{{ item.product.title | escape }}</a>
-                           {%- if item.original_price != item.final_price -%}
-                           <div class="cart-item__discounted-prices">
-                              <span class="visually-hidden">
-                              {{ 'products.product.price.regular_price' | t }}
-                              </span>
-                              <s class="cart-item__old-price product-option">
-                              {{- item.original_price | money -}}
-                              </s>
-                              <span class="visually-hidden">
-                              {{ 'products.product.price.sale_price' | t }}
-                              </span>
-                              <strong class="cart-item__final-price product-option">
-                              {{ item.final_price | money }}
-                              </strong>
-                           </div>
-                           {%- else -%}
-                           <div class="product-option">
-                              {{ item.original_price | money }}
-                           </div>
-                           {%- endif -%}
-                           {%- if item.product.has_only_default_variant == false or item.properties.size != 0 or item.selling_plan_allocation != nil -%}
-                           <dl>
-                              {%- if item.product.has_only_default_variant == false -%}
-                              {%- for option in item.options_with_values -%}
-                              <div class="product-option">
-                                 <dt>{{ option.name }}: </dt>
-                                 <dd>{{ option.value }}</dd>
-                              </div>
-                              {%- endfor -%}
-                              {%- endif -%}
-                              {%- for property in item.properties -%}
-                              {%- assign property_first_char = property.first | slice: 0 -%}
-                              {%- if property.last != blank and property_first_char != '_' -%}
-                              <div class="product-option">
-                                 <dt>{{ property.first }}: </dt>
-                                 <dd>
-                                    {%- if property.last contains '/uploads/' -%}
-                                    <a href="{{ property.last }}" class="link" target="_blank">
-                                    {{ property.last | split: '/' | last }}
-                                    </a>
-                                    {%- else -%}
-                                    {{ property.last }}
-                                    {%- endif -%}
-                                 </dd>
-                              </div>
-                              {%- endif -%}
-                              {%- endfor -%}
-                           </dl>
-                           <p class="product-option">{{ item.selling_plan_allocation.selling_plan.name }}</p>
-                           {%- endif -%}
-                           <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
-                              {%- for discount in item.discounts -%}
-                              <li class="discounts__discount">
-                                 {%- render 'icon-discount' -%}
-                                 {{ discount.title }}
-                              </li>
-                              {%- endfor -%}
-                           </ul>
-                        </td>
-                        <td class="cart-item__totals right medium-hide large-up-hide">
-                           <div class="loading-overlay hidden">
-                              <div class="loading-overlay__spinner">
-                                 <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-                                    <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-                                 </svg>
-                              </div>
-                           </div>
-                           <div class="cart-item__price-wrapper">
-                              {%- if item.original_line_price != item.final_line_price -%}
-                              <dl class="cart-item__discounted-prices">
-                                 <dt class="visually-hidden">
-                                    {{ 'products.product.price.regular_price' | t }}
-                                 </dt>
-                                 <dd>
-                                    <s class="cart-item__old-price price price--end">
-                                    {{ item.original_line_price | money }}
-                                    </s>
-                                 </dd>
-                                 <dt class="visually-hidden">
-                                    {{ 'products.product.price.sale_price' | t }}
-                                 </dt>
-                                 <dd class="price price--end">
-                                    {{ item.final_line_price | money }}
-                                 </dd>
-                              </dl>
-                              {%- else -%}
-                              <span class="price price--end">
-                              {{ item.original_line_price | money }}
-                              </span>
-                              {%- endif -%}
-                              {%- if item.variant.available and item.unit_price_measurement -%}
-                              <div class="unit-price caption">
-                                 <span class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</span>
-                                 {{ item.variant.unit_price | money }}
-                                 <span aria-hidden="true">/</span>
-                                 <span class="visually-hidden">&nbsp;{{ 'accessibility.unit_price_separator' | t }}&nbsp;</span>
-                                 {%- if item.variant.unit_price_measurement.reference_value != 1 -%}
-                                 {{- item.variant.unit_price_measurement.reference_value -}}
-                                 {%- endif -%}
-                                 {{ item.variant.unit_price_measurement.reference_unit }}
-                              </div>
-                              {%- endif -%}
-                           </div>
-                        </td>
-                        <td class="cart-item__quantity">
-                           <div class="cart-item__quantity-wrapper">
-                              <label class="visually-hidden" for="Quantity-{{ item.index | plus: 1 }}">
-                              {{ 'products.product.quantity.label' | t }}
-                              </label>
-                              <quantity-input class="quantity">
-                                 <button class="quantity__button no-js-hidden" name="minus" type="button">
-                                 <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: item.product.title | escape }}</span>
-                                 {% render 'icon-minus' %}
-                                 </button>
-                                 <input class="quantity__input"
-                                    type="number"
-                                    name="updates[]"
-                                    value="{{ item.quantity }}"
-                                    min="0"
-                                    aria-label="{{ 'products.product.quantity.input_label' | t: product: item.product.title | escape }}"
-                                    id="Quantity-{{ item.index | plus: 1 }}"
-                                    data-index="{{ item.index | plus: 1 }}"
-                                    >
-                                 <button class="quantity__button no-js-hidden" name="plus" type="button">
-                                 <span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: item.product.title | escape }}</span>
-                                 {% render 'icon-plus' %}
-                                 </button>
-                              </quantity-input>
-                              <cart-remove-button id="Remove-{{ item.index | plus: 1 }}" data-index="{{ item.index | plus: 1 }}">
-                                 <a href="{{ item.url_to_remove }}" class="button button--tertiary" aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}">
-                                 {% render 'icon-remove' %}
-                                 </a>
-                              </cart-remove-button>
-                           </div>
-                           <div class="cart-item__error" id="Line-item-error-{{ item.index | plus: 1 }}" role="alert">
-                              <small class="cart-item__error-text"></small>
-                              <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-error" viewBox="0 0 13 13">
-                                 <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
-                                 <circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7"/>
-                                 <path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white"/>
-                                 <path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7">
-                              </svg>
-                           </div>
-                        </td>
-                        <td class="cart-item__totals right small-hide">
-                           <div class="loading-overlay hidden">
-                              <div class="loading-overlay__spinner">
-                                 <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-                                    <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-                                 </svg>
-                              </div>
-                           </div>
-                           <div class="cart-item__price-wrapper">
-                              {%- if item.original_line_price != item.final_line_price -%}
-                              <dl class="cart-item__discounted-prices">
-                                 <dt class="visually-hidden">
-                                    {{ 'products.product.price.regular_price' | t }}
-                                 </dt>
-                                 <dd>
-                                    <s class="cart-item__old-price price price--end">
-                                    {{ item.original_line_price | money }}
-                                    </s>
-                                 </dd>
-                                 <dt class="visually-hidden">
-                                    {{ 'products.product.price.sale_price' | t }}
-                                 </dt>
-                                 <dd class="price price--end">
-                                    {{ item.final_line_price | money }}
-                                 </dd>
-                              </dl>
-                              {%- else -%}
-                              <span class="price price--end">
-                              {{ item.original_line_price | money }}
-                              </span>
-                              {%- endif -%}
-                              {%- if item.variant.available and item.unit_price_measurement -%}
-                              <div class="unit-price caption">
-                                 <span class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</span>
-                                 {{ item.variant.unit_price | money }}
-                                 <span aria-hidden="true">/</span>
-                                 <span class="visually-hidden">&nbsp;{{ 'accessibility.unit_price_separator' | t }}&nbsp;</span>
-                                 {%- if item.variant.unit_price_measurement.reference_value != 1 -%}
-                                 {{- item.variant.unit_price_measurement.reference_value -}}
-                                 {%- endif -%}
-                                 {{ item.variant.unit_price_measurement.reference_unit }}
-                              </div>
-                              {%- endif -%}
-                           </div>
-                        </td>
-                     </tr>
-                     {%- endfor -%}
-                     <div class="cart-item">
-                        <figure class="cart-item--photo">
-                           <div class="ar" style="padding-top: 100%;">
-                              <picture><img sizes="(min-width: 768px) 400px, 35vw'" decoding="async" alt="bucket hat by paul smith in navy colour" class="object-cover is-loaded" src="https://cdn.sanity.io/images/4y2xd5ik/production/c21a40d8f835a122320d2cdb8d433289e4588e1f-1100x1100.png?q=80&amp;fit=max&amp;auto=format" srcset="https://cdn.sanity.io/images/4y2xd5ik/production/c21a40d8f835a122320d2cdb8d433289e4588e1f-1100x1100.png?w=400&amp;h=400&amp;q=80&amp;fit=max&amp;auto=format 400w,https://cdn.sanity.io/images/4y2xd5ik/production/c21a40d8f835a122320d2cdb8d433289e4588e1f-1100x1100.png?w=800&amp;h=800&amp;q=80&amp;fit=max&amp;auto=format 800w,https://cdn.sanity.io/images/4y2xd5ik/production/c21a40d8f835a122320d2cdb8d433289e4588e1f-1100x1100.png?w=1000&amp;h=1000&amp;q=80&amp;fit=max&amp;auto=format 1000w"></picture>
-                              <div class="ar--placeholder is-loaded"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAACXBIWXMAAC4jAAAuIwF4pT92AAADUElEQVQ4jWP4TwFgQOP/+/f/H27wH4/mf//+/f377+/fv3/+/P3z588fEANCQ8E/VP0Izf/+/fv958+3bz/evf/4/OWbR0+e373/6PrNO5ev3bp6487tuw+fv3z948dP7Jq/fP128/aDfQdPrFizdcbcFT0T59S39BdXNOUW1xeWt1Q19M6ct/zS1Zvff/yE2w/S/O/fvz9//ty4ebdnwpyoxAKvgAR7tzBTWx89U2dNfRt1PRstQwdtIwdHj9AJU+c+fvoc7nqo5m/fvu/acyQ0OltD30FFy1JR3VROxUhOxVBexVBW2VBaUVdUWl1W2SA5s/j8pWt/QLpB2hn+gTV//Ph59brtbr6xihqWShpm8qpGssoGciogJCmvJSKpzC8iLyqtHhyZdvTEud+//0A1Q2z+8PHTqrVb3XxjlDStlDUs5FQMpRR0JeW1xaTVBMUU+EVkeYVkhCRU/cOSDh09/evXbzTNn1ev3+HhH6+qYwPWbCSjZCAhryMsqcIvLMsnLMsnIicsqeYdFL9n/1F4mDH8+/fv1+8/j5++nL1gtatPrLqenbKGuayygbSivri8rrCkqoCIPL+IvKCYooi0urVz4Mz5Kx49eQ6xnOHnz18PH79Yv/lATnGLjVOotqGjiqaFrJK+hKyWuIyGqJSaqKSKqLSquIyGlKKuppFjVHLR4hWb7j148vPnL4ZnL94sXbUtObve0SPG1MpXz9hFXcdaUc0EFGDKBgqqhopqRopqxorqJkqa5io6NrrmnuEJBSvWbnvz9j3DvQdPJk5bHByVY+sSZmrlq2vkoqZjo6RhrqBmqqRhrqZjpaZrrQ5CNhr6djrGToaWXkHRWYtXbHz95h3Dx4+fT525NHv+ypqGnozsivDoTJ/AOFevcEe3ICf3EDevcA+/KJ/A2KCw5OiEnMy8yrqmnqUrN9y4dffHz5+gAPv2/ceLl69v3rp3+szFffuPbN6ya9WaTUuWrVm8ZPXS5WtXrd64YdP2HbsOHD568sLFq3fuPnjz9t3PX78QUQXOT39///79/fuPz5+/fvjw8d2792/fvnv77v37Dx8/ffr89du3nz9/QTIYPHui5CqIERAAzpV/EbkRoQuRKzELA+LLAgzNJAEAtOpBE5LuL0gAAAAASUVORK5CYII=" alt="" role="presentation"></div>
-                           </div>
-                        </figure>
-                        <div class="cart-item--details">
-                           <div class="cart-item--header">
-                              <div class="cart-item--title">
-                                 <div class="cart-item--variant">L / 47_NAVY</div>
-                                 <h2 class="cart-item--name"><a class="cart-item--link" href="/products/m2a-751f-fh638?variant=40279333470373">Paul Smith Navy Bucket Hat</a></h2>
-                              </div>
-                              <div class="price"><span class="price--current">€78</span></div>
-                           </div>
-                           <div class="cart-item--tools">
-                              <div class="cart-item--quantity">
-                                 <div class="counter is-small is-inverted">
-                                    <button aria-label="Decrease quantity by one" class="counter--down">
-                                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-labelledby="minus-40279333470373" class="icon">
-                                          <title id="minus-40279333470373">Minus</title>
-                                          <rect x="20" y="46" width="60" height="8"></rect>
-                                       </svg>
-                                    </button>
-                                    <div class="counter--amount">
-                                       <div class="counter--input" style="transform: translateY(0%) translateZ(0px);"><input aria-label="Manually enter quantity" type="number" inputmode="numeric" min="1" value="1"></div>
-                                    </div>
-                                    <button aria-label="Increase quantity by one" class="counter--up">
-                                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-labelledby="plus-40279333470373" class="icon">
-                                          <title id="plus-40279333470373">Plus</title>
-                                          <polygon points="80 46 54 46 54 20 46 20 46 46 20 46 20 54 46 54 46 80 54 80 54 54 80 54 80 46"></polygon>
-                                       </svg>
-                                    </button>
-                                 </div>
-                              </div>
-                              <button class="btn is-text">Remove</button>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="cart-item">
-                        <figure class="cart-item--photo">
-                           <div class="ar" style="padding-top: 100%;">
-                              <picture><img sizes="(min-width: 768px) 400px, 35vw'" decoding="async" alt="mini cooper with paul smith stripes car model" class="object-cover is-loaded" src="https://cdn.sanity.io/images/4y2xd5ik/production/b411e515c9afdafa9b9d51f1fad07cac11aa0079-1100x1100.png?q=80&amp;fit=max&amp;auto=format" srcset="https://cdn.sanity.io/images/4y2xd5ik/production/b411e515c9afdafa9b9d51f1fad07cac11aa0079-1100x1100.png?w=400&amp;h=400&amp;q=80&amp;fit=max&amp;auto=format 400w,https://cdn.sanity.io/images/4y2xd5ik/production/b411e515c9afdafa9b9d51f1fad07cac11aa0079-1100x1100.png?w=800&amp;h=800&amp;q=80&amp;fit=max&amp;auto=format 800w,https://cdn.sanity.io/images/4y2xd5ik/production/b411e515c9afdafa9b9d51f1fad07cac11aa0079-1100x1100.png?w=1000&amp;h=1000&amp;q=80&amp;fit=max&amp;auto=format 1000w"></picture>
-                              <div class="ar--placeholder is-loaded"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAACXBIWXMAAC4jAAAuIwF4pT92AAAChUlEQVQ4jdXT708ScRzAcf4vFUEFDkRTM5OtZVs0zZSTO6fy4+yKhtoySkuTH1JqmjodD9yqZQ+zQ+6IA1JLNtO5pW7UuMMA7+57dWrR1tZ0Peqz94Pvk9eD776fr0z8h5H91xiccsRfGACR5/lc7iCTyabT+yyTZqRYlmGZ1HGpFJNKMSybzmSyHMcdeQlns7nNza1gkCQIigzFpZbjZChGhWLkcjQUpJcJmiAiBBFZeku9WQrGV9YYhpUwACCZ/DI3FzDBHXasb9QfmJ5enJl5PTO9+Gzy+Zg/4PPMer2zo/7Ak/EF1z2/CbH1DzxKbGwBIMoEQdjZ2Xs45FZpqi5cbBkYnJqYfDU2/sLjmb9/d9SJ38GtDry7p7dvaHBoytbt0lUaWlF7dOWjAEQZLwi7u3vDw141VH3e0Nh72zfimR9+8NTldDktGNZqsrY0Y50IfhO71dcPozikrze1Y7HV37B7xK/VnS3X1zc2dbWZcUubxQG39sCNjmbj9WtGvONqp+VKE3z5nOFSqboG6boRX13PY4/7sVZXW1CoUZRWKksrylX6Op2uoarCWFttrKtpMFRX1ajLtMoihUqu1HdYHe/XEtKdOV7Y3dnzeccqKusLCjVFcm1hEVQsh5QKqKxEq1GVQ2q9SqVTKDVyhVpeDJWUnbFgzpUPCQCAjOP4ZPLrwsJLq81hgrvMiBVBbAhqR1E72n4UhqB2M2Izoza4zWJG7W7fxKetbQnzPMhmc9vbnyOROEnSFEVTYZoKR8PhaPjdYYdnSoomyQhJ0euJjfT+t6N3FgUgcrxwcMCdMJ7njzcMAGk9AQCC8NdAvvxu/8Qn6/AjHNPTYTHfKfEf8gf+Dmtc2UzIR4B7AAAAAElFTkSuQmCC" alt="" role="presentation"></div>
-                           </div>
-                        </figure>
-                        <div class="cart-item--details">
-                           <div class="cart-item--header">
-                              <div class="cart-item--title">
-                                 <div class="cart-item--variant">Default Title</div>
-                                 <h2 class="cart-item--name"><a class="cart-item--link" href="/products/paul-smith-mini-cooper-figure?variant=40313456328869">Paul Smith Mini Cooper Car Model</a></h2>
-                              </div>
-                              <div class="price"><span class="price--current">€52</span></div>
-                           </div>
-                           <div class="cart-item--tools">
-                              <div class="cart-item--quantity">
-                                 <div class="counter is-small is-inverted">
-                                    <button aria-label="Decrease quantity by one" class="counter--down">
-                                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-labelledby="minus-40313456328869" class="icon">
-                                          <title id="minus-40313456328869">Minus</title>
-                                          <rect x="20" y="46" width="60" height="8"></rect>
-                                       </svg>
-                                    </button>
-                                    <div class="counter--amount">
-                                       <div class="counter--input" style="transform: translateY(0%) translateZ(0px);"><input aria-label="Manually enter quantity" type="number" inputmode="numeric" min="1" value="1"></div>
-                                    </div>
-                                    <button aria-label="Increase quantity by one" class="counter--up">
-                                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-labelledby="plus-40313456328869" class="icon">
-                                          <title id="plus-40313456328869">Plus</title>
-                                          <polygon points="80 46 54 46 54 20 46 20 46 46 20 46 20 54 46 54 46 80 54 80 54 54 80 54 80 46"></polygon>
-                                       </svg>
-                                    </button>
-                                 </div>
-                              </div>
-                              <button class="btn is-text">Remove</button>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="cart--footer">
-                  <div class="cart--subtotal"><span>Subtotal</span><span>€78</span></div>
-                  <a class="btn is-primary is-inverted is-large is-block" href="https://kourossonline.myshopify.com/57523929253/checkouts/6340db21eca484544ce0ad49277f690f?key=e76737fa5bb06a7b3d4cb3eba072516c">Checkout</a>
-                  <p class="cart--message">Get a 50 Euros voucher to spend for order over 200 Euros with code LAUNCH50</p>
-               </div>
-            </div>
-         </div>
       </div>
+
+
+      {%- if cart != empty -%}
+         <div class="cart--footer">
+            <div class="cart--subtotal"><span>Subtotal</span><span>{{ cart.total_price | money_with_currency }}</span></div>
+            <button type="submit" id="checkout" class="btn is-primary is-large is-block" name="checkout"{% if cart == empty %} disabled{% endif %} form="cart">
+              {{ 'sections.cart.checkout' | t }}
+            </button>
+            <p class="cart--message">Get a 50 Euros voucher to spend for order over 200 Euros with code LAUNCH50</p>
+         </div>
+      {%- endif -%}
+
+
    </div>
 </div>
 <div class="cart--backdrop"></div>
+
+
+
+<script>
+  class CartNote extends HTMLElement {
+    constructor() {
+      super();
+
+      this.addEventListener('change', debounce((event) => {
+        const body = JSON.stringify({ note: event.target.value });
+        fetch(`${routes.cart_update_url}`, {...fetchConfig(), ...{ body }});
+      }, 300))
+    }
+  }
+
+  customElements.define('cart-note', CartNote);
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    function isIE() {
+      const ua = window.navigator.userAgent;
+      const msie = ua.indexOf('MSIE ');
+      const trident = ua.indexOf('Trident/');
+
+      return (msie > 0 || trident > 0);
+    }
+
+    if (!isIE()) return;
+    const cartSubmitInput = document.createElement('input');
+    cartSubmitInput.setAttribute('name', 'checkout');
+    cartSubmitInput.setAttribute('type', 'hidden');
+    document.querySelector('#cart').appendChild(cartSubmitInput);
+    document.querySelector('#checkout').addEventListener('click', function(event) {
+      document.querySelector('#cart').submit();
+    });
+  });
+</script>

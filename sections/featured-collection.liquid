@@ -18,133 +18,54 @@
 -%}
 
 
-
-
-{% comment %} <div class="collection page-width{% if section.settings.swipe_on_mobile == true and section.settings.collection.all_products_count > 2 and section.settings.products_to_show > 2 %} page-width-desktop{% endif %}">
-  <div class="title-wrapper-with-link{% if section.settings.title == blank %} title-wrapper-with-link--no-heading{% endif %}{% if section.settings.collection.all_products_count > 2 and section.settings.swipe_on_mobile and section.settings.products_to_show > 2 %} title-wrapper--self-padded-tablet-down{% endif %}">
-    <h2 class="title{% if section.settings.title == blank %} title--no-heading{% endif %}">{{ section.settings.title | escape }}</h2>
-
-    {%- if section.settings.show_view_all and section.settings.swipe_on_mobile and more_in_collection -%}
-      <a href="{{ section.settings.collection.url }}" class="link underlined-link large-up-hide">{{ 'sections.featured_collection.view_all' | t }}</a>
-    {%- endif -%}
-  </div>
-
-  <slider-component class="slider-mobile-gutter">
-    <ul class="grid grid--2-col product-grid{% if products_to_display == 4 or section.settings.collection == blank %} grid--2-col-tablet grid--4-col-desktop{% else %} grid--3-col-tablet{% endif %}{% if products_to_display > 5 %} grid--one-third-max grid--4-col-desktop grid--quarter-max{% endif %}{% if section.settings.collection.all_products_count > 2 and section.settings.swipe_on_mobile and section.settings.products_to_show > 2 %} slider slider--tablet grid--peek{% endif %}{% if section.settings.show_view_all == false or section.settings.collection.products.size < section.settings.products_to_show %} negative-margin{% endif %}{% if section.settings.show_view_all and section.settings.collection.products.size > section.settings.products_to_show %} negative-margin--small{% endif %}" role="list">
-      {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
-        <li class="grid__item{% if section.settings.collection.all_products_count > 2 and section.settings.swipe_on_mobile and section.settings.products_to_show > 2 %} slider__slide{% endif %}">
-          {% render 'product-card',
-            product_card_product: product,
-            media_size: section.settings.image_ratio,
-            show_secondary_image: section.settings.show_secondary_image,
-            add_image_padding: section.settings.add_image_padding,
-            show_vendor: section.settings.show_vendor,
-            show_image_outline: section.settings.show_image_outline,
-            show_rating: section.settings.show_rating
-          %}
-        </li>
-      {%- else -%}
-        {%- for i in (1..4) -%}
-          <li class="grid__item">
-            {% render 'product-card-placeholder' %}
-          </li>
-        {%- endfor -%}
-      {%- endfor -%}
-    </ul>
-    {%- if section.settings.collection.all_products_count > 2 and section.settings.swipe_on_mobile and section.settings.products_to_show > 2 -%}
-      <div class="slider-buttons no-js-hidden{% if section.settings.collection.all_products_count < 4 %} medium-hide{% endif %}{% if section.settings.collection.all_products_count < 3 %} small-hide{% endif %}">
-        <button type="button" class="slider-button slider-button--prev" name="previous" aria-label="{{ 'accessibility.previous_slide' | t }}">{% render 'icon-caret' %}</button>
-        <div class="slider-counter caption">
-          <span class="slider-counter--current">1</span>
-          <span aria-hidden="true"> / </span>
-          <span class="visually-hidden">{{ 'accessibility.of' | t }}</span>
-          <span class="slider-counter--total">{{ products_to_display }}</span>
+<div class="marquee-section ">
+  <div  class="marquee">
+    <div class="featured">
+        <div class="marquee--item slide">
+          <span class="marquee--text">Featured Products</span>
         </div>
-        <button type="button" class="slider-button slider-button--next" name="next" aria-label="{{ 'accessibility.next_slide' | t }}">{% render 'icon-caret' %}</button>
-      </div>
-    {%- endif -%}
-  </slider-component>
-
-  {%- if section.settings.show_view_all and more_in_collection -%}
-    <div class="center{% if section.settings.swipe_on_mobile %} small-hide medium-hide{% endif %}">
-      <a href="{{ section.settings.collection.url }}"
-        class="button"
-        aria-label="{{ 'sections.featured_collection.view_all_label' | t: collection_name: section.settings.collection.title }}"
-      >
-        {{ 'sections.featured_collection.view_all' | t }}
-      </a>
-    </div>
-  {%- endif -%}
-</div> {% endcomment %}
-
-<div class="marquee-section">
-  <div data-marqy="" data-direction="right" class="marquee">
-    <div data-marqy-inner="">
-      <div data-marqy-content="" style="animation-duration: 18.3154s">
-        <div data-marqy-item="">
-          <div class="marquee--item">
-            <span class="marquee--text">Featured Products</span>
-          </div>
+        <div class="marquee--item slide">
+          <span class="marquee--text">Featured Products</span>
         </div>
-        <div aria-hidden="true" data-marqy-item="">
-          <div class="marquee--item">
-            <span class="marquee--text">Featured Products</span>
-          </div>
+        <div class="marquee--item slide">
+          <span class="marquee--text">Featured Products</span>
         </div>
-        <div aria-hidden="true" data-marqy-item="">
-          <div class="marquee--item">
-            <span class="marquee--text">Featured Products</span>
-          </div>
+        <div class="marquee--item slide">
+          <span class="marquee--text">Featured Products</span>
         </div>
-        <div aria-hidden="true" data-marqy-item="">
-          <div class="marquee--item">
-            <span class="marquee--text">Featured Products</span>
-          </div>
+        <div class="marquee--item slide">
+          <span class="marquee--text">Featured Products</span>
         </div>
-        <div aria-hidden="true" data-marqy-item="">
-          <div class="marquee--item">
-            <span class="marquee--text">Featured Products</span>
-          </div>
+        <div class="marquee--item slide">
+          <span class="marquee--text">Featured Products</span>
         </div>
-      </div>
-      <div data-marqy-content="" style="animation-duration: 18.3154s">
-        <div aria-hidden="true" data-marqy-item="">
-          <div class="marquee--item">
-            <span class="marquee--text">Featured Products</span>
-          </div>
+        <div class="marquee--item slide">
+          <span class="marquee--text">Featured Products</span>
         </div>
-        <div aria-hidden="true" data-marqy-item="">
-          <div class="marquee--item">
-            <span class="marquee--text">Featured Products</span>
-          </div>
+        <div class="marquee--item slide">
+          <span class="marquee--text">Featured Products</span>
         </div>
-        <div aria-hidden="true" data-marqy-item="">
-          <div class="marquee--item">
-            <span class="marquee--text">Featured Products</span>
-          </div>
+        <div class="marquee--item slide">
+          <span class="marquee--text">Featured Products</span>
         </div>
-        <div aria-hidden="true" data-marqy-item="">
-          <div class="marquee--item">
-            <span class="marquee--text">Featured Products</span>
-          </div>
+        <div class="marquee--item slide">
+          <span class="marquee--text">Featured Products</span>
         </div>
-        <div aria-hidden="true" data-marqy-item="">
-          <div class="marquee--item">
-            <span class="marquee--text">Featured Products</span>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </div>
 
+<style>
+  .marquee--text{
+    white-space: nowrap;
+  }
+</style>
 <div class='marquee-section'>
   <div class='marquee'>
     <div class="slideshow js-slideshow ">
       {% comment %} marquee--item {% endcomment %}
       {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
-        <div class="slide">
-          <div class="marquee--product">
+        <div class="marquee--product slide">
         {% render 'product-card',
           product_card_product: product,
           media_size: section.settings.image_ratio,
@@ -154,7 +75,6 @@
           show_image_outline: section.settings.show_image_outline,
           show_rating: section.settings.show_rating
         %}
-        </div>
       </div>
       
     {%- else -%}
@@ -166,205 +86,31 @@
       </div>
       {%- endfor -%}
     {%- endfor -%}
+    {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
+      <div class="marquee--product slide">
+      {% render 'product-card',
+        product_card_product: product,
+        media_size: section.settings.image_ratio,
+        show_secondary_image: section.settings.show_secondary_image,
+        add_image_padding: section.settings.add_image_padding,
+        show_vendor: section.settings.show_vendor,
+        show_image_outline: section.settings.show_image_outline,
+        show_rating: section.settings.show_rating
+      %}
     </div>
-  </div>
-</div>
-
-{% comment %}
-<div class="marquee-section">
-  <div data-marqy="" data-direction="right" class="marquee">
-    <div data-marqy-inner="">
-      <div data-marqy-content="" style="animation-duration: 21.6s">
-        <div aria-hidden="true" data-marqy-item="">
-          <div class="marquee--item">
-
-            {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
-              <div class="marquee--product">
-              {% render 'product-card',
-                product_card_product: product,
-                media_size: section.settings.image_ratio,
-                show_secondary_image: section.settings.show_secondary_image,
-                add_image_padding: section.settings.add_image_padding,
-                show_vendor: section.settings.show_vendor,
-                show_image_outline: section.settings.show_image_outline,
-                show_rating: section.settings.show_rating
-              %}
-            </div>
-            
-          {%- else -%}
-            {%- for i in (1..4) -%}
-              <div class="marquee--product">
-              <div class="grid__item">
-                {% render 'product-card-placeholder' %}
-              </div>
-            </div>
-            {%- endfor -%}
-          {%- endfor -%}
-
-
-
-
-            <div class="marquee--product">
-              <div class="product-card" style="opacity: 1">
-                <div class="product-card--visuals">
-                  <div class="product-card--thumb">
-                    <div
-                      class="product-card--photo"
-                      style="opacity: 1"
-                    >
-                      <figure class="is-default">
-                        <div class="ar" style="padding-top: 100%">
-                          <picture
-                            ><img
-                              width="1200"
-                              sizes="(min-width: 1200px) 33vw, (min-width: 768px) 50vw, 100vw"
-                              decoding="async"
-                              alt="brown canvas gucci logo wash bag travel pouch"
-                              class="object-cover is-loaded"
-                              src="https://cdn.sanity.io/images/4y2xd5ik/production/f73023694247da2164c6ba8a82205c1cef18b446-1100x1100.jpg?w=1200&amp;q=80&amp;fit=max&amp;auto=format"
-                              srcset="
-                                https://cdn.sanity.io/images/4y2xd5ik/production/f73023694247da2164c6ba8a82205c1cef18b446-1100x1100.jpg?w=400&amp;h=400&amp;q=80&amp;fit=max&amp;auto=format    400w,
-                                https://cdn.sanity.io/images/4y2xd5ik/production/f73023694247da2164c6ba8a82205c1cef18b446-1100x1100.jpg?w=800&amp;h=800&amp;q=80&amp;fit=max&amp;auto=format    800w,
-                                https://cdn.sanity.io/images/4y2xd5ik/production/f73023694247da2164c6ba8a82205c1cef18b446-1100x1100.jpg?w=1000&amp;h=1000&amp;q=80&amp;fit=max&amp;auto=format 1000w
-                              "
-                          /></picture>
-                          <div class="ar--placeholder is-loaded">
-                            <img
-                              src="data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGQABAQADAQAAAAAAAAAAAAAAAAYBAggF/8QAJhAAAQMDAgYDAQAAAAAAAAAAAQACAwQFEQYTBxIhIjEyUnGRkv/EABcBAAMBAAAAAAAAAAAAAAAAAAACAwT/xAAYEQEBAQEBAAAAAAAAAAAAAAABAAIDEf/aAAwDAQACEQMRAD8A6EvutLRZ5mwzTGWU+WxdxH2vMHEuzEelT/CitfaRpaG+7lvoZtuZnM9zeZ2XZ6qUprBVR1MrpoJ3RO9G8ju1R1vQ2jPPCe3Q1mvNHd6BlXSPJicSOowQQil+HlFNT6cYwwvYNxxAcMHHRFQVKOgGuXNDvIBWNtnxH4iJpbYAAYAwERERf//Z"
-                              alt=""
-                              role="presentation"
-                            />
-                          </div>
-                        </div>
-                      </figure>
-                      <figure class="is-hover">
-                        <div class="ar" style="padding-top: 100%">
-                          <picture
-                            ><img
-                              width="1200"
-                              sizes="(min-width: 1200px) 33vw, (min-width: 768px) 50vw, 100vw"
-                              decoding="async"
-                              alt="brown canvas gucci logo wash bag travel pouch"
-                              class="object-cover is-loaded"
-                              src="https://cdn.sanity.io/images/4y2xd5ik/production/2eeee57090580f3cb718c9389420f4bd40eec006-1100x1100.jpg?w=1200&amp;q=80&amp;fit=max&amp;auto=format"
-                              srcset="
-                                https://cdn.sanity.io/images/4y2xd5ik/production/2eeee57090580f3cb718c9389420f4bd40eec006-1100x1100.jpg?w=400&amp;h=400&amp;q=80&amp;fit=max&amp;auto=format    400w,
-                                https://cdn.sanity.io/images/4y2xd5ik/production/2eeee57090580f3cb718c9389420f4bd40eec006-1100x1100.jpg?w=800&amp;h=800&amp;q=80&amp;fit=max&amp;auto=format    800w,
-                                https://cdn.sanity.io/images/4y2xd5ik/production/2eeee57090580f3cb718c9389420f4bd40eec006-1100x1100.jpg?w=1000&amp;h=1000&amp;q=80&amp;fit=max&amp;auto=format 1000w
-                              "
-                          /></picture>
-                          <div class="ar--placeholder is-loaded">
-                            <img
-                              src="data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGgABAAIDAQAAAAAAAAAAAAAAAAUIAQMGB//EACIQAAEEAQUAAwEAAAAAAAAAAAEAAgMEBQYREiExBxRRF//EABgBAAIDAAAAAAAAAAAAAAAAAAADAQIE/8QAGREAAwEBAQAAAAAAAAAAAAAAAAECEQMh/9oADAMBAAIRAxEAPwCwmotZ4vBWvrWnufPx5FjOyAob+nYzkAKtkN/SAF5z8tYatDrtshM4MzWyD3iTv32oxmNEtuJ0MT3xDfk0MLiUmrrcNE84a0sLhMxWzGPZcrchG8kAO96RRGgqclbTVeN8RiO5IaRsQETVuCaST8OjsVK9nb7EMcm3nJoKzHWgiAEcMbQPxoCIpKm3xERAH//Z"
-                              alt=""
-                              role="presentation"
-                            />
-                          </div>
-                        </div>
-                      </figure>
-                    </div>
-                  </div>
-                </div>
-                <div class="product-card--details">
-                  <div class="product-card--header">
-                    <h2 class="product-card--title">
-                      <a
-                        class="product-card--link"
-                        href="/products/gucci-travel-pouch"
-                        >Gucci Travel Pouch</a
-                      >
-                    </h2>
-                    <div class="price">
-                      <span class="price--current">€<!-- -->790</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-              <div class="product-card" style="opacity: 1">
-                <div class="product-card--visuals">
-                  <div class="product-card--thumb">
-                    <div
-                      class="product-card--photo"
-                      style="opacity: 1"
-                    >
-                      <figure class="is-default">
-                        <div class="ar" style="padding-top: 100%">
-                          <picture
-                            ><img
-                              width="1200"
-                              sizes="(min-width: 1200px) 33vw, (min-width: 768px) 50vw, 100vw"
-                              decoding="async"
-                              alt="gucci scarf with classic red green line and monogram logo"
-                              class="object-cover is-loaded"
-                              src="https://cdn.sanity.io/images/4y2xd5ik/production/bbcdc13097be18c28b3778a683fa1fc28b22c20c-1100x1100.jpg?w=1200&amp;q=80&amp;fit=max&amp;auto=format"
-                              srcset="
-                                https://cdn.sanity.io/images/4y2xd5ik/production/bbcdc13097be18c28b3778a683fa1fc28b22c20c-1100x1100.jpg?w=400&amp;h=400&amp;q=80&amp;fit=max&amp;auto=format    400w,
-                                https://cdn.sanity.io/images/4y2xd5ik/production/bbcdc13097be18c28b3778a683fa1fc28b22c20c-1100x1100.jpg?w=800&amp;h=800&amp;q=80&amp;fit=max&amp;auto=format    800w,
-                                https://cdn.sanity.io/images/4y2xd5ik/production/bbcdc13097be18c28b3778a683fa1fc28b22c20c-1100x1100.jpg?w=1000&amp;h=1000&amp;q=80&amp;fit=max&amp;auto=format 1000w
-                              "
-                          /></picture>
-                          <div class="ar--placeholder is-loaded">
-                            <img
-                              src="data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAUHBgj/xAAkEAABAwMDBAMAAAAAAAAAAAABAAIDBAURBgchEhMUFUGB0f/EABcBAAMBAAAAAAAAAAAAAAAAAAABAgP/xAAYEQEBAQEBAAAAAAAAAAAAAAAAARECEv/aAAwDAQACEQMRAD8AnXRkDK26dTQSJH5IK5LSAgEVZmNxy75K9B1uyzqmoqZW32VnfcXEdscZU+17CeE2Rvv5nB/JxEApsutZ1PNiBt9JMyxyCmIbH5D+PoItP01ts2yW40rLi+UGQydTmDPOPxE8RrRERE0iIiA//9k="
-                              alt=""
-                              role="presentation"
-                            />
-                          </div>
-                        </div>
-                      </figure>
-                      <figure class="is-hover">
-                        <div class="ar" style="padding-top: 100%">
-                          <picture
-                            ><img
-                              width="1200"
-                              sizes="(min-width: 1200px) 33vw, (min-width: 768px) 50vw, 100vw"
-                              decoding="async"
-                              alt="gucci scarf with classic red green line and monogram logo"
-                              class="object-cover is-loaded"
-                              src="https://cdn.sanity.io/images/4y2xd5ik/production/3974959771e14839e375fe6da0f5641d5accdf82-1100x1100.jpg?w=1200&amp;q=80&amp;fit=max&amp;auto=format"
-                              srcset="
-                                https://cdn.sanity.io/images/4y2xd5ik/production/3974959771e14839e375fe6da0f5641d5accdf82-1100x1100.jpg?w=400&amp;h=400&amp;q=80&amp;fit=max&amp;auto=format    400w,
-                                https://cdn.sanity.io/images/4y2xd5ik/production/3974959771e14839e375fe6da0f5641d5accdf82-1100x1100.jpg?w=800&amp;h=800&amp;q=80&amp;fit=max&amp;auto=format    800w,
-                                https://cdn.sanity.io/images/4y2xd5ik/production/3974959771e14839e375fe6da0f5641d5accdf82-1100x1100.jpg?w=1000&amp;h=1000&amp;q=80&amp;fit=max&amp;auto=format 1000w
-                              "
-                          /></picture>
-                          <div class="ar--placeholder is-loaded">
-                            <img
-                              src="data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAYHA//EACUQAAEDAwMDBQAAAAAAAAAAAAEAAgQDBREGEkETFDEhMjNRYf/EABUBAQEAAAAAAAAAAAAAAAAAAAME/8QAHBEAAgEFAQAAAAAAAAAAAAAAAAMBAiEygbE0/9oADAMBAAIRAxEAPwDPtbNi0rfQLqYI6n2pKi+EZFAbDkuGFWa7rAxYw7fLd3jKloBa65Rh2wyXjlHVlBYqyGa6aB0YR91P1/EXVxAPwFEhIT+uziNGHG7Kmbe8i4xCPO4IiOcoK1edmumi16jmvGDwCiIkIz//2Q=="
-                              alt=""
-                              role="presentation"
-                            />
-                          </div>
-                        </div>
-                      </figure>
-                    </div>
-                  </div>
-                </div>
-                <div class="product-card--details">
-                  <div class="product-card--header">
-                    <h2 class="product-card--title">
-                      <a
-                        class="product-card--link"
-                        href="/products/gucci-monogram-scarf"
-                        >Gucci Monogram Scarf</a
-                      >
-                    </h2>
-                    <div class="price">
-                      <span class="price--current">€<!-- -->490</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-          </div>
-        </div>
+    
+  {%- else -%}
+    {%- for i in (1..4) -%}
+      <div class="slide">
+      <div class="grid__item">
+        {% render 'product-card-placeholder' %}
       </div>
     </div>
+    {%- endfor -%}
+  {%- endfor -%}
+    </div>
   </div>
 </div>
-{% endcomment %}
-
 
 <script>
 
@@ -377,8 +123,10 @@
   let tickerSpeed = 2;
   
   let flickity = null;
+  let featured = null;
   let isPaused = false;
   const slideshowEl = document.querySelector('.js-slideshow');
+  const featuredEl = document.querySelector('.featured');
   
   
   //
@@ -393,6 +141,13 @@
       flickity.selectedIndex = flickity.dragEndRestingSelect();
       flickity.updateSelectedSlide();
       flickity.settle(flickity.x);
+    }
+
+    if (featured.slides) {
+      featured.x = (featured.x - tickerSpeed) % featured.slideableWidth;
+      featured.selectedIndex = featured.dragEndRestingSelect();
+      featured.updateSelectedSlide();
+      featured.settle(featured.x);
     }
     window.requestAnimationFrame(update);
   };
@@ -420,12 +175,46 @@
     pageDots: false,
     draggable: true,
     wrapAround: true,
-    selectedAttraction: 0.015,
-    friction: 0.25 });
+    selecedAttraction: 0,
+    friction: 0.15 });
+
+
+  featured = new Flickity(featuredEl, {
+    autoPlay: false,
+    prevNextButtons: false,
+    pageDots: false,
+    draggable: false,
+    wrapAround: true,
+    selecedAttraction: 0,
+    friction: 0.15 });
   
+  featured.x = 0;
   flickity.x = 0;
   
   
+
+  function checkWrap(
+    carouselSelector = '.carousel', cellSelector = '.carousel-cell') {
+  // if sum(carousel-cell width) > carousel width then wrap else not
+  const carousel = document.querySelector(carouselSelector);
+  const cells = carousel.querySelectorAll(cellSelector);
+
+  if (carousel && cells) {
+    let cellsTotalWidth = 0;
+    cells.forEach((cell) => {
+      const style = window.getComputedStyle(cell);
+      cellsTotalWidth += parseFloat(style.width) +
+          parseFloat(style.marginRight) +
+          parseFloat(style.marginLeft);
+    });
+    const carouselWidth = parseFloat(window.getComputedStyle(carousel).width);
+    return cellsTotalWidth > carouselWidth;
+  }
+
+  return false;
+}
+
+
   //
   //   Add Event Listeners
   //
@@ -435,11 +224,17 @@
   slideshowEl.addEventListener('focusin', pause, false);
   slideshowEl.addEventListener('mouseleave', play, false);
   slideshowEl.addEventListener('focusout', play, false);
-  
+
+  window.addEventListener('resize', (ev) => {
+    if ('destroy' in flkty) {
+      flkty.destroy();
+      flktyOptions.wrapAround = checkWrap();
+      flkty = new Flickity(flktySelector, flktyOptions);
+    }
+  });
   flickity.on('dragStart', () => {
     isPaused = true;
   });
-  
   
   //
   //   Start Ticker

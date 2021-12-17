@@ -110,7 +110,7 @@
       }
     {% endstyle %} {% endcomment %}
 
-    {% comment %} {{ 'base.css' | asset_url | stylesheet_tag }} {% endcomment %}
+    {{ 'base.css' | asset_url | stylesheet_tag }}
     {{ 'style.css' | asset_url | stylesheet_tag }}
 
     <!-- CSS -->
@@ -119,6 +119,18 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  
+<style>
+
+
+  .product-card .price {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: .625rem;
+  }
+  
+</style>
 
 
   
@@ -189,8 +201,7 @@ var flkty = new Flickity( '.main-carousel', {
 
     {% section 'footer' %}
 
-    {% section 'cart' %}
-
+    {% comment %} {% section 'cart' %} {% endcomment %}
 
 
     <ul hidden>
@@ -235,11 +246,19 @@ var utils = window.fizzyUIUtils;
 
 var carousel = document.querySelector('.main-gallery');
 var flkty = new Flickity( carousel, {
-  prevNextButtons: true,
+  prevNextButtons: false,
   pageDots: false,
   wrapAround: true,
   adaptiveHeight: true
 });
+
+flkty.on( 'change', function( index ) {
+  console.log('Flickity change ' + index , $('.slider-counter--current span').val());
+  $('.slider-counter--current span').text((index+1).toString())
+});
+
+
+$('.carousel--counter-item.is-total span').text(flkty.slides.length.toString())
 
 // previous
 var previousButton = document.querySelector('.carousel--prev');
@@ -267,6 +286,13 @@ $(window).bind('beforeunload', function(){
     visibility: visible;
     pointer-events: all;
 }
+
+@media (max-width: 940px){
+  .main-navigation {
+    border-top: 0;
+  }
+}
+
 </style>
 
 </html>

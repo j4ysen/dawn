@@ -19,6 +19,8 @@ if (!customElements.get('product-form')) {
 
       submitButton.setAttribute('aria-disabled', true);
       submitButton.classList.add('loading');
+      existingText = submitButton.value;
+      submitButton.value = "Adding...";
       this.querySelector('.loading-overlay__spinner').classList.remove('hidden');
 
       const config = fetchConfig('javascript');
@@ -29,6 +31,7 @@ if (!customElements.get('product-form')) {
       formData.append('sections', this.cartNotification.getSectionsToRender().map((section) => section.id));
       formData.append('sections_url', window.location.pathname);
       config.body = formData;
+      console.log("Button Press: Added")
 
       fetch(`${routes.cart_add_url}`, config)
         .then((response) => response.json())
@@ -37,7 +40,7 @@ if (!customElements.get('product-form')) {
             this.handleErrorMessage(response.description);
             return;
           }
-
+          console.log("added to cart")
           this.cartNotification.renderContents(response);
         })
         .catch((e) => {
@@ -45,6 +48,7 @@ if (!customElements.get('product-form')) {
         })
         .finally(() => {
           submitButton.classList.remove('loading');
+          submitButton.value = existingText;
           submitButton.removeAttribute('aria-disabled');
           this.querySelector('.loading-overlay__spinner').classList.add('hidden');
         });

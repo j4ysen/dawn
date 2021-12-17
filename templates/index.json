@@ -27,7 +27,8 @@
         "button"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/0aa8b52402d534a7cb7df4ada8c92fb68ae62cbb-1920x1080.jpg",
+        "image": "shopify:\/\/shop_images\/download_1_8b2a00cf-2e69-42ef-974d-3e664e155276.png",
+        "image_2": "shopify:\/\/shop_images\/74091fd12800ed26399a6f83d4dbf7d8e8e24d59-1770x1770.png",
         "image_height": "medium",
         "adapt_height_first_image": true,
         "desktop_text_box_position": "flex-end",

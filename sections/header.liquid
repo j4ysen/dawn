@@ -496,17 +496,6 @@
                       {%- if section.settings.menu != blank -%}
                         {%- for link in section.settings.menu.links -%}
                             {%- if link.links != blank -%}
-                                  {% comment %} <li>
-                                    <button
-                                      class="mega-toggle"
-                                      aria-expanded="false"
-                                      aria-controls2="meganav-08914ae20eae"
-                                      aria-controls="meganav-{{ forloop.index }}-{{ section.id }}"
-                                    >
-                                      {{ link.title | escape }}
-                                    </button>
-                                  </li> {% endcomment %}
-
                                   <li>
                                     <div class="dropdown">
                                       <button
@@ -566,21 +555,42 @@
                     </ul>
                   </div>
                   <div class="menu-mobile--secondary">
+                    {%- if section.settings.menu-secondary-mobile != blank -%}
                     <ul>
-                      <li><a href="/search">Search</a></li>
-                      <li><a href="/about">About</a></li>
-                      <li><a href="/faq">FAQ</a></li>
-                      <li><a href="/contact">Contact</a></li>
+                      {%- for link in section.settings.menu-secondary-mobile.links -%}
+                      <li>
+                        <a
+                          tabindex="-1"
+                          href="{{ link.url }}"
+                          >{{ link.title | escape }}</a
+                        >
+                      </li>
+                    {%- endfor-%}
                     </ul>
+                  {%- endif-%}
                   </div>
                 </div>
               </div>
               <div class="menu-mobile--backdrop"></div>
             </div>
-            <button class="cart-toggle">
+            <a href="{{ routes.cart_url }}" class="cart-toggle" id="cart-icon-bubble">
+
+
+              
+              {% if cart == empty %}
+                <div class="cart-text">Cart</div>
+                <span class="cart-toggle--count"  style="    text-align: center;">0</span>
+              {% else %}
               <div class="cart-text">Cart</div>
-              <span class="cart-toggle--count">0</span>
-            </button>
+              <span class="cart-toggle--count is-active" style="    text-align: center;">
+                {%- if cart.item_count < 100 -%}
+                  <span aria-hidden="true">{{ cart.item_count }}</span>
+                {% else %}
+                  {{ 'sections.header.cart_count' | t: count: cart.item_count }}
+                {% endif %}
+              </span>
+              {% endif %}
+            </a>
           </div>
           <div class="main-navigation--desktop">
             <div class="menu-left">
@@ -612,6 +622,7 @@
                 <div class="cart-text">Cart</div>
                 <span class="cart-toggle--count"  style="    text-align: center;" >0</span>
               </button> {% endcomment %}
+
               <a href="{{ routes.cart_url }}" class="cart-toggle" id="cart-icon-bubble">
 
                 {% if cart == empty %}
@@ -678,72 +689,104 @@
                               {%- endfor -%}
                             </ul>
                             </ul>
-                            {% comment %} {% endcomment %}
                             <div class="mega-item--featured">
                               <div class="mega-item--featured-title">
                                 <span>Featured</span>
+                                {% assign index1 = forloop.index  | times: 2 | minus: 1%}
+                                {% assign setting_name = 'featured_product_' | append: index1%}
+                                {% assign handle = section.settings[setting_name] %}
+                                {% assign popular_product = all_products[handle] %}
+                                <!-- {{popular_product.title}} -->
+
+                                {% assign index2 = forloop.index  | times: 2%}
+                                {% assign setting_name2 = 'featured_product_' | append: index2%}
+                                {% assign handle2 = section.settings[setting_name2] %}
+                                {% assign popular_product2 = all_products[handle2] %}
+                                <!-- {{popular_product2.title}} -->
                               </div>
+
+                              {% if popular_product.id %}
                               <div
                                 class="product-card is-featured"
                                 style="opacity: 1"
                               >
                                 <div class="product-card--visuals">
                                   <div class="product-card--thumb">
-                                    <div
-                                      class="product-card--photo"
-                                      style="opacity: 1"
-                                    >
-                                      <figure class="is-default">
-                                        <div class="ar" style="padding-top: 100%">
-                                          <picture
-                                            ><img
-                                              width="1200"
-                                              sizes="(min-width: 1200px) 33vw, (min-width: 768px) 50vw, 100vw"
-                                              decoding="async"
-                                              alt="gucci canvas leather monogram billfold wallet"
-                                              class="object-cover is-loaded"
-                                              src="https://cdn.sanity.io/images/4y2xd5ik/production/ff3f48568fc92eaacca7f3131bb07e11fd0cf2f0-1100x1100.jpg?w=1200&amp;q=80&amp;fit=max&amp;auto=format"
-                                              srcset="
-                                                https://cdn.sanity.io/images/4y2xd5ik/production/ff3f48568fc92eaacca7f3131bb07e11fd0cf2f0-1100x1100.jpg?w=400&amp;h=400&amp;q=80&amp;fit=max&amp;auto=format    400w,
-                                                https://cdn.sanity.io/images/4y2xd5ik/production/ff3f48568fc92eaacca7f3131bb07e11fd0cf2f0-1100x1100.jpg?w=800&amp;h=800&amp;q=80&amp;fit=max&amp;auto=format    800w,
-                                                https://cdn.sanity.io/images/4y2xd5ik/production/ff3f48568fc92eaacca7f3131bb07e11fd0cf2f0-1100x1100.jpg?w=1000&amp;h=1000&amp;q=80&amp;fit=max&amp;auto=format 1000w
-                                              "
-                                          /></picture>
-                                          <div class="ar--placeholder is-loaded">
-                                            <img
-                                              src="data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGgABAAIDAQAAAAAAAAAAAAAAAAMFAgYIB//EACcQAAIBBAEDAgcAAAAAAAAAAAECAwAEBREGByExFCJBUVJTYZGS/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAT/xAAZEQADAQEBAAAAAAAAAAAAAAAAAQMCIRH/2gAMAwEAAhEDEQA/AOgeW8pfATwxrYvcCRSdqwGvxWsXnVJ7aF5Ww0xRBs6kHio+rt8ltf2iusp9hPtQt+tfGvNMpkY5sfcRpHcF2QqAsTeT8u1SUrRb8S4WTlN5Tb6dI4XIJlcVaX0SlUuIxIAfI3Sq/g8bRcQxCSKVdbZAQR3HalVkZdSRRyEGSNG19Q3WPpYPsRfyKUoCUAAaA0KUpQH/2Q=="
-                                              alt=""
-                                              role="presentation"
-                                            />
+
+
+                                      {%- if popular_product.featured_media -%}
+                                        {%- liquid
+                                          assign featured_media_aspect_ratio = popular_product.featured_media.aspect_ratio
+                                
+                                          if popular_product.featured_media.aspect_ratio == nil
+                                            assign featured_media_aspect_ratio = 1
+                                          endif
+                                        -%}
+                                
+                                        <div{% if add_image_padding %} class="card__media-full-spacer"{% endif %}>
+                                          <div class="media media--transparent media--{{ media_size }} media--hover-effect"
+                                            {% if media_size == 'adapt' and popular_product.featured_media %} style="padding-bottom: {{ 1 | divided_by: featured_media_aspect_ratio | times: 100 }}%;"{% endif %}
+                                          >
+                                            <figure class="is-default">
+                                              <div class="ar" style="padding-top: 100%;">
+                                              <picture>
+                                                <img 
+                                                  srcset="{%- if popular_product.featured_media.width >= 165 -%}{{ popular_product.featured_media | img_url: '165x' }} 165w,{%- endif -%}
+                                                  {%- if popular_product.featured_media.width >= 360 -%}{{ popular_product.featured_media | img_url: '360x' }} 360w,{%- endif -%}
+                                                  {%- if popular_product.featured_media.width >= 533 -%}{{ popular_product.featured_media | img_url: '533x' }} 533w,{%- endif -%}
+                                                  {%- if popular_product.featured_media.width >= 720 -%}{{ popular_product.featured_media | img_url: '720x' }} 720w,{%- endif -%}
+                                                  {%- if popular_product.featured_media.width >= 940 -%}{{ popular_product.featured_media | img_url: '940x' }} 940w,{%- endif -%}
+                                                  {%- if popular_product.featured_media.width >= 1066 -%}{{ popular_product.featured_media | img_url: '1066x' }} 1066w,{%- endif -%}
+                                                  {{ popular_product.featured_media | img_url: 'master' }} {{ popular_product.featured_media.width }}w"
+                                                  src="{{ popular_product.featured_media | img_url: '533x' }}"
+                                                  sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                                                  sizes="(min-width: 1200px) 33vw, (min-width: 768px) 50vw, 100vw" 
+                                                  alt="{{ popular_product.featured_media.alt | escape }}"
+                                                  loading="lazy"
+                                                  class="motion-reduce object-cover is-loaded"
+                                                  width="{{ popular_product.featured_media.width }}"
+                                                  width="1200" 
+                                                  height="{{ popular_product.featured_media.height }}"
+                                                >
+                                              </picture>
+                                            
+                                              </div>
+                                            </figure>
+                                
+                                            {%- if popular_product.media[1] != nil and show_secondary_image -%}
+                              
+                                                <figure class="is-hover">
+                                                  <div class="ar" style="padding-top: 100%;">
+                                                  <picture>
+                                                    <img 
+                                                      srcset="{%- if popular_product.media[1].width >= 165 -%}{{ popular_product.media[1] | img_url: '165x' }} 165w,{%- endif -%}
+                                                      {%- if popular_product.media[1].width >= 360 -%}{{ popular_product.media[1] | img_url: '360x' }} 360w,{%- endif -%}
+                                                      {%- if popular_product.media[1].width >= 533 -%}{{ popular_product.media[1] | img_url: '533x' }} 533w,{%- endif -%}
+                                                      {%- if popular_product.media[1].width >= 720 -%}{{ popular_product.media[1] | img_url: '720x' }} 720w,{%- endif -%}
+                                                      {%- if popular_product.media[1].width >= 940 -%}{{ popular_product.media[1] | img_url: '940x' }} 940w,{%- endif -%}
+                                                      {%- if popular_product.media[1].width >= 1066 -%}{{ popular_product.media[1] | img_url: '1066x' }} 1066w,{%- endif -%}
+                                                      {{ popular_product.media[1] | img_url: 'master' }} {{ popular_product.media[1].width }}w"
+                                                    src="{{ popular_product.media[1] | img_url: '533x' }}"
+                                                    sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                                  
+                                                      sizes="(min-width: 1200px) 33vw, (min-width: 768px) 50vw, 100vw" 
+                                                      alt="{{ popular_product.media[1].alt | escape }}"
+                                                      loading="lazy"
+                                                      class="motion-reduce object-cover is-loaded"
+                                                      width="{{ popular_product.media[1].width }}"
+                                                      height="{{ popular_product.media[1].height }}"
+                                                      width="1200" 
+                                                      height="{{ popular_product.featured_media.height }}"
+                                                    >
+                                                  </picture>
+                                                  </div>
+                                                </figure>
+                                            {%- endif -%}
                                           </div>
                                         </div>
-                                      </figure>
-                                      <figure class="is-hover">
-                                        <div class="ar" style="padding-top: 100%">
-                                          <picture
-                                            ><img
-                                              width="1200"
-                                              sizes="(min-width: 1200px) 33vw, (min-width: 768px) 50vw, 100vw"
-                                              decoding="async"
-                                              alt="gucci canvas leather monogram billfold wallet"
-                                              class="object-cover is-loaded"
-                                              src="https://cdn.sanity.io/images/4y2xd5ik/production/e7f90005236de4ddfa2985737bcbe176a638453b-1100x1100.jpg?w=1200&amp;q=80&amp;fit=max&amp;auto=format"
-                                              srcset="
-                                                https://cdn.sanity.io/images/4y2xd5ik/production/e7f90005236de4ddfa2985737bcbe176a638453b-1100x1100.jpg?w=400&amp;h=400&amp;q=80&amp;fit=max&amp;auto=format    400w,
-                                                https://cdn.sanity.io/images/4y2xd5ik/production/e7f90005236de4ddfa2985737bcbe176a638453b-1100x1100.jpg?w=800&amp;h=800&amp;q=80&amp;fit=max&amp;auto=format    800w,
-                                                https://cdn.sanity.io/images/4y2xd5ik/production/e7f90005236de4ddfa2985737bcbe176a638453b-1100x1100.jpg?w=1000&amp;h=1000&amp;q=80&amp;fit=max&amp;auto=format 1000w
-                                              "
-                                          /></picture>
-                                          <div class="ar--placeholder is-loaded">
-                                            <img
-                                              src="data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGAABAAMBAAAAAAAAAAAAAAAAAAMGCAf/xAAkEAACAQQBAgcAAAAAAAAAAAABAgADBAUGEQcSCCEiMWFxgf/EABYBAQEBAAAAAAAAAAAAAAAAAAABAv/EABYRAQEBAAAAAAAAAAAAAAAAAAABIf/aAAwDAQACEQMRAD8A0Tt24YXUqFKtnbsW6VSQnI57uJWcf1n0u+uFo08oFdiAvchHJld8R2pZTbLPFW+ItGuKiMxJHsv3OK4noruWOytvcXmOBpJUU+hwfIGTWpI2hTdalNXQ8qw5B+Ikdkhp2dBCOCqKCPyJWU0REBERA//Z"
-                                              alt=""
-                                              role="presentation"
-                                            />
-                                          </div>
-                                        </div>
-                                      </figure>
-                                    </div>
+                                      {%- endif -%}
+
+                                    
                                   </div>
                                 </div>
                                 <div class="product-card--details">
@@ -751,74 +794,98 @@
                                     <h2 class="product-card--title">
                                       <a
                                         class="product-card--link"
-                                        href="/products/gucci-brown-canvas-wallet"
-                                        >Gucci Brown Canvas Wallet</a
+                                        href="{{ popular_product.url | default: '#' }}"
+                                        >{{ popular_product.title | escape }}
+                                        </a
                                       >
                                     </h2>
                                   </div>
                                 </div>
                               </div>
+                              {% endif %}
+
+                              {% if popular_product2.id %}
                               <div
                                 class="product-card is-featured"
                                 style="opacity: 1"
                               >
                                 <div class="product-card--visuals">
                                   <div class="product-card--thumb">
-                                    <div
-                                      class="product-card--photo"
-                                      style="opacity: 1"
-                                    >
-                                      <figure class="is-default">
-                                        <div class="ar" style="padding-top: 100%">
-                                          <picture
-                                            ><img
-                                              width="1200"
-                                              sizes="(min-width: 1200px) 33vw, (min-width: 768px) 50vw, 100vw"
-                                              decoding="async"
-                                              alt="ceramic mug with printed paul smith design"
-                                              class="object-cover is-loaded"
-                                              src="https://cdn.sanity.io/images/4y2xd5ik/production/0f5a3535ba790b4b7722a23cc6e121d990641363-1100x1100.png?w=1200&amp;q=80&amp;fit=max&amp;auto=format"
-                                              srcset="
-                                                https://cdn.sanity.io/images/4y2xd5ik/production/0f5a3535ba790b4b7722a23cc6e121d990641363-1100x1100.png?w=400&amp;h=400&amp;q=80&amp;fit=max&amp;auto=format    400w,
-                                                https://cdn.sanity.io/images/4y2xd5ik/production/0f5a3535ba790b4b7722a23cc6e121d990641363-1100x1100.png?w=800&amp;h=800&amp;q=80&amp;fit=max&amp;auto=format    800w,
-                                                https://cdn.sanity.io/images/4y2xd5ik/production/0f5a3535ba790b4b7722a23cc6e121d990641363-1100x1100.png?w=1000&amp;h=1000&amp;q=80&amp;fit=max&amp;auto=format 1000w
-                                              "
-                                          /></picture>
-                                          <div class="ar--placeholder is-loaded">
-                                            <img
-                                              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAACXBIWXMAAC4jAAAuIwF4pT92AAABp0lEQVQ4jd2TTWsbMRCG/f8KPeVf9N5rL21uPZb+gB5KL+3dJCFtiUmhoSR4bceuP2p7dx17bUkrrT5G0iRok4B3cWggtwyDQDCPXmnmVeP6CdF4rjCW+VgYEb2/T7xL3HVCo7Z33luwYIxWSkkppWKFJtJoa32IyiEV2CMqY4WQiufZKutO4rNh0uwvD8YkZspaZ60L/G7Yo9SWcyEZGc/iT63Om2b0qjnaP03bVwLAAVjnykfsUr42YKUodE7H8+T9UfTiy8XLb/13J9N2mmsIyiX84LVhQ/l6vYn+JW+Pentfu68Ph5//zC5TJk1FtgJjCZPCRLPN+WhxHE0//Bx8PB0f9JLW4Kqbcq7tNlmBPaLzPqX6x2X2vR3/6s1//41H6SrNyMWUnseCSqiNK8CIoVXOoXV+QXVrkJ10k/5ksV5lMqcbwjpz1kk4kxBKt+Eg6BDAl810VOhhSjuT5SRekTWRPOdcLInImNLg6soe0W7BWgMXirCCsqIQUisFxoCBMGGsm6wRrItVSzrvnLfl6m5tVWvUTpNsx231Q1/iP/Bj4knwDTISi1nvu58MAAAAAElFTkSuQmCC"
-                                              alt=""
-                                              role="presentation"
-                                            />
+
+
+                                      {%- if popular_product2.featured_media -%}
+                                        {%- liquid
+                                          assign featured_media_aspect_ratio = popular_product2.featured_media.aspect_ratio
+                                
+                                          if popular_product2.featured_media.aspect_ratio == nil
+                                            assign featured_media_aspect_ratio = 1
+                                          endif
+                                        -%}
+                                
+                                        <div{% if add_image_padding %} class="card__media-full-spacer"{% endif %}>
+                                          <div class="media media--transparent media--{{ media_size }} media--hover-effect"
+                                            {% if media_size == 'adapt' and popular_product2.featured_media %} style="padding-bottom: {{ 1 | divided_by: featured_media_aspect_ratio | times: 100 }}%;"{% endif %}
+                                          >
+                                            <figure class="is-default">
+                                              <div class="ar" style="padding-top: 100%;">
+                                              <picture>
+                                                <img 
+                                                  srcset="{%- if popular_product2.featured_media.width >= 165 -%}{{ popular_product2.featured_media | img_url: '165x' }} 165w,{%- endif -%}
+                                                  {%- if popular_product2.featured_media.width >= 360 -%}{{ popular_product2.featured_media | img_url: '360x' }} 360w,{%- endif -%}
+                                                  {%- if popular_product2.featured_media.width >= 533 -%}{{ popular_product2.featured_media | img_url: '533x' }} 533w,{%- endif -%}
+                                                  {%- if popular_product2.featured_media.width >= 720 -%}{{ popular_product2.featured_media | img_url: '720x' }} 720w,{%- endif -%}
+                                                  {%- if popular_product2.featured_media.width >= 940 -%}{{ popular_product2.featured_media | img_url: '940x' }} 940w,{%- endif -%}
+                                                  {%- if popular_product2.featured_media.width >= 1066 -%}{{ popular_product2.featured_media | img_url: '1066x' }} 1066w,{%- endif -%}
+                                                  {{ popular_product2.featured_media | img_url: 'master' }} {{ popular_product2.featured_media.width }}w"
+                                                  src="{{ popular_product2.featured_media | img_url: '533x' }}"
+                                                  sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                                                  sizes="(min-width: 1200px) 33vw, (min-width: 768px) 50vw, 100vw" 
+                                                  alt="{{ popular_product2.featured_media.alt | escape }}"
+                                                  loading="lazy"
+                                                  class="motion-reduce object-cover is-loaded"
+                                                  width="{{ popular_product2.featured_media.width }}"
+                                                  width="1200" 
+                                                  height="{{ popular_product2.featured_media.height }}"
+                                                >
+                                              </picture>
+                                            
+                                              </div>
+                                            </figure>
+                                
+                                            {%- if popular_product2.media[1] != nil and show_secondary_image -%}
+                              
+                                                <figure class="is-hover">
+                                                  <div class="ar" style="padding-top: 100%;">
+                                                  <picture>
+                                                    <img 
+                                                      srcset="{%- if popular_product2.media[1].width >= 165 -%}{{ popular_product2.media[1] | img_url: '165x' }} 165w,{%- endif -%}
+                                                      {%- if popular_product2.media[1].width >= 360 -%}{{ popular_product2.media[1] | img_url: '360x' }} 360w,{%- endif -%}
+                                                      {%- if popular_product2.media[1].width >= 533 -%}{{ popular_product2.media[1] | img_url: '533x' }} 533w,{%- endif -%}
+                                                      {%- if popular_product2.media[1].width >= 720 -%}{{ popular_product2.media[1] | img_url: '720x' }} 720w,{%- endif -%}
+                                                      {%- if popular_product2.media[1].width >= 940 -%}{{ popular_product2.media[1] | img_url: '940x' }} 940w,{%- endif -%}
+                                                      {%- if popular_product2.media[1].width >= 1066 -%}{{ popular_product2.media[1] | img_url: '1066x' }} 1066w,{%- endif -%}
+                                                      {{ popular_product2.media[1] | img_url: 'master' }} {{ popular_product2.media[1].width }}w"
+                                                    src="{{ popular_product2.media[1] | img_url: '533x' }}"
+                                                    sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                                  
+                                                      sizes="(min-width: 1200px) 33vw, (min-width: 768px) 50vw, 100vw" 
+                                                      alt="{{ popular_product2.media[1].alt | escape }}"
+                                                      loading="lazy"
+                                                      class="motion-reduce object-cover is-loaded"
+                                                      width="{{ popular_product2.media[1].width }}"
+                                                      height="{{ popular_product2.media[1].height }}"
+                                                      width="1200" 
+                                                      height="{{ popular_product2.featured_media.height }}"
+                                                    >
+                                                  </picture>
+                                                  </div>
+                                                </figure>
+                                            {%- endif -%}
                                           </div>
                                         </div>
-                                      </figure>
-                                      <figure class="is-hover">
-                                        <div class="ar" style="padding-top: 100%">
-                                          <picture
-                                            ><img
-                                              width="1200"
-                                              sizes="(min-width: 1200px) 33vw, (min-width: 768px) 50vw, 100vw"
-                                              decoding="async"
-                                              alt="ceramic mug with printed paul smith design"
-                                              class="object-cover is-loaded"
-                                              src="https://cdn.sanity.io/images/4y2xd5ik/production/0f5a3535ba790b4b7722a23cc6e121d990641363-1100x1100.png?w=1200&amp;q=80&amp;fit=max&amp;auto=format"
-                                              srcset="
-                                                https://cdn.sanity.io/images/4y2xd5ik/production/0f5a3535ba790b4b7722a23cc6e121d990641363-1100x1100.png?w=400&amp;h=400&amp;q=80&amp;fit=max&amp;auto=format    400w,
-                                                https://cdn.sanity.io/images/4y2xd5ik/production/0f5a3535ba790b4b7722a23cc6e121d990641363-1100x1100.png?w=800&amp;h=800&amp;q=80&amp;fit=max&amp;auto=format    800w,
-                                                https://cdn.sanity.io/images/4y2xd5ik/production/0f5a3535ba790b4b7722a23cc6e121d990641363-1100x1100.png?w=1000&amp;h=1000&amp;q=80&amp;fit=max&amp;auto=format 1000w
-                                              "
-                                          /></picture>
-                                          <div class="ar--placeholder is-loaded">
-                                            <img
-                                              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAACXBIWXMAAC4jAAAuIwF4pT92AAABp0lEQVQ4jd2TTWsbMRCG/f8KPeVf9N5rL21uPZb+gB5KL+3dJCFtiUmhoSR4bceuP2p7dx17bUkrrT5G0iRok4B3cWggtwyDQDCPXmnmVeP6CdF4rjCW+VgYEb2/T7xL3HVCo7Z33luwYIxWSkkppWKFJtJoa32IyiEV2CMqY4WQiufZKutO4rNh0uwvD8YkZspaZ60L/G7Yo9SWcyEZGc/iT63Om2b0qjnaP03bVwLAAVjnykfsUr42YKUodE7H8+T9UfTiy8XLb/13J9N2mmsIyiX84LVhQ/l6vYn+JW+Pentfu68Ph5//zC5TJk1FtgJjCZPCRLPN+WhxHE0//Bx8PB0f9JLW4Kqbcq7tNlmBPaLzPqX6x2X2vR3/6s1//41H6SrNyMWUnseCSqiNK8CIoVXOoXV+QXVrkJ10k/5ksV5lMqcbwjpz1kk4kxBKt+Eg6BDAl810VOhhSjuT5SRekTWRPOdcLInImNLg6soe0W7BWgMXirCCsqIQUisFxoCBMGGsm6wRrItVSzrvnLfl6m5tVWvUTpNsx231Q1/iP/Bj4knwDTISi1nvu58MAAAAAElFTkSuQmCC"
-                                              alt=""
-                                              role="presentation"
-                                            />
-                                          </div>
-                                        </div>
-                                      </figure>
-                                    </div>
+                                      {%- endif -%}
+
+                                    
                                   </div>
                                 </div>
                                 <div class="product-card--details">
@@ -826,13 +893,16 @@
                                     <h2 class="product-card--title">
                                       <a
                                         class="product-card--link"
-                                        href="/products/m1a-mugs-fprint"
-                                        >Paul Smith Ceramic Mugs</a
+                                        href="{{ popular_product2.url | default: '#' }}"
+                                        >{{ popular_product2.title | escape }}
+                                        </a
                                       >
                                     </h2>
                                   </div>
                                 </div>
                               </div>
+                              {% endif %}
+
                             </div>
                           
                             
@@ -1025,9 +1095,85 @@
     },
     {
       "type": "product",
-      "id": "product",
+      "id": "featured_product_1",
       "label": "Featured Product 1"
     },
+    {
+      "type": "product",
+      "id": "featured_product_2",
+      "label": "Featured Product 2"
+    },
+    {
+      "type": "product",
+      "id": "featured_product_3",
+      "label": "Featured Product 3"
+    },
+    {
+      "type": "product",
+      "id": "featured_product_4",
+      "label": "Featured Product 4"
+    },
+    {
+      "type": "product",
+      "id": "featured_product_5",
+      "label": "Featured Product 5"
+    },
+    {
+      "type": "product",
+      "id": "featured_product_6",
+      "label": "Featured Product 6"
+    },
+    {
+      "type": "product",
+      "id": "featured_product_7",
+      "label": "Featured Product 7"
+    },
+    {
+      "type": "product",
+      "id": "featured_product_8",
+      "label": "Featured Product 8"
+    },
+    {
+      "type": "product",
+      "id": "featured_product_9",
+      "label": "Featured Product 9"
+    },
+    {
+      "type": "product",
+      "id": "featured_product_10",
+      "label": "Featured Product 10"
+    },
+    {
+      "type": "product",
+      "id": "featured_product_11",
+      "label": "Featured Product 11"
+    },
+    {
+      "type": "product",
+      "id": "featured_product_12",
+      "label": "Featured Product 12"
+    },
+    {
+      "type": "product",
+      "id": "featured_product_13",
+      "label": "Featured Product 13"
+    },
+    {
+      "type": "product",
+      "id": "featured_product_14",
+      "label": "Featured Product 14"
+    },
+    {
+      "type": "product",
+      "id": "featured_product_15",
+      "label": "Featured Product 15"
+    },
+    {
+      "type": "product",
+      "id": "featured_product_16",
+      "label": "Featured Product 16"
+    },
+
     {
       "type": "range",
       "id": "logo_width",
@@ -1063,6 +1209,11 @@
       "id": "menu",
       "default": "main-menu",
       "label": "t:sections.header.settings.menu.label"
+    },
+    {
+      "type": "link_list",
+      "id": "menu-secondary-mobile",
+      "label": "Secondary Mobile Menu"
     },
     {
       "type": "checkbox",

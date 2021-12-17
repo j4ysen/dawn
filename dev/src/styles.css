@@ -204,6 +204,10 @@ p {
   line-height: 1.5;
 }
 
+strong {
+  font-weight: 600;
+}
+
 ul {
   margin: 0px;
   list-style-type: none;
@@ -287,6 +291,60 @@ figure {
   color: var(--pageBG);
 }
 
+.container {
+  width: 100%;
+}
+
+@media (min-width: 480px) {
+  .container {
+    max-width: 480px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 940px) {
+  .container {
+    max-width: 940px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1200px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .container {
+    max-width: 1600px;
+  }
+}
+
+.absolute {
+  position: absolute;
+}
+
+.col-span-1 {
+  grid-column: span 1 / span 1;
+}
+
+.col-span-2 {
+  grid-column: span 2 / span 2;
+}
+
+.block {
+  display: block;
+}
+
+.grid {
+  display: grid;
+}
+
 .hidden {
   display: none;
 }
@@ -297,6 +355,10 @@ figure {
 
 .w-full {
   width: 100%;
+}
+
+.max-w-prose {
+  max-width: 65ch;
 }
 
 .transform {
@@ -376,8 +438,29 @@ figure {
   }
 }
 
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .flex-wrap {
   flex-wrap: wrap;
+}
+
+.gap-x-4 {
+  -moz-column-gap: 1rem;
+       column-gap: 1rem;
+}
+
+.gap-y-4 {
+  row-gap: 1rem;
+}
+
+.justify-self-start {
+  justify-self: start;
 }
 
 .border {
@@ -508,6 +591,11 @@ a {
   background-color: transparent;
 }
 
+b,
+strong {
+  font-weight: inherit;
+}
+
 small {
   font-size: 75%;
 }
@@ -524,8 +612,14 @@ small {
 canvas,
 iframe,
 img,
-svg {
+svg,
+video {
   vertical-align: middle;
+}
+
+
+video {
+  display: inline-block;
 }
 
 img,
@@ -543,7 +637,8 @@ svg:not(:root) {
 
 button,
 input,
-select {
+select,
+textarea {
   margin: 0;
   /* This works MOST of the time */
   /* background-color: white !important;
@@ -574,6 +669,18 @@ legend {
   white-space: normal;
 }
 
+progress {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+textarea {
+  margin: 0;
+  overflow: auto;
+  resize: vertical;
+  resize: block;
+}
+
 ::-webkit-inner-spin-button,
 ::-webkit-outer-spin-button {
   height: auto;
@@ -593,6 +700,10 @@ legend {
   font: inherit;
 }
 
+details {
+  display: block;
+}
+
 summary {
   display: list-item;
 }
@@ -606,11 +717,13 @@ template {
 }
 
 a,
+area,
 button,
 input,
 label,
 select,
 summary,
+textarea,
 [tabindex] {
   -ms-touch-action: manipulation;
 }
@@ -634,18 +747,22 @@ summary,
   position: absolute;
 }
 
+.text-start {
+  text-align: start;
+}
+
 /* Focus Adjust */
 
-a:focus, button:focus, input:focus, select:focus {
+a:focus, button:focus, input:focus, textarea:focus, select:focus, details:focus {
     outline: 1px dashed var(--pageText);
     outline-offset: 2px;
   }
 
-.is-inverted a:focus, .is-inverted button:focus, .is-inverted input:focus, .is-inverted select:focus {
+.is-inverted a:focus, .is-inverted button:focus, .is-inverted input:focus, .is-inverted textarea:focus, .is-inverted select:focus, .is-inverted details:focus {
       outline-color: var(--pageBG);
     }
 
-body:not(.is-tabbing) a:focus, body:not(.is-tabbing) button:focus, body:not(.is-tabbing) input:focus, body:not(.is-tabbing) select:focus {
+body:not(.is-tabbing) a:focus, body:not(.is-tabbing) button:focus, body:not(.is-tabbing) input:focus, body:not(.is-tabbing) textarea:focus, body:not(.is-tabbing) select:focus, body:not(.is-tabbing) details:focus {
       outline: none;
     }
 
@@ -910,7 +1027,7 @@ input:checked + .control--label.for-checkbox svg path {
     display: none;
   }
 
-.control input[type='text'], .control input[type='email'], .control input[type='number'] {
+.control input[type='text'], .control input[type='email'], .control input[type='number'], .control textarea {
     position: relative;
     height: 100%;
     width: 100%;
@@ -931,11 +1048,11 @@ input:checked + .control--label.for-checkbox svg path {
     color: var(--pageText);
   }
 
-.is-inline .control input[type='text'], .is-inline .control input[type='email'], .is-inline .control input[type='number'] {
+.is-inline .control input[type='text'], .is-inline .control input[type='email'], .is-inline .control input[type='number'], .is-inline .control textarea {
       border-width: 0px;
     }
 
-.control input[type='text']:-webkit-autofill, .control input[type='text']:-webkit-autofill:hover, .control input[type='text']:-webkit-autofill:focus, .control input[type='email']:-webkit-autofill, .control input[type='email']:-webkit-autofill:hover, .control input[type='email']:-webkit-autofill:focus, .control input[type='number']:-webkit-autofill, .control input[type='number']:-webkit-autofill:hover, .control input[type='number']:-webkit-autofill:focus {
+.control input[type='text']:-webkit-autofill, .control input[type='text']:-webkit-autofill:hover, .control input[type='text']:-webkit-autofill:focus, .control input[type='email']:-webkit-autofill, .control input[type='email']:-webkit-autofill:hover, .control input[type='email']:-webkit-autofill:focus, .control input[type='number']:-webkit-autofill, .control input[type='number']:-webkit-autofill:hover, .control input[type='number']:-webkit-autofill:focus, .control textarea:-webkit-autofill, .control textarea:-webkit-autofill:hover, .control textarea:-webkit-autofill:focus {
       background-color: transparent;
       color: var(--pageText);
     }
@@ -948,7 +1065,10 @@ input:checked + .control--label.for-checkbox svg path {
     .control input[type='email']:-webkit-autofill:focus,
     .control input[type='number']:-webkit-autofill,
     .control input[type='number']:-webkit-autofill:hover,
-    .control input[type='number']:-webkit-autofill:focus {
+    .control input[type='number']:-webkit-autofill:focus,
+    .control textarea:-webkit-autofill,
+    .control textarea:-webkit-autofill:hover,
+    .control textarea:-webkit-autofill:focus {
       -webkit-text-fill-color: var(--pageText);
       -webkit-box-shadow: 0 0 0 100em var(--pageBG) inset;
     }
@@ -988,6 +1108,11 @@ input:checked + .control--label.for-checkbox svg path {
 body:not(.is-tabbing) .control input[type='checkbox']:focus + label {
           outline: none;
         }
+
+.control textarea {
+    max-width: 100%;
+    min-height: 5rem;
+  }
 
 ::-webkit-input-placeholder {
   color: var(--pageText);
@@ -1132,6 +1257,22 @@ body {
     padding-bottom: 4rem;
   }
 }
+
+.section--content {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+.accordion--content {
+    overflow: hidden;
+  }
+
+.accordion--inner {
+    margin: 0px;
+    max-width: 42rem;
+    padding-top: 0.25rem;
+    padding-bottom: 2rem;
+  }
 
 .carousel {
   position: relative;
@@ -1360,6 +1501,18 @@ body:not(.is-tabbing) .counter--amount:focus-within {
     }
 
 /* Simple dot cursor */
+
+.drawer {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: 90;
+  width: 100%;
+  max-width: 42rem;
+  background-color: var(--pageText);
+  color: var(--pageBG);
+}
 
 .dropdown {
   position: relative;
@@ -2657,7 +2810,6 @@ body:not(.is-tabbing) .counter--amount:focus-within {
     flex: 1 1;
     flex-direction: column;
     overflow-y: scroll;
-    padding: 1rem;
   }
 
 @media (min-width: 768px) {
@@ -3532,9 +3684,50 @@ summary:before {
   width: 30px;
 }
 
+details[open] > summary:before {
+  content: '–';
+}
+
 .cart-toggle {
   z-index: 10000;
 }
+
+.reset-toggle {
+  position: relative;
+  margin-right: -0.5rem;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  cursor: pointer;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  font-family: inherit;
+  text-decoration: none;
+  font: inherit;
+  padding: 0.5rem 0rem;
+}
+
+.reset-toggle--count {
+    margin-left: 0.5rem;
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 9999px;
+    background-color: var(--pageText);
+    font-size: 0.75rem;
+    line-height: 1rem;
+    line-height: 2;
+    color: var(--pageBG);
+    opacity: 0.3;
+  }
+
+.reset-toggle--count.is-active {
+      opacity: 1;
+    }
 
 .card-header {
   padding-top: 1rem;
@@ -3742,6 +3935,24 @@ body{
 
 .hidden{
   display: none !important;
+}
+
+h2.product-card--title {
+  margin-bottom: 0 !important;
+}
+
+/* .product--header .price{
+  margin-left: 0 !important;
+} */
+
+.quantity__input{
+  text-align: center;
+  width: 4rem;
+}
+
+quantity-input.quantity.cart-item--quantity{
+  border: 1px solid black;
+  padding: .6rem;
 }
 
 /* ----- Mixins ----- */
@@ -3953,3 +4164,30 @@ body{
 .marquee--product .product-card {
       flex: 1 1;
     }
+
+@media (min-width: 768px) {
+  .sm\:col-span-1 {
+    grid-column: span 1 / span 1;
+  }
+
+  .sm\:col-start-1 {
+    grid-column-start: 1;
+  }
+
+  .sm\:gap-x-8 {
+    -moz-column-gap: 2rem;
+         column-gap: 2rem;
+  }
+}
+
+@media (min-width: 1200px) {
+
+  .lg\:gap-x-12 {
+    -moz-column-gap: 3rem;
+         column-gap: 3rem;
+  }
+
+  .lg\:gap-y-6 {
+    row-gap: 1.5rem;
+  }
+}

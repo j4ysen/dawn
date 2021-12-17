@@ -54,6 +54,11 @@ class CartNotification extends HTMLElement {
       {
         id: 'cart-icon-bubble'
       }
+      // {
+      //   id: 'main-cart-items',
+      //   section: document.getElementById('main-cart-items').dataset.id,
+      //   selector: '.js-contents',
+      // },
     ];
   }
 

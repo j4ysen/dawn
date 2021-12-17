@@ -319,3 +319,22 @@ body{
 .hidden{
   display: none !important;
 }
+
+h2.product-card--title {
+  margin-bottom: 0 !important;
+}
+
+/* .product--header .price{
+  margin-left: 0 !important;
+} */
+
+
+.quantity__input{
+  text-align: center;
+  width: 4rem;
+}
+
+quantity-input.quantity.cart-item--quantity{
+  border: 1px solid black;
+  padding: .6rem;
+}

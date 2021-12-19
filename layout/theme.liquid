@@ -31,6 +31,17 @@
 
     {% render 'meta-tags' %}
 
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <!-- JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script
+      src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"
+      integrity="sha256-hlKLmzaRlE8SCJC1Kw8zoUbU8BxA+8kR3gseuKfMjxA="
+      crossorigin="anonymous"></script>
+
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
     {{ content_for_header }}
     <script src="{{ 'nav.js' | asset_url }}" defer="defer"></script>
@@ -113,12 +124,7 @@
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {{ 'style.css' | asset_url | stylesheet_tag }}
 
-    <!-- CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
-  <!-- JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
   
 <style>
 
@@ -252,17 +258,39 @@ var flkty = new Flickity( '.main-carousel', {
 
 var utils = window.fizzyUIUtils;
 
+
+
+
+$('.variant-selection').change(function() {
+  console.log('Change occured')
+  checkActive();    
+});
+
+function checkActive(){
+  $('.variant-selection').map(function() { 
+    console.log('Checking active:', $(this).is(":checked"))
+    if($(this).is(":checked")){
+      element = $(this).parent().find("label")
+      element.addClass("is-active");
+    }
+    else{
+      element = $(this).parent().find("label")
+      element.removeClass("is-active");
+    }
+  });
+}
+
 var carousel = document.querySelector('.main-gallery');
 var flkty = new Flickity( carousel, {
-  prevNextButtons: false,
-  pageDots: false,
-  wrapAround: true,
-  adaptiveHeight: true
+prevNextButtons: false,
+pageDots: false,
+wrapAround: true,
+imagesLoaded: true
 });
 
 flkty.on( 'change', function( index ) {
-  console.log('Flickity change ' + index , $('.slider-counter--current span').val());
-  $('.slider-counter--current span').text((index+1).toString())
+console.log('Flickity change ' + index , $('.slider-counter--current span').val());
+$('.slider-counter--current span').text((index+1).toString())
 });
 
 
@@ -271,14 +299,22 @@ $('.carousel--counter-item.is-total span').text(flkty.slides.length.toString())
 // previous
 var previousButton = document.querySelector('.carousel--prev');
 previousButton.addEventListener( 'click', function() {
-  console.log('Click');
-  flkty.previous();
+console.log('Click');
+flkty.previous();
 });
 // next
 var nextButton = document.querySelector('.carousel--next');
 nextButton.addEventListener( 'click', function() {
-  console.log('Click');
-  flkty.next();
+console.log('Click');
+flkty.next();
+});
+
+
+$('.main-gallery').on( 'shown.bs.tab', 'a', function( event ) {
+// get tab pane
+var selector = event.target.getAttribute('href');
+// trigger resize on tab pane
+$( selector ).flickity('resize');
 });
 
 
@@ -343,6 +379,45 @@ $(window).bind('beforeunload', function(){
 }
 .searchContent .inner {
   align-items: center;
+}
+
+.mega-item--content{
+  position: relative;
+    display: grid;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    border-top-width: 1px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: .25rem;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+    will-change: transform;
+}
+
+.cart-toggle--count-mobile {
+  margin-left: 0.5rem;
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 9999px;
+  background-color: var(--pageText);
+  font-size: 0.75rem;
+  line-height: 1rem;
+  line-height: 2;
+  color: var(--pageBG);
+  opacity: 0.3;
+}
+
+.cart-toggle--count-mobile.is-active {
+    opacity: 1;
+  }
+
+
+  .contact-form textarea {
+    border: 1px solid black;
+}
+
+.contact-form input {
+    border: 1px solid black;
 }
 </style>
 

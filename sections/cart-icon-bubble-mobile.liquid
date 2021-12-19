@@ -16,16 +16,16 @@
 {%- endif -%} {% endcomment %}
 
 
-{% comment %} <a href="{{ routes.cart_url }}" class="cart-toggle" id="cart-icon-bubble">
+{% comment %} <a href="{{ routes.cart_url }}" class="cart-toggle" id="cart-icon-bubble-mobile">
 
   {% if cart == empty %}
     <div class="cart-text">Cart</div>
-    <span class="cart-toggle--count" style="    text-align: center;">
+    <span class="cart-toggle--count-mobile" style="    text-align: center;">
       0
     </span>
   {% else %}
   <div class="cart-text">Cart</div>
-  <span class="cart-toggle--count is-active" style="    text-align: center;">
+  <span class="cart-toggle--count-mobile is-active" style="    text-align: center;">
     {%- if cart.item_count < 100 -%}
       <span aria-hidden="true">{{ cart.item_count }}</span>
     {% else %}
@@ -35,16 +35,15 @@
   {% endif %}
 </a> {% endcomment %}
 
-
-<a href="{{ routes.cart_url }}" class="cart-toggle" id="cart-icon-bubble">
+<a href="{{ routes.cart_url }}" class="cart-toggle" id="cart-icon-bubble-mobile">
   {% if cart == empty %}
     <div class="cart-text">Cart</div>
-    <span class="cart-toggle--count" style="    text-align: center;">
+    <span class="cart-toggle--count-mobile" style="    text-align: center;">
       0
     </span>
   {% else %}
   <div class="cart-text">Cart</div>
-  <span class="cart-toggle--count is-active" style="    text-align: center;">
+  <span class="cart-toggle--count-mobile is-active" style="    text-align: center;">
     {%- if cart.item_count < 100 -%}
       <span aria-hidden="true">{{ cart.item_count }}</span>
     {% else %}

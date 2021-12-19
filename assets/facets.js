@@ -1,6 +1,8 @@
 class FacetFiltersForm extends HTMLElement {
+  
   constructor() {
     super();
+    console.log("LOAD")
     this.onActiveFilterClick = this.onActiveFilterClick.bind(this);
 
     this.debouncedOnSubmit = debounce((event) => {
@@ -8,11 +10,15 @@ class FacetFiltersForm extends HTMLElement {
     }, 500);
 
     this.querySelector('form').addEventListener('input', this.debouncedOnSubmit.bind(this));
+    this.querySelector("#mobile-facet-submit").addEventListener('click', this.handleFormSubmit.bind(this));
 
     const facetWrapper = this.querySelector('#FacetsWrapperDesktop');
     if (facetWrapper) facetWrapper.addEventListener('keyup', onKeyUpEscape);
-  }
 
+    this.url = "";
+    this.event = "";
+  }
+  
   static setListeners() {
     const onHistoryChange = (event) => {
       const searchParams = event.state ? event.state.searchParams : FacetFiltersForm.searchParamsInitial;
@@ -20,6 +26,10 @@ class FacetFiltersForm extends HTMLElement {
       FacetFiltersForm.renderPage(searchParams, null, false);
     }
     window.addEventListener('popstate', onHistoryChange);
+    
+    const el = document.getElementById("outside");
+    el.addEventListener("click", handleFormSubmit, false);
+
   }
 
   static toggleActiveFacets(disable = true) {
@@ -76,17 +86,6 @@ class FacetFiltersForm extends HTMLElement {
     document.getElementById('ProductGridContainer').innerHTML = new DOMParser().parseFromString(html, 'text/html').getElementById('ProductGridContainer').innerHTML;
   }
 
-  static renderProductCount(html) {
-    const count = new DOMParser().parseFromString(html, 'text/html').getElementById('ProductCount').innerHTML
-    const container = document.getElementById('ProductCount');
-    const containerDesktop = document.getElementById('ProductCountDesktop');
-    container.innerHTML = count;
-    container.classList.remove('loading');
-    if (containerDesktop) {
-      containerDesktop.innerHTML = count;
-      containerDesktop.classList.remove('loading');
-    }
-  }
 
   static renderFilters(html, event) {
     const parsedHTML = new DOMParser().parseFromString(html, 'text/html');
@@ -158,14 +157,38 @@ class FacetFiltersForm extends HTMLElement {
     event.preventDefault();
     const formData = new FormData(event.target.closest('form'));
     const searchParams = new URLSearchParams(formData).toString();
-    FacetFiltersForm.renderPage(searchParams, event);
+    console.log("Submit, ", searchParams, event)
+    this.url = searchParams;
+    this.event = event;
+    this.handleForm();
+    // FacetFiltersForm.renderPage(searchParams, event);
+    
   }
 
   onActiveFilterClick(event) {
     event.preventDefault();
     FacetFiltersForm.toggleActiveFacets();
     const url = event.currentTarget.href.indexOf('?') == -1 ? '' : event.currentTarget.href.slice(event.currentTarget.href.indexOf('?') + 1);
+    console.log("Click, ", url)
     FacetFiltersForm.renderPage(url);
+    
+  }
+
+  handleForm(){
+    console.log(this.url)
+    console.log(this.event)
+
+    //Check if mobile menu
+    var open = $('menu-drawer details').attr('open') == "open" || false
+    console.log("OPEN: ",  open)
+    if(!open){
+      FacetFiltersForm.renderPage(this.url, this.event);
+    }
+  }
+
+  handleFormSubmit(){
+    console.log("CLICK")
+    FacetFiltersForm.renderPage(this.url, this.event);
   }
 }
 
@@ -180,7 +203,6 @@ class PriceRange extends HTMLElement {
     super();
     this.querySelectorAll('input')
       .forEach(element => element.addEventListener('change', this.onRangeChange.bind(this)));
-
     this.setMinAndMaxValues();
   }
 
@@ -214,11 +236,13 @@ customElements.define('price-range', PriceRange);
 class FacetRemove extends HTMLElement {
   constructor() {
     super();
-    this.querySelector('a').addEventListener('click', (event) => {
-      event.preventDefault();
-      const form = this.closest('facet-filters-form') || document.querySelector('facet-filters-form');
-      form.onActiveFilterClick(event);
-    });
+    if(this.querySelector('a')){
+      this.querySelector('a').addEventListener('click', (event) => {
+        event.preventDefault();
+        const form = this.closest('facet-filters-form') || document.querySelector('facet-filters-form');
+        form.onActiveFilterClick(event);
+      });
+    }
   }
 }
 

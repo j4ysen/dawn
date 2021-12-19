@@ -51,9 +51,19 @@ class CartNotification extends HTMLElement {
       {
         id: 'cart-notification-button'
       },
+      // {
+      //   id: 'cart-icon-bubble'
+      // },
       {
-        id: 'cart-icon-bubble'
-      }
+        id: 'cart-icon-bubble-mobile',
+        section: 'cart-icon-bubble-mobile',
+        selector: '.cart-toggle--count-mobile'
+      },
+      {
+        id: 'cart-icon-bubble',
+        section: 'cart-icon-bubble',
+        selector: '.cart-toggle--count'
+      },
       // {
       //   id: 'main-cart-items',
       //   section: document.getElementById('main-cart-items').dataset.id,
@@ -70,6 +80,7 @@ class CartNotification extends HTMLElement {
 
   handleBodyClick(evt) {
     const target = evt.target;
+    console.log("Logged a cart notification")
     if (target !== this.notification && !target.closest('cart-notification')) {
       const disclosure = target.closest('details-disclosure');
       this.activeElement = disclosure ? disclosure.querySelector('summary') : null;

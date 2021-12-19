@@ -5,7 +5,9 @@
 
 <div class="page-width{% if cart == empty %} is-empty{% endif %} section" id="main-cart-footer" data-id="{{ section.id }}">
   <div>
-    <div class="cart__footer">
+    <div class="cart__footer" style="    border-top: 1px solid black;
+      padding-top: 1em;
+      padding: 1rem 1rem 0rem;">
       {%- if section.settings.show_cart_note -%}
         <cart-note class="cart__note field">
           <label for="Cart-note">{{ 'sections.cart.note' | t }}</label>

@@ -71,11 +71,12 @@ cart-items {
     bottom: 0;
     background: white;
     z-index: 10;
-    border-top: 1px solid black;
+    /* border-top: 1px solid black; */
 }
 
 #main-cart-footer{
   padding: 1rem 1rem 0rem 1rem;
+  padding: 0;
 }
 
 .cart__footer-wrapper:last-child .cart__footer {
@@ -130,7 +131,10 @@ cart-items {
     display: flex;
     justify-content: space-between;
     border: 0;
+
   }
+
+
 
   .cart__footer-wrapper:last-child {
     padding-top: 0;

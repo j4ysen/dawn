@@ -338,7 +338,7 @@ class MenuDrawer extends HTMLElement {
       this.mainDetailsToggle.classList.add('menu-opening');
     });
     summaryElement.setAttribute('aria-expanded', true);
-    trapFocus(this.mainDetailsToggle, summaryElement);
+    // trapFocus(this.mainDetailsToggle, summaryElement);
     document.body.classList.add(`overflow-hidden-${this.dataset.breakpoint}`);
   }
 
@@ -350,7 +350,7 @@ class MenuDrawer extends HTMLElement {
         details.classList.remove('menu-opening');
       });
       document.body.classList.remove(`overflow-hidden-${this.dataset.breakpoint}`);
-      removeTrapFocus(elementToFocus);
+      // removeTrapFocus(elementToFocus);
       this.closeAnimation(this.mainDetailsToggle);
     }
   }
@@ -364,6 +364,7 @@ class MenuDrawer extends HTMLElement {
   onCloseButtonClick(event) {
     const detailsElement = event.currentTarget.closest('details');
     this.closeSubmenu(detailsElement);
+    console.log("CLOSING");
   }
 
   closeSubmenu(detailsElement) {
@@ -388,7 +389,7 @@ class MenuDrawer extends HTMLElement {
       } else {
         detailsElement.removeAttribute('open');
         if (detailsElement.closest('details[open]')) {
-          trapFocus(detailsElement.closest('details[open]'), detailsElement.querySelector('summary'));
+          // trapFocus(detailsElement.closest('details[open]'), detailsElement.querySelector('summary'));
         }
       }
     }
@@ -562,6 +563,57 @@ class VariantSelects extends HTMLElement {
   constructor() {
     super();
     this.addEventListener('change', this.onVariantChange);
+    // Update availability buttons
+    this.updateOptions();
+    this.updateMasterId();
+    // Get current variant ID (Same as URL)
+    console.log('Updating disabled variants')
+    this.setDisabled();
+    this.updateTitle();
+  }
+
+  setDisabled(){
+    // Get all variants
+    var all_variants = this.getVariantData()
+    // Get the selected variant
+    var currentVariant = this.currentVariant.id; // Sometimes undefinedd?
+    var obj = all_variants.find(variant => variant.id == this.currentVariant.id);
+    // For each option on the currently selected variant
+    console.log("Searching for ", obj.options)
+
+    // Get all on screen elements
+    console.log(all_variants)
+    // Doesn't work for 1 option set
+    var unavailable = all_variants.filter(
+      el =>(
+        (
+          (
+            (obj.options.some( ai => el['options'].includes(ai))) 
+            || 
+            (el['options'].some( ai => obj.options.includes(ai)))
+            && 
+            !(obj.options == el['options'])
+          )
+          ||
+          (
+            !(obj.options == el['options']) && (obj.options.length ==1)
+          )
+        )
+        && (!el['available']) 
+        && (el['id']!= currentVariant)
+        )
+    )
+    console.log("Unavailable, ", unavailable);
+    $('fieldset label').removeClass("is-disabled");
+    obj.options.forEach(function (selectedValue, i) {
+      // var group = $('fieldset:nth-child('+ String(i + 1 )+')')
+      var group = $('#fieldset-' + String(i + 1));
+      var matches = unavailable.filter(el =>!(el.options.includes(selectedValue)))
+      console.log(matches, i)
+      matches.forEach(function (match, j) {
+        group.find('input[value="' + match.options[i] + '"]').parent().find("label").addClass('is-disabled')
+      })
+    });
   }
 
   onVariantChange() {
@@ -570,6 +622,11 @@ class VariantSelects extends HTMLElement {
     this.toggleAddButton(true, '', false);
     this.updatePickupAvailability();
     this.removeErrorMessage();
+    console.log("Update options",  this.getVariantData());
+    this.setDisabled();
+    this.updateTitle();
+
+
 
     if (!this.currentVariant) {
       this.toggleAddButton(true, '', true);
@@ -596,27 +653,36 @@ class VariantSelects extends HTMLElement {
   }
 
   updateMedia() {
-    // if (!this.currentVariant) return;
-    // if (!this.currentVariant.featured_media) return;
-    // const newMedia = document.querySelector(
-    //   `[data-media-id="${this.dataset.section}-${this.currentVariant.featured_media.id}"]`
-    // );
+    if (!this.currentVariant) return;
+    if (!this.currentVariant.featured_media) return;
+    const newMedia = document.querySelector(
+      `[data-media-id="${this.dataset.section}-${this.currentVariant.featured_media.id}"]`
+    );
 
-    // if (!newMedia) return;
-    // const modalContent = document.querySelector(`#ProductModal-${this.dataset.section} .product-media-modal__content`);
-    // const newMediaModal = modalContent.querySelector( `[data-media-id="${this.currentVariant.featured_media.id}"]`);
-    // const parent = newMedia.parentElement;
-    // if (parent.firstChild == newMedia) return;
-    // modalContent.prepend(newMediaModal);
-    // parent.prepend(newMedia);
-    // this.stickyHeader = this.stickyHeader || document.querySelector('sticky-header');
-    // if(this.stickyHeader) {
-    //   this.stickyHeader.dispatchEvent(new Event('preventHeaderReveal'));
-    // }
-    // window.setTimeout(() => {
-    //   parent.scrollLeft = 0;
-    //   parent.querySelector('li.product__media-item').scrollIntoView({behavior: 'smooth'});
-    // });
+    if (!newMedia) return;
+    const modalContent = document.querySelector(`#ProductModal-${this.dataset.section} .product-media-modal__content`);
+    const newMediaModal = modalContent.querySelector( `[data-media-id="${this.currentVariant.featured_media.id}"]`);
+    const parent = newMedia.parentElement;
+    if (parent.firstChild == newMedia) return;
+    modalContent.prepend(newMediaModal);
+    parent.prepend(newMedia);
+    this.stickyHeader = this.stickyHeader || document.querySelector('sticky-header');
+    if(this.stickyHeader) {
+      this.stickyHeader.dispatchEvent(new Event('preventHeaderReveal'));
+    }
+    window.setTimeout(() => {
+      parent.scrollLeft = 0;
+      // parent.querySelector('li.product__media-item').scrollIntoView({behavior: 'smooth'});
+    });
+  }
+
+  updateTitle(){
+    if (!this.currentVariant) return;
+    console.log(this.currentVariant.title)
+    $('.product--variant').text(this.currentVariant.title);
+    if(!this.currentVariant.available){
+      $('.product--variant').append($('<span class=" badge price__badge-sale  label is-secondary"> Sold out</span>'));
+    }
   }
 
   updateURL() {

@@ -22,58 +22,17 @@
   endif
 -%}
 
-
-<header class="card-header">
-  <div id="modal-overlay" class="closed"></div>
-  <div id="modal" class="modal closed">
-     <button class="" id="close-button"></button>
-     <div class="option-container-mob">
-        <div class="option-container">
-           <div class="option-content"><span class="">Sort By</span></div>
-           <div class="item"><input id="radio99" type="radio" name="radio2" class="hidden"><label for="radio99" class="check-helper"><span class="radio"></span>Low to high</label></div>
-           <div class="item"><input id="radio100" type="radio" name="radio2" class="hidden"><label for="radio100" class="check-helper"><span class="radio"></span>High to low</label></div>
-           <div class="item"><input id="radio101" type="radio" name="radio2" class="hidden"><label for="radio101" class="check-helper"><span class="radio"></span>New Arrivals</label></div>
-        </div>
-        <div class="option-container">
-           <div class="option-content"><span class="">Color</span></div>
-           <div class="item"><input id="checkbox1" type="checkbox" name="checkbox" class="hidden"><label for="checkbox1" class="check-helper"><span class=""></span>White</label></div>
-           <div class="item"><input id="checkbox2" type="checkbox" name="checkbox" class="hidden"><label for="checkbox2" class="check-helper"><span class=""></span>Black</label></div>
-           <div class="item"><input id="checkbox3" type="checkbox" name="checkbox" class="hidden"><label for="checkbox3" class="check-helper"><span class=""></span>Blue</label></div>
-        </div>
-        <div class="option-container">
-           <div class="option-content"><span class="">Brand</span></div>
-           <div class="item"><input id="checkbox11" type="checkbox" name="checkbox" class="hidden"><label for="checkbox11" class="check-helper"><span class=""></span>Aeronautica</label></div>
-           <div class="item"><input id="checkbox12" type="checkbox" name="checkbox" class="hidden"><label for="checkbox12" class="check-helper"><span class=""></span>Carmine Ferarro</label></div>
-           <div class="item"><input id="checkbox13" type="checkbox" name="checkbox" class="hidden"><label for="checkbox13" class="check-helper"><span class=""></span>Hackett</label></div>
-           <div class="item"><input id="checkbox14" type="checkbox" name="checkbox" class="hidden"><label for="checkbox14" class="check-helper"><span class=""></span>Patricks</label></div>
-           <div class="item"><input id="checkbox15" type="checkbox" name="checkbox" class="hidden"><label for="checkbox15" class="check-helper"><span class=""></span>Paul Smith</label></div>
-           <div class="item"><input id="checkbox16" type="checkbox" name="checkbox" class="hidden"><label for="checkbox16" class="check-helper"><span class=""></span>Stora Skuggan</label></div>
-           <div class="item"><input id="checkbox17" type="checkbox" name="checkbox" class="hidden"><label for="checkbox17" class="check-helper"><span class=""></span>The Kyron Soul</label></div>
-        </div>
-     
-
-        
-
-        
-      </div>
-  </div>
-</header>
-
   
   <div class="facets-container filters collapse">
     {%- unless collapse_on_larger_devices -%}
       <facet-filters-form class="facets small-hide">
         <form id="FacetFiltersForm" class="facets__form">
-
           {%- if results.terms -%}
             <input type="hidden" name="q" value="{{ results.terms | escape }}">
             <input name="options[prefix]" type="hidden" value="last">
           {%- endif -%}
           <div id="FacetsWrapperDesktop" class="">
-            {% comment %} class facets__wrapper {% endcomment %}
           {% if enable_filtering %}
-
-
               <div class="">
                 {% assign reset_count = 0 %}
                 {%- for filter in results.filters -%}
@@ -110,53 +69,26 @@
 
                 {% if reset_count > 0 %}
                   <facet-remove class="active-facets__button-wrapper">
-              
-                    {% comment %} {{ 'templates.search.results_with_count' | t: terms: results.terms, count: results.results_count }} {% endcomment %}
-                    {% comment %} {{ 'products.facets.product_count_simple' | t: count: results.products_count }}
-                    {{ 'products.facets.product_count' | t: product_count: results.products_count, count: results.all_products_count }} {% endcomment %}
-
-                  <a href="{{ results_url }}" class="reset-toggle">
-                    <span>{{ 'products.facets.clear_all' | t }}</span>
-                    <span class="reset-toggle--count is-active"
-                      style= "text-align: center;
-                    line-height: 1.5;
-                    font-size: 1rem;">
-                      {{reset_count}}</span>
-                    
-                  </a>
-                  {% comment %} <button class="reset-toggle">Reset<span class="reset-toggle--count is-active">1</span></button>
-                  <a class="reset-toggle">Reset<span class="reset-toggle--count is-active">1</span></a> {% endcomment %}
-                </facet-remove>
+                    <a href="{{ results_url }}" class="reset-toggle">
+                      <span>{{ 'products.facets.clear_all' | t }}</span>
+                      <span class="reset-toggle--count is-active"
+                        style= "text-align: center;
+                      line-height: 1.5;
+                      font-size: 1rem;">
+                        {{reset_count}}</span>
+                    </a>
+                  </facet-remove>
                 {% else %}
                   <h6 class="reset-title">Filter </h6>
-
-                  <div class="mobile-modal-section">
-                    <button class="modal-open">
-                       <h6 class="reset-title">Filter </h6>
-                    </button>
-                 </div>
-                 
                 {% endif %}
-
-
               </div>
-                {% comment %} HERE  {% endcomment %}
-
-              {% comment %} {%- unless results.filters == empty -%}
-                <h2 class="facets__heading caption-large text-body">{{ 'products.facets.filter_by_label' | t }}</h2>
-              {%- endunless -%} {% endcomment %}
-
               <div class="sidebar">
-
                 {%- if enable_sorting -%}
                   <div class="option-container">
                       <div class="option-content" style="flex-direction: column;">
                         <span class="">
                           {{ 'products.facets.sort_by_label' | t }}
                       </span>
-                      {% comment %} <h2 class="facet-filters__label caption-large text-body">
-                        <label for="SortBy">{{ 'products.facets.sort_by_label' | t }}</label>
-                      </h2> {% endcomment %}
                       <div class="select item">
                         {%- assign sort_by = results.sort_by | default: results.default_sort_by -%}
                         <select name="sort_by" class="facet-filters__sort select__select caption-large" id="SortBy" aria-describedby="a11y-refresh-page-message"
@@ -166,10 +98,8 @@
                             <option value="{{ option.value | escape }}"{% if option.value == sort_by %} selected="selected"{% endif %}>{{ option.name | escape }}</option>
                           {%- endfor -%}
                         </select>
-      
                       </div>
                     </div>
-      
                     <noscript>
                       <button type="submit" class="facets__button-no-js button button--tertiary">{{ 'products.facets.sort_button' | t }}</button>
                     </noscript>
@@ -197,66 +127,13 @@
                         <label for="Filter-{{ filter.label | escape }}-{{ forloop.index }}" class="check-helper ">
                           <span class="">
                         </span>
-                        {{ value.label | escape }} ({{ value.count }})
+                        {{ value.label | escape }} 
+                        
+                        ({{ value.count }})
                       </label>
                     </div>
                   {%- endfor -%}
                   </div>
-
-                  {% comment %} <details id="Details-{{ forloop.index }}-{{ section.id }}" class="disclosure-has-popup facets__disclosure js-filter" data-index="{{ forloop.index }}">
-                    <summary class="facets__summary caption-large focus-offset">
-                      <div>
-                        <span>{{ filter.label | escape }}</span>
-                        {% render 'icon-caret' %}
-                      </div>
-                    </summary>
-                    <div id="Facet-{{ forloop.index }}-{{ section.id }}" class="facets__display">
-                      <div class="facets__header">
-                        <span class="facets__selected no-js-hidden">{{ 'products.facets.filters_selected' | t: count: filter.active_values.size }}</span>
-                        <facet-remove>
-                          <a href="{{ filter.url_to_remove }}" class="facets__reset link underlined-link">
-                            {{ 'products.facets.reset' | t }}
-                          </a>
-                        </facet-remove>
-                      </div>
-
-                      <ul class="facets__list list-unstyled" role="list">
-                        {%- for value in filter.values -%}
-                          <li class="list-menu__item facets__item">
-                            <label for="Filter-{{ filter.label | escape }}-{{ forloop.index }}" class="facet-checkbox{% if value.count == 0 and value.active == false %} facet-checkbox--disabled{% endif %}">
-                              <input type="checkbox"
-                                name="{{ value.param_name }}"
-                                value="{{ value.value }}"
-                                id="Filter-{{ filter.label | escape }}-{{ forloop.index }}"
-                                {% if value.active %}checked{% endif %}
-                                {% if value.count == 0 and value.active == false %}disabled{% endif %}
-                              >
-
-                              <svg width="1.6rem" height="1.6rem" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
-                                <rect width="16" height="16" stroke="currentColor" fill="none" stroke-width="1"></rect>
-                              </svg>
-
-                              <svg class="icon icon-checkmark"
-                                width="1.1rem"
-                                height="0.7rem"
-                                viewBox="0 0 11 7"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-
-                                <path d="M1.5 3.5L2.83333 4.75L4.16667 6L9.5 1"
-                                  stroke="currentColor"
-                                  stroke-width="1.75"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round" />
-                              </svg>
-
-                              {{ value.label | escape }} ({{ value.count }})
-                            </label>
-                          </li>
-                        {%- endfor -%}
-                      </ul>
-                    </div>
-                  </details> {% endcomment %}
                 {% when 'price_range' %}
                   {% liquid
                     assign currencies_using_comma_decimals = 'ANG,ARS,BRL,BYN,BYR,CLF,CLP,COP,CRC,CZK,DKK,EUR,HRK,HUF,IDR,ISK,MZN,NOK,PLN,RON,RUB,SEK,TRY,UYU,VES,VND' | split: ','
@@ -326,68 +203,21 @@
               <noscript>
                 <button type="submit" class="facets__button-no-js button button--tertiary">{{ 'products.facets.filter_button' | t }}</button>
               </noscript>
-            
-
-            
           {% endif %}
-
           {% if results.current_vendor or results.current_type %}
             <input type="hidden" name="q" value="{{ results.current_vendor }}{{ results.current_type }}">
           {% endif %}
-
-          {% comment %} {%- if enable_sorting -%}
-            <div class="facet-filters sorting caption">
-              <div class="facet-filters__field">
-                <h2 class="facet-filters__label caption-large text-body">
-                  <label for="SortBy">{{ 'products.facets.sort_by_label' | t }}</label>
-                </h2>
-                <div class="select">
-                  {%- assign sort_by = results.sort_by | default: results.default_sort_by -%}
-                  <select name="sort_by" class="facet-filters__sort select__select caption-large" id="SortBy" aria-describedby="a11y-refresh-page-message">
-                    {%- for option in results.sort_options -%}
-                      <option value="{{ option.value | escape }}"{% if option.value == sort_by %} selected="selected"{% endif %}>{{ option.name | escape }}</option>
-                    {%- endfor -%}
-                  </select>
-
-                </div>
-              </div>
-
-              <noscript>
-                <button type="submit" class="facets__button-no-js button button--tertiary">{{ 'products.facets.sort_button' | t }}</button>
-              </noscript>
-            </div>
-          {%- endif -%} {% endcomment %}
-
         </div>
-
-          {% comment %} <div class="product-count light" role="status">
-            <h2 class="product-count__text text-body">
-              <span id="ProductCountDesktop">
-                {%- if results.results_count -%}
-                  {{ 'templates.search.results_with_count' | t: terms: results.terms, count: results.results_count }}
-                {%- elsif results.products_count == results.all_products_count -%}
-                  {{ 'products.facets.product_count_simple' | t: count: results.products_count }}
-                {%- else -%}
-                  {{ 'products.facets.product_count' | t: product_count: results.products_count, count: results.all_products_count }}
-                {%- endif -%}
-              </span>
-            </h2>
-            <div class="loading-overlay__spinner">
-              <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-                <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-              </svg>
-            </div>
-          </div>           {% endcomment %}
         </form>
       </facet-filters-form>
     {%- endunless -%}
 
-    <div >
+    <div>
       <menu-drawer class="mobile-facets__wrapper {% unless collapse_on_larger_devices %} medium-hide large-up-hide{% endunless %}" data-breakpoint="mobile">
         <details class="mobile-facets__disclosure disclosure-has-popup">
           <summary class="mobile-facets__open-wrapper focus-offset">
             <span class="mobile-facets__open">
-              {% render 'icon-filter' %}
+              {% comment %} {% render 'icon-filter' %} {% endcomment %}
               <span class="mobile-facets__open-label button-label">
                 {%- if enable_filtering and enable_sorting -%}
                   {{ 'products.facets.filter_and_sort' | t }}
@@ -406,30 +236,81 @@
                 <div class="mobile-facets__header">
                   <div class="mobile-facets__header-inner">
                     <h2 class="mobile-facets__heading">
-                      {%- if enable_filtering and enable_sorting -%}
+                      {% comment %} {%- if enable_filtering and enable_sorting -%}
                         {{ 'products.facets.filter_and_sort' | t }}
                       {%- elsif enable_filtering -%}
                         {{ 'products.facets.filter_button' | t }}
                       {%- elsif enable_sorting -%}
                         {{ 'products.facets.sort_button' | t }}
-                      {%- endif -%}
+                      {%- endif -%} {% endcomment %}
                     </h2>
                     <p class="mobile-facets__count">
-                        {%- if results.results_count -%}
+                        {% comment %} {%- if results.results_count -%}
                           {{ 'templates.search.results_with_count' | t: terms: results.terms, count: results.results_count }}
                         {%- elsif results.products_count == results.all_products_count -%}
                           {{ 'products.facets.product_count_simple' | t: count: results.products_count }}
                         {%- else -%}
                           {{ 'products.facets.product_count' | t: product_count: results.products_count, count: results.all_products_count }}
-                        {%- endif -%}
+                        {%- endif -%} {% endcomment %}
                     </p>
                   </div>
                 </div>
                 <div class="mobile-facets__main">
+
+                  {%- if enable_sorting -%}
+                    <div class="option-container" data-index="mobile-{{ forloop.index }}">
+                        <div class="option-content" for="SortBy-mobile" style="flex-direction: column;">
+                          <span class="">
+                            {{ 'products.facets.sort_by_label' | t }}
+                        </span>
+                        <div class="select item">
+                          {%- assign sort_by = results.sort_by | default: results.default_sort_by -%}
+                          <select name="sort_by" class="facet-filters__sort select__select caption-large"  id="SortBy-mobile"  aria-describedby="a11y-refresh-page-message"
+                          style="font-size: 1rem;
+                          padding: .65rem 0rem;">
+                            {%- for option in results.sort_options -%}
+                              <option value="{{ option.value | escape }}"{% if option.value == sort_by %} selected="selected"{% endif %}>{{ option.name | escape }}</option>
+                            {%- endfor -%}
+                          </select>
+                        </div>
+                      </div>
+                      <noscript>
+                        <button type="submit" class="facets__button-no-js button button--tertiary">{{ 'products.facets.sort_button' | t }}</button>
+                      </noscript>
+                    </div>
+                  {%- endif -%}
+
+
                   {%- for filter in results.filters -%}
                     {% case filter.type %}
                     {% when 'list' %}
-                      <details id="Details-Mobile-{{ forloop.index }}-{{ section.id }}" class="mobile-facets__details js-filter" data-index="mobile-{{ forloop.index }}">
+                    <div id="Details-Mobile-{{ forloop.index }}-{{ section.id }}" data-index="mobile-{{ forloop.index }}" class="mobile-facets__details js-filter" data-index="mobile-{{ forloop.index }}">
+                        <div id="FacetMobile-{{ forloop.index }}-{{ section.id }}"  class="option-container">
+                          <div class="option-content"><span class="">{{ filter.label | escape }}</span></div>
+                          {%- for value in filter.values -%}
+                          <div class="item">
+                            <input  type="checkbox"
+                              name="{{ value.param_name }}"
+                              value="{{ value.value }}"
+                              id="Filter-{{ filter.label | escape }}-mobile-{{ forloop.index }}"
+                              class="hidden"
+                              
+                              {% if value.active %}checked{% endif %}
+                              {% if value.count == 0 and value.active == false %}disabled{% endif %}
+                            >
+                              <label for="Filter-{{ filter.label | escape }}-mobile-{{ forloop.index }}"  class="check-helper ">
+                                <span class="">
+                              </span>
+                              {{ value.label | escape }} 
+                              
+                              ({{ value.count }})
+                            </label>
+                          </div>
+                        {%- endfor -%}
+                        </div>
+                      </div> 
+
+                      {% comment %} <details id="Details-Mobile-{{ forloop.index }}-{{ section.id }}" class="mobile-facets__details js-filter" data-index="mobile-{{ forloop.index }}">
                         <summary class="mobile-facets__summary focus-inset">
                           <div>
                             <span>{{ filter.label | escape }}</span>                        
@@ -450,23 +331,23 @@
                                     {% if value.active %}checked{% endif %}
                                     {% if value.count == 0 and value.active == false %}disabled{% endif %}
                                   >
-
+    
                                   <span class="mobile-facets__highlight"></span>
-
+    
                                   <svg width="1.6rem" height="1.6rem" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
                                     <rect width="16" height="16" stroke="currentColor" fill="none" stroke-width="1"></rect>
                                   </svg>
-
+    
                                   <svg class="icon icon-checkmark" width="1.1rem" height="0.7rem" viewBox="0 0 11 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M1.5 3.5L2.83333 4.75L4.16667 6L9.5 1" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
                                   </svg>
-
+    
                                   {{ value.label | escape }} ({{ value.count }})
                                 </label>
                               </li>
                             {%- endfor -%}
                           </ul>
-
+    
                           <div class="no-js-hidden mobile-facets__footer">
                             <facet-remove class="mobile-facets__clear-wrapper">
                               <a href="{{ results_url }}" class="mobile-facets__clear underlined-link">{{ 'products.facets.clear' | t }}</a>
@@ -475,8 +356,11 @@
                             <noscript><button class="button button--primary">{{ 'products.facets.apply' | t }}</button></noscript>
                           </div>
                         </div>
-                      </details>
-                    {% when 'price_range' %}
+                      </details> {% endcomment %}
+
+
+
+                    {% comment %} {% when 'price_range' %}
                       <details id="Details-Mobile-{{ forloop.index }}-{{ section.id }}" class="mobile-facets__details js-filter" data-index="mobile-{{ forloop.index }}">
                         <summary class="mobile-facets__summary focus-inset">
                           <div>
@@ -490,9 +374,9 @@
                             {% render 'icon-arrow' %}
                             {{ filter.label | escape }}
                           </button>
-
+    
                           <p class="mobile-facets__info">{{ "products.facets.max_price" | t: price: max_price_amount }}</p>
-
+    
                           <price-range class="facets__price">
                             <span class="field-currency">{{ cart.currency.symbol }}</span>
                             <div class="field">
@@ -510,7 +394,7 @@
                               >
                               <label class="field__label" for="Mobile-Filter-{{ filter.label | escape }}-GTE">{{ 'products.facets.from' | t }}</label>
                             </div>
-
+    
                             <span class="field-currency">{{ cart.currency.symbol }}</span>
                             <div class="field">
                               <input class="field__input"
@@ -541,41 +425,25 @@
                             <noscript><button class="button button--primary">{{ 'products.facets.apply' | t }}</button></noscript>
                           </div>
                         </div>
-                      </details>
-                    {% endcase %}
+                      </details>{% endcomment %}
+                    {% endcase %} 
                   {%- endfor -%}
+    
 
-                  {%- if enable_sorting -%}
-                    <div class="mobile-facets__details js-filter" data-index="mobile-{{ forloop.index }}">
-                      <div class="mobile-facets__summary">
-                        <div class="mobile-facets__sort">
-                          <label for="SortBy-mobile">{{ 'products.facets.sort_by_label' | t }}</label>
-                          <div class="select">
-                            <select name="sort_by" class="select__select" id="SortBy-mobile" aria-describedby="a11y-refresh-page-message">
-                              {%- for option in results.sort_options -%}
-                                <option value="{{ option.value | escape }}"{% if option.value == sort_by %} selected="selected"{% endif %}>{{ option.name | escape }}</option>
-                              {%- endfor -%}
-                            </select>
-                            {% render 'icon-caret' %}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  {%- endif -%}
-
+    
                   <div class="mobile-facets__footer">
                     <facet-remove class="mobile-facets__clear-wrapper">
                       <a href="{{ results_url }}" class="mobile-facets__clear underlined-link">{{ 'products.facets.clear_all' | t }}</a>
                     </facet-remove>
-                    <button type="button" class="no-js-hidden button button--primary" onclick="this.closest('.mobile-facets__wrapper').querySelector('summary').click()">{{ 'products.facets.apply' | t }}</button>
-                    <noscript><button class="button button--primary">{{ 'products.facets.apply' | t }}</button></noscript>
+                    <button type="button" class="no-js-hidden btn is-primary is-large is-block" id="mobile-facet-submit" onclick="this.closest('.mobile-facets__wrapper').querySelector('summary').click()">{{ 'products.facets.apply' | t }}</button>
+                    <noscript><button class="button btn is-primary is-large is-block">{{ 'products.facets.apply' | t }}</button></noscript>
                   </div>
                 </div>
-
+    
                 {% if results.current_vendor or results.current_type %}
                   <input type="hidden" name="q" value="{{ results.current_vendor }}{{ results.current_type }}">
                 {% endif %}
-
+    
                 {%- if results.terms -%}
                   <input type="hidden" name="q" value="{{ results.terms | escape }}">
                   <input name="options[prefix]" type="hidden" value="last">
@@ -587,57 +455,54 @@
       </menu-drawer>
 
       <div class="active-facets active-facets-mobile {% unless collapse_on_larger_devices %} medium-hide large-up-hide{% endunless %}">
+        {% assign reset_count = 0 %}
         {%- for filter in results.filters -%}
           {%- for value in filter.active_values -%}
-            <facet-remove>
-              <a href="{{ value.url_to_remove }}" class="active-facets__button active-facets__button--light">
-                <span class="active-facets__button-inner button button--tertiary">
-                  {{ value.label | escape }}
-                  {% render 'icon-close-small' %}
-                  <span class="visually-hidden">{{ 'products.facets.clear_filter' | t }}</span>
-                </span>
-              </a>
-            </facet-remove>
-          {%- endfor -%}
+            {% assign reset_count = reset_count | plus: 1 %}
+          {% endfor %}
+        {% endfor %}
 
-          {%- if filter.type == "price_range" -%}
-            {%- if filter.min_value.value != nil or filter.max_value.value != nil -%}
-              <facet-remove>
-                <a href="{{ filter.url_to_remove }}" class="active-facets__button active-facets__button--light">
-                  <span class="active-facets__button-inner button button--tertiary">
-                    {%- if filter.min_value.value -%}{{ filter.min_value.value | money }}{%- else -%}{{ 0 | money }}{%- endif -%}-{%- if filter.max_value.value -%}{{ filter.max_value.value | money }}{%- else -%}{{ filter.range_max | money }}{%- endif -%}
-                    {% render 'icon-close-small' %}
-                    <span class="visually-hidden">{{ 'products.facets.clear_filter' | t }}</span>
-                  </span>
-                </a>
-              </facet-remove>
-            {%- endif -%}
-          {%- endif -%}
-        {%- endfor -%}
-        <facet-remove class="active-facets__button-wrapper">
-          <a href="{{ results_url }}" class="active-facets__button-remove underlined-link">
-            <span>{{ 'products.facets.clear_all' | t }}</span>
-          </a>
-        </facet-remove>
-      </div>
-      <div class="product-count light{% unless collapse_on_larger_devices %} medium-hide large-up-hide{% endunless %}" role="status">
-        <h2 class="product-count__text text-body">
-          <span id="ProductCount">
-            {%- if results.results_count -%}
-              {{ 'templates.search.results_with_count' | t: terms: results.terms, count: results.results_count }}
-            {%- elsif results.products_count == results.all_products_count -%}
-              {{ 'products.facets.product_count_simple' | t: count: results.products_count }}
-            {%- else -%}
-              {{ 'products.facets.product_count' | t: product_count: results.products_count, count: results.all_products_count }}
-            {%- endif -%}
-          </span>
-        </h2>
-        <div class="loading-overlay__spinner">
-          <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-            <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-          </svg>
-        </div>
+        {% if reset_count > 0 %}
+          <facet-remove class="active-facets__button-wrapper">
+            <a href="{{ results_url }}" class="reset-toggle">
+              <span>{{ 'products.facets.clear_all' | t }}</span>
+              <span class="reset-toggle--count is-active"
+                style= "text-align: center;
+              line-height: 1.5;
+              font-size: 1rem;">
+                {{reset_count}}</span>
+              
+            </a>
+          </facet-remove>
+        {% endif %}
+
       </div>
 
   </div>
   </div>
+
+ <style>
+  facet-remove.mobile-facets__clear-wrapper {
+    padding: 0;
+}
+.mobile-facets__main .option-container {
+  padding: 1rem 2rem;
+}
+
+label.check-helper.disabled {
+  opacity: .25;
+}
+
+input[type=checkbox]:disabled + label {
+  opacity: 0.3;
+}
+
+</style>
+
+{% comment %} $('input[type=checkbox]:not(:disabled)').each(function() {
+  $(this).parent().find('.check-helper').removeClass("disabled");
+}); 
+
+$('input[type=checkbox]:disabled').each(function() {
+  $(this).parent().find('.check-helper').addClass("disabled");
+});  {% endcomment %}

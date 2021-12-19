@@ -11,112 +11,145 @@
 
 <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 
-
-
 <main id="content">
   <section class="product">
      <div class="product--content">
-        <div class="product--gallery">
-           <div style="opacity: 1;">
+        <div class="product--gallery" style="border-top:1px solid black;">
+          {% comment %} <media-gallery id="MediaGallery-{{ section.id }}" role="region" aria-label="{{ 'products.product.media.gallery_viewer' | t }}" data-desktop-layout="{{ section.settings.gallery_layout }}">
+            <div id="GalleryStatus-{{ section.id }}" class="visually-hidden" role="status"></div> 
+            <div class=" main-gallery js-flickity"  id="GalleryViewer-{{ section.id }}">
+              {%- liquid
+                assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' 
+                assign media_count = product.media.size
+                if section.settings.hide_variants
+                  assign media_count = media_count | minus: variant_images.size | plus: 1
+                endif
+                -%}
+              {%- if featured_media != null -%}
+              {%- assign featured_media = product.selected_or_first_available_variant.featured_media -%}
+              {%- assign media = product.selected_or_first_available_variant.featured_media -%}
+                  <img
+                    srcset="{% if media.preview_image.width >= 288 %}{{ media.preview_image | img_url: '288x' }} 288w,{% endif %}
+                      {% if media.preview_image.width >= 576 %}{{ media.preview_image | img_url: '576x' }} 576w,{% endif %}
+                      {% if media.preview_image.width >= 750 %}{{ media.preview_image | img_url: '750x' }} 750w,{% endif %}
+                      {% if media.preview_image.width >= 1100 %}{{ media.preview_image | img_url: '1100x' }} 1100w,{% endif %}
+                      {% if media.preview_image.width >= 1500 %}{{ media.preview_image | img_url: '1500x' }} 1500w,{% endif %}
+                      {{ media.preview_image | img_url: 'master' }} {{ media.preview_image.width }}w"
+                    src="{{ media | img_url: '1500x' }}"
+                    sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | times: 0.64 | round }}px, (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)"
+                    loading="lazy"
+                    width="576"
+                    height="{{ 576 | divided_by: media.preview_image.aspect_ratio }}"
+                    alt="{{ media.preview_image.alt | escape }}"
+                    style="    max-height: 100%;
+                    width: auto;"
+                    class="product-image"
+                  >
+              {% endif %}
+              {%- for media in product.media -%}
+              {%- unless media.id == product.selected_or_first_availasble_variant.featured_media.id -%}
+                <img
+                  srcset="{% if media.preview_image.width >= 288 %}{{ media.preview_image | img_url: '288x' }} 288w,{% endif %}
+                    {% if media.preview_image.width >= 576 %}{{ media.preview_image | img_url: '576x' }} 576w,{% endif %}
+                    {% if media.preview_image.width >= 750 %}{{ media.preview_image | img_url: '750x' }} 750w,{% endif %}
+                    {% if media.preview_image.width >= 1100 %}{{ media.preview_image | img_url: '1100x' }} 1100w,{% endif %}
+                    {% if media.preview_image.width >= 1500 %}{{ media.preview_image | img_url: '1500x' }} 1500w,{% endif %}
+                    {{ media.preview_image | img_url: 'master' }} {{ media.preview_image.width }}w"
+                  src="{{ media | img_url: '1500x' }}"
+                  sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | times: 0.64 | round }}px, (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)"
+                  loading="lazy"
+                  width="576"
+                  height="{{ 576 | divided_by: media.preview_image.aspect_ratio }}"
+                  alt="{{ media.preview_image.alt | escape }}"
+                  style="    max-height: 100%;
+                  width: auto;"
+                  class="product-image"
+                >
+                {%- endunless -%}
+              {%- endfor -%}
 
-             <div class=" main-gallery js-flickity">
+
+            </div>
+           </media-gallery>
+
+          <!--[if !IE]--><script> $(document).ready(function() { var tapArea, startX ; tapArea = document.querySelectorAll('.carousel'); startX = 0; for (var item of tapArea) { item.ontouchstart = function(e) { startX = e.touches[0].clientX; }; item.ontouchmove = function(e) { if (Math.abs(e.touches[0].clientX - startX) > 5 && e.cancelable ) { e.preventDefault(); } }; } }); </script><!--<![endif]--> {% endcomment %}
+
+            <div class="main-gallery js-flickity">
+
               {%- assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' -%}
               {%- if product.selected_or_first_available_variant.featured_media != null -%}
                 {%- assign media = product.selected_or_first_available_variant.featured_media -%}
-                <div class=" gallery-cell product__media-item grid__item slider__slide{% if media.media_type != 'image' %} product__media-item--full{% endif %}{% if section.settings.hide_variants and variant_images contains media.src %} product__media-item--variant{% endif %}" data-media-id="{{ section.id }}-{{ media.id }}"
-                
-                style="display: flex;
-                flex-wrap: nowrap;
-                justify-content: center;"
-              >
-                  {% render 'product-thumbnail', media: media, position: 'featured', loop: section.settings.enable_video_looping, modal_id: section.id, xr_button: true %}
-                  
-                  
-                </div>
+
+                <img
+                  srcset="{% if media.preview_image.width >= 288 %}{{ media.preview_image | img_url: '288x' }} 288w,{% endif %}
+                  {% if media.preview_image.width >= 576 %}{{ media.preview_image | img_url: '576x' }} 576w,{% endif %}
+                  {% if media.preview_image.width >= 750 %}{{ media.preview_image | img_url: '750x' }} 750w,{% endif %}
+                  {% if media.preview_image.width >= 1100 %}{{ media.preview_image | img_url: '1100x' }} 1100w,{% endif %}
+                  {% if media.preview_image.width >= 1500 %}{{ media.preview_image | img_url: '1500x' }} 1500w,{% endif %}
+                  {{ media.preview_image | img_url: 'master' }} {{ media.preview_image.width }}w"
+                src="{{ media | img_url: '1500x' }}"
+                sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | times: 0.64 | round }}px, (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)"
+                loading="lazy"
+                {% comment %} width="576" {% endcomment %}
+                height="{{ 576 | divided_by: media.preview_image.aspect_ratio }}"
+                alt="{{ media.preview_image.alt | escape }}"
+                style="    height: auto;
+                width: 100%;"
+                class="carousel-cell"
+                >
+
               {%- endif -%}
               {%- for media in product.media -%}
                 {%- unless media.id == product.selected_or_first_availasble_variant.featured_media.id -%}
-                  <div class=" gallery-cell product__media-item grid__item slider__slide{% if media.media_type != 'image' %} product__media-item--full{% endif %}{% if section.settings.hide_variants and variant_images contains media.src %} product__media-item--variant{% endif %}" data-media-id="{{ section.id }}-{{ media.id }}"
-                    style="display: flex;
-                    flex-wrap: nowrap;
-                    justify-content: center;"
+                  <img
+                    srcset="{% if media.preview_image.width >= 288 %}{{ media.preview_image | img_url: '288x' }} 288w,{% endif %}
+                      {% if media.preview_image.width >= 576 %}{{ media.preview_image | img_url: '576x' }} 576w,{% endif %}
+                      {% if media.preview_image.width >= 750 %}{{ media.preview_image | img_url: '750x' }} 750w,{% endif %}
+                      {% if media.preview_image.width >= 1100 %}{{ media.preview_image | img_url: '1100x' }} 1100w,{% endif %}
+                      {% if media.preview_image.width >= 1500 %}{{ media.preview_image | img_url: '1500x' }} 1500w,{% endif %}
+                      {{ media.preview_image | img_url: 'master' }} {{ media.preview_image.width }}w"
+                    src="{{ media | img_url: '1500x' }}"
+                    sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | times: 0.64 | round }}px, (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)"
+                    loading="lazy"
+                    {% comment %} width="576" {% endcomment %}
+                    height="{{ 576 | divided_by: media.preview_image.aspect_ratio }}"
+                    alt="{{ media.preview_image.alt | escape }}"
+                    style="    height: auto;
+                    width: 100%;"
+                    class="carousel-cell"
                   >
-                    {% render 'product-thumbnail', media: media,  position: 'featured', loop: section.settings.enable_video_looping, modal_id: section.id, xr_button: true %}
-                  </div>
-                  
-                  
-                {%- endunless -%}
-              {%- endfor -%}
-           </div>
-
-           {% comment %} <div class="grid__item product__media-wrapper">
-            <slider-component class="slider-mobile-gutter">
-              <a class="skip-to-content-link button visually-hidden" href="#ProductInfo-{{ section.id }}">
-                {{ "accessibility.skip_to_product_info" | t }}
-              </a>
-              <ul class="product__media-list grid grid--peek list-unstyled slider slider--mobile" role="list">
-                {%- assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' -%}
-                {%- if product.selected_or_first_available_variant.featured_media != null -%}
-                  {%- assign media = product.selected_or_first_available_variant.featured_media -%}
-                  <li class="product__media-item grid__item slider__slide{% if media.media_type != 'image' %} product__media-item--full{% endif %}{% if section.settings.hide_variants and variant_images contains media.src %} product__media-item--variant{% endif %}" data-media-id="{{ section.id }}-{{ media.id }}">
-                    {% render 'product-thumbnail', media: media, position: 'featured', loop: section.settings.enable_video_looping, modal_id: section.id, xr_button: true %}
-                  </li>
-                {%- endif -%}
-                {%- for media in product.media -%}
-                  {%- unless media.id == product.selected_or_first_available_variant.featured_media.id -%}
-                    <li class="product__media-item grid__item slider__slide{% if media.media_type != 'image' %} product__media-item--full{% endif %}{% if section.settings.hide_variants and variant_images contains media.src %} product__media-item--variant{% endif %}" data-media-id="{{ section.id }}-{{ media.id }}">
-                      {% render 'product-thumbnail', media: media, position: forloop.index, loop: section.settings.enable_video_looping, modal_id: section.id, xr_button: true %}
-                    </li>
                   {%- endunless -%}
                 {%- endfor -%}
-              </ul>
-              {%- assign filtered_media_size = product.media.size | minus: variant_images.size | plus: 1 -%}
-              <div class="slider-buttons no-js-hidden{% if product.media.size < 2 or section.settings.hide_variants and filtered_media_size < 2 %} small-hide{% endif %}">
-                <button type="button" class="slider-button slider-button--prev" name="previous" aria-label="{{ 'accessibility.previous_slide' | t }}">{% render 'icon-caret' %}</button>
-                <div class="slider-counter caption">
-                  <span class="slider-counter--current">1</span>
-                  <span aria-hidden="true"> / </span>
-                  <span class="visually-hidden">{{ 'accessibility.of' | t }}</span>
-                  <span class="slider-counter--total">{% if section.settings.hide_variants %}{{ filtered_media_size }}{% else %}{{ product.media.size }}{% endif %}</span>
-                </div>
-                <button type="button" class="slider-button slider-button--next" name="next" aria-label="{{ 'accessibility.next_slide' | t }}">{% render 'icon-caret' %}</button>
-              </div>
-            </slider-component>
-          </div> {% endcomment %}
+            </div>
 
-              <!--[if !IE]--><script> $(document).ready(function() { var tapArea, startX ; tapArea = document.querySelectorAll('.carousel'); startX = 0; for (var item of tapArea) { item.ontouchstart = function(e) { startX = e.touches[0].clientX; }; item.ontouchmove = function(e) { if (Math.abs(e.touches[0].clientX - startX) > 5 && e.cancelable ) { e.preventDefault(); } }; } }); </script><!--<![endif]-->
-                {%- assign filtered_media_size = product.media.size | minus: variant_images.size | plus: 1 -%}
-                {% if product.media.size > 1 %}
-                  <div class="carousel has-drag">
-                  <div class="carousel--hud">
-                      <div class="carousel--nav">
-                        <button class="carousel--prev slider-button slider-button--prev" name="previous" aria-label="{{ 'accessibility.previous_slide' | t }}" aria-label="Previous slide">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-labelledby="arrow-prev-1a8cd2ffb553be3fae676b2d062e212705ad2d15c24d9b732586aa9395fddcd0715105c4480825eec9640a949778a939992d80d60e024ce6058f8fdf79e4a64382d2000c511c110dcb3f40f4ca65991a" class="icon">
-                              <title id="arrow-prev-1a8cd2ffb553be3fae676b2d062e212705ad2d15c24d9b732586aa9395fddcd0715105c4480825eec9640a949778a939992d80d60e024ce6058f8fdf79e4a64382d2000c511c110dcb3f40f4ca65991a">Arrow</title>
-                              <polygon points="51.829 7.172 46.172 12.828 79.343 46 4 46 4 54 79.343 54 46.172 87.172 51.829 92.828 94.658 50 51.829 7.172"></polygon>
-                            </svg>
-                        </button>
-                        <div class="carousel--status">
-                            <div class="carousel--counter">
-                              <div class="carousel--counter-item is-current">
-                                  <div class="counter-flipper slider-counter--current"><span>1</span></div>
-                              </div>
-                              <div class="carousel--counter-item is-total"><span>{% if section.settings.hide_variants %}{{ filtered_media_size }}{% else %}{{ product.media.size }}{% endif %}</span></div>
-                            </div>
+            {% if product.media.size > 1 %}
+              <div class="carousel has-drag">
+              <div class="carousel--hud">
+                  <div class="carousel--nav">
+                    <button class="carousel--prev slider-button slider-button--prev" name="previous" aria-label="{{ 'accessibility.previous_slide' | t }}" aria-label="Previous slide">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-labelledby="arrow-prev-1a8cd2ffb553be3fae676b2d062e212705ad2d15c24d9b732586aa9395fddcd0715105c4480825eec9640a949778a939992d80d60e024ce6058f8fdf79e4a64382d2000c511c110dcb3f40f4ca65991a" class="icon">
+                          <title id="arrow-prev-1a8cd2ffb553be3fae676b2d062e212705ad2d15c24d9b732586aa9395fddcd0715105c4480825eec9640a949778a939992d80d60e024ce6058f8fdf79e4a64382d2000c511c110dcb3f40f4ca65991a">Arrow</title>
+                          <polygon points="51.829 7.172 46.172 12.828 79.343 46 4 46 4 54 79.343 54 46.172 87.172 51.829 92.828 94.658 50 51.829 7.172"></polygon>
+                        </svg>
+                    </button>
+                    <div class="carousel--status">
+                        <div class="carousel--counter">
+                          <div class="carousel--counter-item is-current">
+                              <div class="counter-flipper slider-counter--current"><span>1</span></div>
+                          </div>
+                          <div class="carousel--counter-item is-total"><span>{{ media_count }}</span></div>
                         </div>
-                        <button class="slider-button slider-button--next carousel--next" aria-label="{{ 'accessibility.next_slide' | t }}">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-labelledby="arrow-next-1a8cd2ffb553be3fae676b2d062e212705ad2d15c24d9b732586aa9395fddcd0715105c4480825eec9640a949778a939992d80d60e024ce6058f8fdf79e4a64382d2000c511c110dcb3f40f4ca65991a" class="icon">
-                              <title id="arrow-next-1a8cd2ffb553be3fae676b2d062e212705ad2d15c24d9b732586aa9395fddcd0715105c4480825eec9640a949778a939992d80d60e024ce6058f8fdf79e4a64382d2000c511c110dcb3f40f4ca65991a">Arrow</title>
-                              <polygon points="51.829 7.172 46.172 12.828 79.343 46 4 46 4 54 79.343 54 46.172 87.172 51.829 92.828 94.658 50 51.829 7.172"></polygon>
-                            </svg>
-                        </button>
-                      </div>
+                    </div>
+                    <button class="slider-button slider-button--next carousel--next" aria-label="{{ 'accessibility.next_slide' | t }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-labelledby="arrow-next-1a8cd2ffb553be3fae676b2d062e212705ad2d15c24d9b732586aa9395fddcd0715105c4480825eec9640a949778a939992d80d60e024ce6058f8fdf79e4a64382d2000c511c110dcb3f40f4ca65991a" class="icon">
+                          <title id="arrow-next-1a8cd2ffb553be3fae676b2d062e212705ad2d15c24d9b732586aa9395fddcd0715105c4480825eec9640a949778a939992d80d60e024ce6058f8fdf79e4a64382d2000c511c110dcb3f40f4ca65991a">Arrow</title>
+                          <polygon points="51.829 7.172 46.172 12.828 79.343 46 4 46 4 54 79.343 54 46.172 87.172 51.829 92.828 94.658 50 51.829 7.172"></polygon>
+                        </svg>
+                    </button>
                   </div>
-                  </div>
-                {% endif %}
-
-
-           </div>
+              </div>
+              </div>
+            {% endif %}
         </div>
      <div class="product--details" id="ProductInfo-{{ section.id }}">
       {%- assign product_form_id = 'product-form-' | append: section.id -%}
@@ -201,21 +234,24 @@
                   <variant-radios class="no-js-hidden" data-section="{{ section.id }}" data-url="{{ product.url }}" {{ block.shopify_attributes }}>
                     {%- for option in product.options_with_values -%}
                       <div class="">
-                        <fieldset class="js option">
+                        <fieldset class="js option" id="fieldset-{{ option.position }}">
                           <div class="option--title">{{ option.name }}</div>
                           <div  role="radiogroup" class="option--values">
                           {%- for value in option.values -%}
-                            <input type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
-                                  name="{{ option.name }}"
-                                  value="{{ value | escape }}"
-                                  form="{{ product_form_id }}"
-                                  hidden
-                                  {% if option.selected_value == value %}checked{% endif %}
-                        
-                            >
-                            <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}" class="btn {% if option.selected_value == value %} is-active{% endif %}">
-                              {{ value }}
-                            </label>
+                            <div>
+                              <input type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+                                    name="{{ option.name }}"
+                                    value="{{ value | escape }}"
+                                    form="{{ product_form_id }}"
+                                    class="variant-selection"
+                                    hidden
+                                    {% if option.selected_value == value %}checked{% endif %}
+                          
+                              >
+                              <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}" class="btn {% if option.selected_value == value %} is-active{% endif %}">
+                                {{ value }}
+                              </label>
+                            </div>
                           {%- endfor -%}
                         </div>
                         </fieldset>
@@ -305,24 +341,7 @@
 
         
         <div class="product--actions">
-           {% comment %} <div class="counter">
-              <button aria-label="Decrease quantity by one" class="counter--down">
-                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-labelledby="minus-40811840700581" class="icon">
-                    <title id="minus-40811840700581">Minus</title>
-                    <rect x="20" y="46" width="60" height="8"></rect>
-                 </svg>
-              </button>
-              <div class="counter--amount">
-                 <div class="counter--input" style="transform: translateY(0%) translateZ(0px);"><input aria-label="Manually enter quantity" type="number" inputmode="numeric" min="1" value="1"></div>
-              </div>
-              <button aria-label="Increase quantity by one" class="counter--up">
-                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-labelledby="plus-40811840700581" class="icon">
-                    <title id="plus-40811840700581">Plus</title>
-                    <polygon points="80 46 54 46 54 20 46 20 46 46 20 46 20 54 46 54 46 80 54 80 54 54 80 54 80 46"></polygon>
-                 </svg>
-              </button>
-           </div> {% endcomment %}
-           {% comment %} <button class="btn is-primary is-large is-block">Add To Cart</button> {% endcomment %}
+
            {%- for block in section.blocks -%}
             {%- case block.type -%}
            {%- when 'buy_buttons' -%}
@@ -400,32 +419,86 @@
 
      </div>
   </section>
+
+  <product-modal id="ProductModal-{{ section.id }}" class="product-media-modal media-modal" style="background: white;">
+    <div class="product-media-modal__dialog" role="dialog" aria-label="{{ 'products.modal.label' | t }}" aria-modal="true" tabindex="-1">
+      <button id="ModalClose-{{ section.id }}" type="button" class="product-media-modal__toggle" aria-label="{{ 'accessibility.close' | t }}">{% render 'icon-close' %}</button>
+
+      <div class="product-media-modal__content" role="document" aria-label="{{ 'products.modal.label' | t }}" tabindex="0">
+        {%- liquid
+          if product.selected_or_first_available_variant.featured_media != null
+            assign media = product.selected_or_first_available_variant.featured_media
+            render 'product-media', media: media, loop: section.settings.enable_video_looping, variant_image: section.settings.hide_variants
+          endif
+        -%}
+
+        {%- for media in product.media -%}
+          {%- liquid
+            if section.settings.hide_variants and variant_images contains media.src
+              assign variant_image = true
+            else
+              assign variant_image = false
+            endif
+
+            unless media.id == product.selected_or_first_available_variant.featured_media.id
+              render 'product-media', media: media, loop: section.settings.enable_video_looping, variant_image: variant_image
+            endunless
+          -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </product-modal>
+
+  {% assign popups = section.blocks | where: "type", "popup" %}
+  {%- for block in popups -%}
+    <modal-dialog id="PopupModal-{{ block.id }}" class="product-popup-modal" {{ block.shopify_attributes }}>
+      <div role="dialog" aria-label="{{ block.settings.text }}" aria-modal="true" class="product-popup-modal__content" tabindex="-1">
+        <button id="ModalClose-{{ block.id }}" type="button" class="product-popup-modal__toggle" aria-label="{{ 'accessibility.close' | t }}">{% render 'icon-close' %}</button>
+        <div class="product-popup-modal__content-info">
+          <h1 class="h2">{{ block.settings.page.title }}</h1>
+          {{ block.settings.page.content }}
+        </div>
+      </div>
+    </modal-dialog>
+  {%- endfor -%}
+
 </main>
 
-{% for variant in product.variants %}
-  {% if variant.available %}
-        Available `{{ variant.title }}`, `{{ variant.id }}`, `{{ variant.selected }}`,
-  {% else %}
-  unavailable `{{ variant.title }}`, `{{ variant.id }}`, `{{ variant.selected }}`,
-      {% endif  %}
-  
-  {% endfor  %}
+<style>
+  button.btn.is-primary.is-large.is-block.loading {
+    opacity: 0.2;
+  }
+  .btn.is-disabled {
+    pointer-events: auto;
+    cursor: pointer;
+}
+  button.btn:disabled {
+    background: #dadada;
+    border-color: #dadada;
+  }
 
-<script>
+  @media screen and (max-width: 750px) {
+    .product-image{
+      height: 40vh;
+    }
+  }
+  .product-image{
+    height: 80vh;
+    position: relative;
+  }
 
-  var unavailable = [
-
-    {% for variant in product.variants %}
-      {% if variant.available == false %}
-            `{{ variant.title }}`, `{{ variant.id }}`, `{{ variant.selected }}`, `{{ variant.options }}`
-          {% endif  %}
-      {% endfor  %}
-
-
-
-  ]
-  console.log("unavailable", unavailable)
-</script>
+  @media screen and (max-width: 944px){
+    #product-grid {    
+      margin-top: 0 !important;
+    }
+  }
+.collection--wrapper{
+  padding: 0;
+}
+.collection .w-full{
+  padding: .5rem;
+}
+</style>
 
 {% javascript %}
   class ProductModal extends ModalDialog {
@@ -482,9 +555,11 @@
     variantSwitcher.outerHTML = noScriptInputWrapper.outerHTML;
 
     document.querySelector('#Variants-{{ section.id }}').addEventListener('change', function(event) {
+      console.log("Change event #Variants-{{ section.id }}")
       hiddenInput.value = event.currentTarget.value;
     });
   });
+
 </script>
 
 

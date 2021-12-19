@@ -40,7 +40,12 @@ class CartItems extends HTMLElement {
       {
         id: 'cart-icon-bubble',
         section: 'cart-icon-bubble',
-        selector: '.shopify-section'
+        selector: '.cart-toggle--count'
+      },
+      {
+        id: 'cart-icon-bubble-mobile',
+        section: 'cart-icon-bubble-mobile',
+        selector: '.cart-toggle--count-mobile'
       },
       {
         id: 'cart-live-region-text',
@@ -78,6 +83,8 @@ class CartItems extends HTMLElement {
         if (cartFooter) cartFooter.classList.toggle('is-empty', parsedState.item_count === 0);
 
         this.getSectionsToRender().forEach((section => {
+          console.log("Replacing element", document.getElementById(section.id).querySelector(section.selector) || document.getElementById(section.id) )
+          console.log("Replacement", this.getSectionInnerHTML(parsedState.sections[section.section], section.selector))
           const elementToReplace =
             document.getElementById(section.id).querySelector(section.selector) || document.getElementById(section.id);
 

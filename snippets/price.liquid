@@ -51,14 +51,12 @@
     <div class="price__sale">
       {%- unless product.price_varies == false and product.compare_at_price_varies %}
         <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.regular_price' | t }}</span>
-        <span>
-          <s class="price-item price-item--regular price--current">
+        <span class="price-item price-item--regular price--current">
             {% if settings.currency_code_enabled %}
               {{ compare_at_price | money_with_currency }}
             {% else %}
               {{ compare_at_price | money }}
             {% endif %}
-          </s>
         </span>
       {%- endunless -%}
       <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.sale_price' | t }}</span>
@@ -81,15 +79,15 @@
       </span>
     </small>
   </div>
-  {%- if show_badges -%}
-    {% comment %} <span class="badge price__badge-sale color-{{ settings.sale_badge_color_scheme }}"> {% endcomment %}
+  {% comment %} {%- if show_badges -%}
+    <span class="badge price__badge-sale color-{{ settings.sale_badge_color_scheme }}">
     <span class=" badge price__badge-sale  label is-secondary">
       {{ 'products.product.on_sale' | t }}
     </span>
 
-    {% comment %} <span class="badge price__badge-sold-out color-{{ settings.sold_out_badge_color_scheme }}"> {% endcomment %}
+    <span class="badge price__badge-sold-out color-{{ settings.sold_out_badge_color_scheme }}">
     <span class="badge price__badge-sold-out label is-secondary">
       {{ 'products.product.sold_out' | t }}
     </span>
-  {%- endif -%}
+  {%- endif -%} {% endcomment %}
 </div>

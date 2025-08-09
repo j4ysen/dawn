@@ -1,4 +1,4 @@
 MatchingTranslations:
   enabled: false
-ignore:
-  - dev/*
+TemplateLength:
+  enabled: false
